@@ -4,11 +4,11 @@
 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.demo.org.mapper.IAccountService">
-	<select id="getAll" resultType="com.demo.org.bean.Account">
+<mapper namespace="com.niit.org.mapper.IAccountService">
+	<select id="getAll" resultType="com.niit.org.bean.Account">
      select * from account
     </select>
-    <select id="getUser" resultType="com.demo.org.bean.Account">
+    <select id="getUser" resultType="com.niit.org.bean.Account">
      select * from account where username=#{username}
     </select>
 </mapper>
