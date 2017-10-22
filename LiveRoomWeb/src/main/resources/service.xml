@@ -12,8 +12,8 @@
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" 
-			value="jdbc:mysql://localhost:5555/videoproject?useSSL=false" />
-		<property name="username" value="konoha" />
+			value="jdbc:mysql://localhost:3306/videoproject?useSSL=false" />
+		<property name="username" value="root" />
 		<property name="password" value="yangjian233" />
 		
 		

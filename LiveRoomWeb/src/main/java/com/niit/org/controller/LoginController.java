@@ -46,11 +46,11 @@ public class LoginController {
 
 	public String submit(ModelMap resultMap,HttpServletRequest request,HttpSession session) {
 		
-		//此处通过SSH外部访问远程mysql服务器需要用到JSCH,服务器端上不需要
-		JschUtil sshutil=new JschUtil();
-		
-		//*************SSH端口转接开启
-		sshutil.open();
+//		//此处通过SSH外部访问远程mysql服务器需要用到JSCH,服务器端上不需要
+//		JschUtil sshutil=new JschUtil();
+//		
+//		//*************SSH端口转接开启
+//		sshutil.open();
 		
 		
 		
@@ -62,8 +62,8 @@ public class LoginController {
 		
 		Account user=iac.getUser(loginuser);
 
-		//**************SSH端口转接关闭
-		sshutil.close();
+//		//**************SSH端口转接关闭
+//		sshutil.close();
 		
 		if(user.getPassword().equals(password)) {
 			session.setAttribute("user", user);
