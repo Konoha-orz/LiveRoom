@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
+<<<<<<< HEAD
 encoding/<project>=UTF-8
 separateDerivedEncodings=true
+=======
+encoding//src/main/java/com/niit/org/controller/LoginController.java=UTF-8
+>>>>>>> branch 'master' of https://github.com/Konoha-orz/LiveRoom.git
