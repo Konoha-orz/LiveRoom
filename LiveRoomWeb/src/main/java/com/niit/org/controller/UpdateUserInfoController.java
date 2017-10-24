@@ -32,7 +32,7 @@ public class UpdateUserInfoController {
 		u.setUsername(username);
 		u.setDscp(dscp);
 		iuser.updateUser(u);
-		return "s1";
+		return "updateSuccess";
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
