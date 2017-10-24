@@ -10,9 +10,7 @@ public class AccountImpl implements IAccount {
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return 233;
 	}
-
-
 
 }

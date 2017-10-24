@@ -4,8 +4,6 @@ import java.util.List;
 
 public class Account {
 
-    // just test
-	//==========================
 	private int id;
 
 	private String username;
