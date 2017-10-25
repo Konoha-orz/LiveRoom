@@ -16,7 +16,7 @@ Edit by Teemo
 <title>Login</title>
 
 </head>
-<link rel="stylesheet" href="user.css" type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/login.css" type="text/css" /> 
 
 <body>
 <%
@@ -26,13 +26,20 @@ Edit by Teemo
 	out.println("<a href='http://localhost:8080/LiveRoomWeb/logout'>Logout</a>");
 	}
 %>
+<div class="loginFrame">
 <form action="login" method="post">
-<table>
-<tr><td><label for="username">Username:</label></td><td><input type="text" id="username" name="username" /></td></tr>
-<tr><td><label for="password">Password:</label></td><td><input type="text" id="password" name="password" /></td></tr>
-<tr><td colspan="2"><input class="btn btn-primary btn-block" type="submit" value="login" /></td></tr>
-</table>
+
+<div class="auth-form-header p-0">
+<h1>User Login</h1>
+</div>
+<div class="auth-form-body">
+<label for="username">Username:</label>
+<input type="text" class="form-control input-block" id="username" name="username" autofocus="autofocus"/>
+<label for="password">Password:</label><input type="text" id="password" name="password" />
+<input class="btn btn-primary btn-block" type="submit" value="login" />
+</div>
 </form>
+</div>
 
 <a href="http://localhost:8080/LiveRoomWeb/updateUserInfo">updateUserInfo</a>
 </body>
