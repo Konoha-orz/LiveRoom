@@ -32,12 +32,12 @@ public class WebchatController {
 	}
 	
 	
-	@RequestMapping("/logout")
+	/*@RequestMapping("/logout")
 	public void logout(HttpSession httpSession,HttpServletResponse response) throws IOException {
 		httpSession.removeAttribute("user");
 		
 		response.sendRedirect("login");
 		
-	}
+	}*/
 
 }

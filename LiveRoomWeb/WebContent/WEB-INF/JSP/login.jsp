@@ -1,18 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<!--
+Edit by Teemo
+
+2017-10-24
+
+用户登录界面
+-->
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
+<style>
+
+.btn
+{
+	background-color:#00aa00;
+}
+</style>
 </head>
+<link media="all" rel="stylesheet" href="css1.css"  type="text/css" />
+
 <body>
-<h1>Login</h1>
-<h1>${loginmessage}</h1>
+<%
+	if(session.getAttribute("username")!=null){
+	String username=session.getAttribute("username").toString();
+	out.println("Hello "+username+" !");
+	out.println("<a href='http://localhost:8080/LiveRoomWeb/logout'>Logout</a>");
+	}
+%>
 <form action="login" method="post">
-<label for="account">Account:</label><input type="text"  id="account"  name="account"/><br/>
-<label for="password">Password:</label><input type="password"  id="password"  name="password"/><br/>
-<input type="submit" value="Login" name="submit" />
+<table>
+<tr><td><label for="username">Username:</label></td><td><input type="text" id="username" name="username" /></td></tr>
+<tr><td><label for="password">Password:</label></td><td><input type="text" id="password" name="password" /></td></tr>
+<tr><td colspan="2"><input class="btn btn-primary btn-block" type="submit" value="login" /></td></tr>
+</table>
 </form>
+
+<a href="http://localhost:8080/LiveRoomWeb/updateUserInfo">updateUserInfo</a>
 </body>
 </html>
