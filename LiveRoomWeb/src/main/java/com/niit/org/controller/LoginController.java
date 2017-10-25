@@ -46,8 +46,9 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-	public void login(HttpSession session) {}
-	
-	
-	
+	public void login(HttpSession session) {
+		
 	}
+	
+		
+}
