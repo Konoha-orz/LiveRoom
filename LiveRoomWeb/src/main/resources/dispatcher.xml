@@ -8,6 +8,13 @@
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
+
+	 <!-- 静态资源访问设置   location是工程路径地址，mapping是映射后的访问地址  -->
+	<mvc:default-servlet-handler />    
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>  
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/"/>  
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/"/>  
+    <mvc:resources mapping="/plugin/**" location="/WEB-INF/plugin/"/> 
 	
 
 	<!-- 注解的驱动与配置 -->

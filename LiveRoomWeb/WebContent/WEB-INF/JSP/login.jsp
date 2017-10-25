@@ -14,17 +14,9 @@ Edit by Teemo
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
-<style>
 
-.btn
-{
-	background-color:#00aa00;
-}
-</style>
 </head>
-<link media="all" rel="StyleSheet" href="../css/css1.css"  type="text/css" />
-<link media="all" rel="StyleSheet" href="../css/css2.css"  type="text/css" />
-<link media="all" rel="StyleSheet" href="../css/css3.css"  type="text/css" />
+<link rel="stylesheet" href="user.css" type="text/css" />
 
 <body>
 <%
