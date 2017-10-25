@@ -2,8 +2,9 @@ package com.niit.org.bean;
 
 import java.util.List;
 
+
 public class Account {
-    
+
 	
 	private int id;
 
