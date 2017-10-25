@@ -42,6 +42,8 @@ public class RegisterController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public void register() {}
+	public void register() {
+		
+	}
 	
 }
