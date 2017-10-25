@@ -3,7 +3,7 @@ package com.niit.org.bean;
 import java.util.List;
 
 public class Account {
-   //test
+   
 	private int id;
 
 	private String username;
