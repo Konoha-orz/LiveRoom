@@ -14,8 +14,15 @@ Edit by Teemo
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
-</head>
+<style>
 
+.btn
+{
+	background-color:#00aa00;
+}
+</style>
+</head>
+<link media="all" rel="stylesheet" href="css1.css"  type="text/css" />
 
 <body>
 <%
@@ -26,9 +33,11 @@ Edit by Teemo
 	}
 %>
 <form action="login" method="post">
-<label for="username">Username:</label><input type="text" id="username" name="username" />
-<label for="password">Password:</label><input type="text" id="password" name="password" />
-<input type="submit" value="login" />
+<table>
+<tr><td><label for="username">Username:</label></td><td><input type="text" id="username" name="username" /></td></tr>
+<tr><td><label for="password">Password:</label></td><td><input type="text" id="password" name="password" /></td></tr>
+<tr><td colspan="2"><input class="btn btn-primary btn-block" type="submit" value="login" /></td></tr>
+</table>
 </form>
 
 <a href="http://localhost:8080/LiveRoomWeb/updateUserInfo">updateUserInfo</a>
