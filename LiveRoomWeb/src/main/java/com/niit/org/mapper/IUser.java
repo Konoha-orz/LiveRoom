@@ -5,9 +5,9 @@ import java.util.List;
 import com.niit.org.bean.User;
 
 /*
- *Edit by Teemo
+ *Edit by @Teemo
  *
- *2017-10-24
+ *2017-10-25
  *
  *User的Mapper
  * 

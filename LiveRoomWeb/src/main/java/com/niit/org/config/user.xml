@@ -3,18 +3,20 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!--
-Edit by Teemo
+Edit by @Teemo
 
-2017-10-24
+2017-10-25
 
 registerUser-用于用户注册的SQL语句。
 getUser-用于登陆中获取用户密码以判断输入密码正误的SQL语句。
+getAll-用于获取所有用户的信息。
+updateUser-用于用户信息修改，将修改后的信息对于数据库进行更新。
 
   -->
   
 <mapper namespace="com.niit.org.mapper.IUser">
 	<select id="registerUser" resultType="com.niit.org.bean.User">
-     	insert into user(username,password,dscp) values(#{username},#{password},#{dscp})
+     	insert into user(username,password,email,dscp) values(#{username},#{password},#{email},#{dscp})
     </select>
 	<select id="getUser" resultType="com.niit.org.bean.User">
     	select * from user where username=#{username}
@@ -23,6 +25,6 @@ getUser-用于登陆中获取用户密码以判断输入密码正误的SQL语句
 		select * from user
 	</select>
 	<select id="updateUser" resultType="com.niit.org.bean.User">
-		update user set password=#{password},dscp=#{dscp} where id=#{id}
+		update user set username=#{username},password=#{password},dscp=#{dscp},email=#{email} where id=#{id}
 	</select>
 </mapper>

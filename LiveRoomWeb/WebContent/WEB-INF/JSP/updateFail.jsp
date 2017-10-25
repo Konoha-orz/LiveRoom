@@ -7,11 +7,11 @@ Edit by @Teemo
 
 2017-10-25
 
-登陆成功界面并完成界面设计
+更新用户信息失败
 -->
 
 <html>
-
+<head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -35,7 +35,7 @@ Edit by @Teemo
 
 <meta name="viewport" content="width=device-width">
 
-<title>Login Success</title>
+<title>Update Fail</title>
 
 <meta property="fb:app_id" content="1401488693436528">
 
@@ -136,11 +136,11 @@ Edit by @Teemo
 <meta name="u2f-support" content="true">
 
 </head>
+</head>
 
 
 
-
-
+<body>
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
 
@@ -190,9 +190,11 @@ Edit by @Teemo
 						
 						<div class="auth-form-body mt-3">
 						<div  style="text-align:center">
-						<h2 for="Success Message">Login Successfully..</h2></div><br/>
+						<h2 for="Success Message">Update  Failed..</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/userInfo">View User Information</a></div>
+						<a href="http://localhost:8080/LiveRoomWeb/updateUserInfo">Update Again</a>
+						<a href="http://localhost:8080/LiveRoomWeb/UserInfo">Back to User Information</a>
+						</div>
 					</div>
 					</div>
 
@@ -206,5 +208,5 @@ Edit by @Teemo
 
 
 </body>
-
+</body>
 </html>
