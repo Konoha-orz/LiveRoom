@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-    var ws = new WebSocket("ws://localhost:8080/LiveRoomWeb/webchat");
+    var ws = new WebSocket("ws://120.78.81.233:8080/LiveRoomWeb/webchat");
     /*
      *监听三种状态的变化 。js会回调
      */
