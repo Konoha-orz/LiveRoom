@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Account {
     
-	// konoha
+	
 	private int id;
 
 	private String username;
