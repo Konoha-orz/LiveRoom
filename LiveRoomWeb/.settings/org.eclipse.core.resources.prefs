@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
 >>>>>>>=origin/Konoha-orz
@@ -10,3 +11,12 @@ encoding//WebContent/WEB-INF/JSP/liveroom.jsp=UTF-8
 encoding//src/main/java/com/niit/org/controller/LoginController.java=UTF-8
 encoding/<project>=UTF-8
 separateDerivedEncodings=true
+=======
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/JSP/LoginFail.jsp=UTF-8
+encoding//WebContent/WEB-INF/JSP/LoginSuccess.jsp=UTF-8
+encoding//WebContent/WEB-INF/JSP/logout.jsp=UTF-8
+encoding//WebContent/WEB-INF/JSP/registerSuccess.jsp=UTF-8
+encoding//src/main/java/com/niit/org/controller/RegisterController.java=UTF-8
+encoding/<project>=UTF-8
+>>>>>>> origin/teemo

@@ -1,18 +1,21 @@
 package com.niit.org.controller;
 
+<<<<<<< HEAD
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+=======
+>>>>>>> origin/teemo
 import javax.annotation.Resource;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+<<<<<<< HEAD
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,10 +31,29 @@ import com.niit.org.util.JschUtil;
 
 @Controller
 
+=======
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import com.niit.org.bean.User;
+import com.niit.org.mapper.IUser;
+
+/*
+ *Edit by Teemo
+ *
+ *2017-10-24
+ *
+ *用于处理login请求，通过获取数据库数据判断用户输入的密码是否与数据库密码相匹配，根据匹配与否将跳转到成功或错误页面。
+ * 
+ */
+
+@Controller
+
+@RequestMapping("/login")
+>>>>>>> origin/teemo
 public class LoginController {
 
-	
 	@Resource
+<<<<<<< HEAD
 	private IAccountService iac;
 	
 	@RequestMapping(value="/login",method=RequestMethod.GET)
@@ -103,11 +125,31 @@ public class LoginController {
 			resultMap.remove("loginmessage");
 			resultMap.addAttribute("loginmessage","Error!!!");
 			return "login";	
+=======
+	private IUser iuser;
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String login(HttpServletRequest request, HttpSession session) {
+		String username_enter = request.getParameter("username");
+		String password_enter = request.getParameter("password");
+		try {
+			String password_db = iuser.getUser(username_enter).get(0).getPassword();
+			if (password_enter.equals(password_db)) {
+				session.setAttribute("username", username_enter);
+				return "LoginSuccess";
+			} else {
+				return "LoginFail";
+			}
+		} catch (Exception e) {
+			return "LoginFail";
+>>>>>>> origin/teemo
 		}
-		
-		
-		
 
 	}
 
-}
+	@RequestMapping(method = RequestMethod.GET)
+	public void login(HttpSession session) {}
+	
+	
+	
+	}
