@@ -22,7 +22,9 @@ Edit by Teemo
 }
 </style>
 </head>
-<link media="all" rel="stylesheet" href="css1.css"  type="text/css" />
+<link media="all" rel="StyleSheet" href="../css/css1.css"  type="text/css" />
+<link media="all" rel="StyleSheet" href="../css/css2.css"  type="text/css" />
+<link media="all" rel="StyleSheet" href="../css/css3.css"  type="text/css" />
 
 <body>
 <%
