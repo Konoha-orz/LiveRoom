@@ -75,10 +75,10 @@
             <!--tabs-->
             <ul id="menuTabs" class="nav nav-pills nav-justified">
                 <li class="active">
-                    <a href="#discussion" data-toggle="tab"><i class="fa fa-tree"></i>互动聊天({{messages[messages.length-1].roomNumbers}})</a>
+                    <a href="#discussion" data-toggle="tab"><i class="fa fa-tree"></i>互动聊天({{numbers}})</a>
                 </li>
                 <li>
-                    <a href="#members" data-toggle="tab"><i class="fa fa-tree"></i>现场嘉宾({{messages[messages.length-1].roomNumbers}})</a>
+                    <a href="#members" data-toggle="tab"><i class="fa fa-tree"></i>现场嘉宾({{numbers}})</a>
                 </li>
                 <li>
                     <a href="#guests" data-toggle="tab"><i class="fa fa-tree"></i>最近访问</a>
@@ -162,7 +162,7 @@
                 </div>
             </form>
         </div>
-        <div class="dialog-footer-wrapper" >
+        <div class="dialog-footer-wrapper" style="display:none;">
             <div class="dialog-footer">
                 <button class="disabled btn btn-default btn-cancel">取消</button>
                 <button class="btn btn-success btn-ok" @click="submit">确定</button>
@@ -181,51 +181,25 @@
         },
         methods: {
             submit: function () {
-                if (!this.username) {
-                    alert("名字不能为空");
-                    return;
-                }
-                this.sendRequest();
-                //socket.emit("add user", data);
-                // 关闭遮罩层
-                this.isClose=true;
+                // 确认操作，关闭遮罩层
             },
             close: function () {
-                if (!this.username) {
-                    alert("名字不能为空");
-                    return;
-                }
-                this.sendRequest();
-                this.isClose=true;
+            	// 遮罩层关闭
             },
             sendRequest: function () {
                 // 使用ajax发送请求
-                var data = {username: this.username};
-                $.ajax({
-                    type: 'POST',
-                    url: '/LiveRoomWeb/login',
-                    data: JSON.stringify(data),
-                    dataType: "json",
-                    contentType: "application/json"
-                }).done(function (data) {
-                    if (data.status && data.status === 'success') {
-                        window.location.href = '/liveroom';
-                    }
-                }).fail(function (data) {
-                    alert('用户登录失败，请重试');
-                });
             }
         }
     });
     var chatroom = new Vue({
         el: '#chatroom',
         data: {
-            stompClient: null,
+            socketClient: null,
             messages: [],
             messageinput: "",
             rtmpSource: null,
             videoPlayer: null,
-            number: 0,
+            numbers: 0,
             danmu: null,
             username:"guest",
             roomId:document.querySelector("input[name=roomId]").value || 0,
@@ -234,40 +208,28 @@
         },
         methods: {
             login:function () {
-                window.dialog.isClose=false;
+            	//登录
             },
             logout:function () {
-                $.ajax({
-                    type: 'get',
-                    url: '/logout',
-                    dataType: "json",
-                    contentType: "application/json"
-                }).done(function (data) {
-                    if (data.status && data.status === 'success') {
-                        window.location.href="/LiveRoomWeb/liveroom";
-                    }
-                }).fail(function (data) {
-                    alert('用户注销失败，请重试');
-                });
+				// 登出
             },
             connectToSocket: function () {
                 this.socketClient = new WebSocket(this.webSocketUrl);
                 this.socketClient.onopen = function (frame) {
                     chatroom.messages.push({
                         creator: '系统消息',
-                        msgBody: '连接成功！',
-                        roomNumbers: 0
+                        msgBody: '连接成功！'
                     })
                 };
                 this.socketClient.onmessage = function (message) {
                     // 你登陆之后
                     data=JSON.parse(message.data);
-                    this.roomId = data.roomId;
-                    console.log("message",message)
+                    chatroom.roomId = data.roomId;
+                    chatroom.numbers=data.roomNumbers;
+                    console.log(this.numbers)
                     chatroom.messages.push({
                         creator: data.creator,
-                        msgBody: data.msgBody,
-                        roomNumbers:data.roomNumbers
+                        msgBody: data.msgBody
                     });
                 };
                 // 连接出错触发
@@ -275,7 +237,7 @@
                     console.log("websocket connect error");
                 };
                 //连接关闭触发
-                this.socketClient.onclose = function () {
+                this.socketClient.onclose = function (message) {
                     console.log("websocket connect close");
                 }
                 //when browser window closed, close the socket, to prevent server exception
@@ -292,31 +254,30 @@
                     chatroom.messageinput = "请输入内容!!!";
                 }
             },
-            videoInit(){
-                this.videoPlayer = videojs('v-player', {
-                        //初始化数据
-                        height: '439px',
-                        width: '640px',
-                        "techOrder": ["html5", "flash"],
-                        controls: true,
-                        "autoplay": true,
-                        sources: [{
-                            /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
-                            src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
-                            //src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
-                            type: 'rtmp/flv'
-                        }]
-                    },
-                    function () {
-                        this.on('loadeddata', function () {
-                            console.log(this)
-                        })
+            videoInit: function(){
+            	this.videoPlayer = videojs('v-player', {
+                    //初始化数据
+                    height: '439px',
+                    width: '640px',
+                    "techOrder": ["html5", "flash"],
+                    controls: true,
+                    "autoplay": true,
+                    sources: [{
+                        /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
+                        //src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
+                        src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
+                        type: 'rtmp/flv'
+                    }]
+                },
+                function () {
+                    this.on('loadeddata', function () {
+                        console.log(this)
+                    })
 
-                        this.on('pause', function () {
-                            //alert('pause')
-                        })
-                    }
-                )
+                    this.on('pause', function () {
+                        //alert('pause')
+                    })
+                })
             }
         },
         mounted: function () {
@@ -326,7 +287,6 @@
             this.connectToSocket()
             //视频初始化
             this.videoInit()
-            
         }
     });
 
