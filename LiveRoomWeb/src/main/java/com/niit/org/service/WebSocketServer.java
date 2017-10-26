@@ -9,14 +9,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javax.servlet.http.HttpSession;
-import javax.websocket.EndpointConfig;
-import javax.websocket.OnClose;
-import javax.websocket.OnMessage;
-import javax.websocket.OnOpen;
-import javax.websocket.Session;
-import javax.websocket.server.PathParam;
+import javax.websocket.*;
 import javax.websocket.server.ServerEndpoint;
+import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.springframework.stereotype.Component;
 
@@ -42,9 +38,11 @@ public class WebSocketServer {
  private Session session;
  //房间ID
  private String roomId;
+ //房间人数(可以用serverSet的size作为每个房间的人数)
+ private Integer roomNumbers;
 
  public WebSocketServer() {
-     username = "访客"+onlineCount.getAndIncrement();
+	 roomNumbers = 0;
  }
  /*
   *使用@Onopen注解的表示当客户端链接成功后的回掉。参数Session是可选参数
@@ -71,6 +69,7 @@ public class WebSocketServer {
          serverSet.add(this);
          map.put(roomId,serverSet);
      }
+	 this.roomNumbers=map.get(roomId).size();
      // 有可能建立连接还没有username
      Object username= httpSession.getAttribute("username");
      // 登录的话，提示用户名，未登录的话仅仅提示连接到聊天室
@@ -85,10 +84,11 @@ public class WebSocketServer {
          msg.setMsgBody(this.username+"已经连接到聊天室");
          msg.setRoomId(roomId);
      }
+     msg.setRoomNumbers(this.roomNumbers);
      msg.setsTime(Calendar.getInstance());
      String serialized = new ObjectMapper().writeValueAsString(msg);
      broadcast(roomId, serialized);
-     System.out.println("onOpen"+serialized);
+     System.out.println("onOpen:"+serialized);
  }
    /*
     *使用@OnMessage注解的表示当客户端发送消息后的回掉，第一个参数表示用户发送的数据。参数Session是可选参数，与OnOpen方法中的session是一致的
@@ -97,11 +97,13 @@ public class WebSocketServer {
  public void onMessage(@PathParam("roomId") String roomId,
                        String message,
                        Session session) throws JsonProcessingException {
+	 this.roomNumbers=map.get(roomId).size();
      Msg msg = new Msg();
      msg.setCreator(this.username);
      msg.setMsgBody(message);
      msg.setsTime(Calendar.getInstance());
      msg.setRoomId(roomId);
+     msg.setRoomNumbers(this.roomNumbers);
      String serialized = new ObjectMapper().writeValueAsString(msg);
      System.out.println("OnMessage:"+serialized);
      broadcast(roomId, filter(serialized));
@@ -114,10 +116,12 @@ public class WebSocketServer {
      webSocketSet.remove(this);
      Set<WebSocketServer> tempSet= map.get(roomId);
      tempSet.remove(this);
+     this.roomNumbers=tempSet.size();
      Msg msg = new Msg();
      msg.setCreator("系统消息");
      msg.setMsgBody(this.username+"离开了聊天室链接");
      msg.setsTime(Calendar.getInstance());
+     msg.setRoomNumbers(this.roomNumbers);
      String serialized = new ObjectMapper().writeValueAsString(msg);
      String roomId=this.session.getPathParameters().get("roomId");
      msg.setRoomId(roomId);

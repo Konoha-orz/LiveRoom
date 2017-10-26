@@ -87,8 +87,9 @@ header{
         	</div>
             <ul class="nav navbar-nav">
             	<c:choose>
-				    <c:when test="${session.username}!=null">
-				        <li class="active"><a href="#">${session.username}</a></li>
+				    <c:when test="${sessionScope.username !=null}">
+				        <li class="active"><a href="#">${sessionScope.username}</a></li>
+				        <li class="active"><a href="/LiveRoomWeb/logout">登出</a></li>
 				    </c:when>
 				    <c:otherwise>
 				        <li class="active"><a href="/LiveRoomWeb/login">登录</a></li>

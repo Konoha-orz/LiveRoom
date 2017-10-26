@@ -17,5 +17,6 @@ Edit by Teemo
 <body>
 <h1>LoginSuccessfully....</h1>
 <a href="http://localhost:8080/LiveRoomWeb/login">back</a>
+<a href="http://localhost:8080/LiveRoomWeb/home">home</a>
 </body>
 </html>

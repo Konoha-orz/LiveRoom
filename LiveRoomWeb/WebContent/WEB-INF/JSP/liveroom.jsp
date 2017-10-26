@@ -36,6 +36,7 @@
 <%@ include file="header.jsp" %>
 <div class="container" id="chatroom" ref="chatroom">
     <div class="row">
+    <p style="float:left;">当前房间号：<c:out value="${sessionScope.roomId}"/></p>
     </div>
     <div class="row">
         <div class="col-md-12" style="margin-bottom: 10px;">
@@ -45,26 +46,17 @@
                     <img class="img-responsive" style="width: 80px;height:80px; float: left;"
                          src="images/haha.gif" alt="">
                     <button class="btn btn-default pull-right" style="background-color: #47d5af" onclick="changeSrc()">
-                        	开通直播间
+                        	开通直播间 
                     </button>
                     <h3 style="margin-left: 15px;margin-top: 10px; float: left;">直播间demo(移动端、电脑端、安卓客户端)</h3>
                 </div>
-                <c:choose>
-                	<c:when test="${session.username}!=null">
-           				  ${session.username}
-           				  <a href="/logout">登出</a>
-       				</c:when>
-			        <c:otherwise>
-			             <a href="javascript:window.dialog.isClose=false;return false;">登录</a>
-			        </c:otherwise>
-                </c:choose>
             </div>
             <!--公告区域-->
             <div class="col-md-4" style="height: 80px; background-color: #47d5af;">
                 <h3 class="anchorNotice" style="margin-top: 0px; float: left;"><i class="fa fa-bell"
                                                                                   aria-hidden="true"></i>主播公告</h3>
                 <div style="padding: 10px;">功能:1.直播推流(rtmp)。2:本页面拉流(电脑端拉取rtmp,手机端拉取hls)。3:聊天室。4:弹幕系统。5.数据统计。</div>
-                <p>{{roomId}}</p>
+                <p></p>
             </div>
         </div>
  <!-- 左侧栏目开始-->
@@ -83,10 +75,10 @@
             <!--tabs-->
             <ul id="menuTabs" class="nav nav-pills nav-justified">
                 <li class="active">
-                    <a href="#discussion" data-toggle="tab"><i class="fa fa-tree"></i>互动聊天</a>
+                    <a href="#discussion" data-toggle="tab"><i class="fa fa-tree"></i>互动聊天({{messages[messages.length-1].roomNumbers}})</a>
                 </li>
                 <li>
-                    <a href="#members" data-toggle="tab"><i class="fa fa-tree"></i>现场嘉宾({{number}})</a>
+                    <a href="#members" data-toggle="tab"><i class="fa fa-tree"></i>现场嘉宾({{messages[messages.length-1].roomNumbers}})</a>
                 </li>
                 <li>
                     <a href="#guests" data-toggle="tab"><i class="fa fa-tree"></i>最近访问</a>
@@ -134,7 +126,7 @@
             </div>
             <div id="chatinput" class="input-group" style="margin-top: 5px;width: 100%;">
                 <c:choose>
-				    <c:when test="${session.username} != null">
+				    <c:when test="${sessionScope.username!=null}" >
 				       <input type="text" class="form-control" v-model="messageinput"
                        @keyup.13="sendMessage"
                        placeholder="参与话题讨论">
@@ -143,7 +135,7 @@
                 		</span>
 				    </c:when>
 				    <c:otherwise>
-                		<p class="login-inside"><a href="javascript:void(0);" @click="login">登录</a>才能观看加入直播间
+                		<p class="login-inside"><a href="/LiveRoomWeb/login">登录</a>才能观看加入直播间
 				    </c:otherwise>
 				</c:choose>
             </div>
@@ -178,7 +170,7 @@
         </div>
     </div>
 </div>
-<input type="hidden" name="roomId" value="${session.roomId}">
+<input type="hidden" name="roomId" value="${sessionScope.roomId}">
 <script>
     var dialog = new Vue({
         el: document.querySelector(".dialog-wrapper"),
@@ -211,7 +203,7 @@
                 var data = {username: this.username};
                 $.ajax({
                     type: 'POST',
-                    url: '/login',
+                    url: '/LiveRoomWeb/login',
                     data: JSON.stringify(data),
                     dataType: "json",
                     contentType: "application/json"
@@ -237,7 +229,8 @@
             danmu: null,
             username:"guest",
             roomId:document.querySelector("input[name=roomId]").value || 0,
-            danmuColor: ['#666666', 'blue', 'white', 'red', 'pink']
+            danmuColor: ['#666666', 'blue', 'white', 'red', 'pink'],
+            webSocketUrl:"",
         },
         methods: {
             login:function () {
@@ -251,18 +244,19 @@
                     contentType: "application/json"
                 }).done(function (data) {
                     if (data.status && data.status === 'success') {
-                        window.location.href="/liveroom";
+                        window.location.href="/LiveRoomWeb/liveroom";
                     }
                 }).fail(function (data) {
                     alert('用户注销失败，请重试');
                 });
             },
             connectToSocket: function () {
-                this.socketClient = new WebSocket("ws://localhost:8081/webSocket/"+this.roomId);
+                this.socketClient = new WebSocket(this.webSocketUrl);
                 this.socketClient.onopen = function (frame) {
                     chatroom.messages.push({
                         creator: '系统消息',
-                        msgBody: '连接成功！'
+                        msgBody: '连接成功！',
+                        roomNumbers: 0
                     })
                 };
                 this.socketClient.onmessage = function (message) {
@@ -272,7 +266,8 @@
                     console.log("message",message)
                     chatroom.messages.push({
                         creator: data.creator,
-                        msgBody: data.msgBody
+                        msgBody: data.msgBody,
+                        roomNumbers:data.roomNumbers
                     });
                 };
                 // 连接出错触发
@@ -307,8 +302,9 @@
                         "autoplay": true,
                         sources: [{
                             /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
+                            src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
                             //src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
-                            //type: 'rtmp/flv'
+                            type: 'rtmp/flv'
                         }]
                     },
                     function () {
@@ -324,10 +320,13 @@
             }
         },
         mounted: function () {
-            //聊天室初始化
+            //设置webSocketUrl
+            this.webSocketUrl="ws://localhost:8080/LiveRoomWeb/webSocket/"+this.roomId;
+        	//聊天室初始化
             this.connectToSocket()
             //视频初始化
             this.videoInit()
+            
         }
     });
 
