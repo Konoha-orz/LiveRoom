@@ -3,15 +3,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <!--
+
 Edit by @Teemo
 
 2017-10-25
-
 用户注册界面并完成界面设计
+
+2017-10-27
+完成用户名重复性验证及两次密码输入是否相同的验证
+
 -->
 
 <html>
-<head>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -135,12 +139,10 @@ Edit by @Teemo
 
 <meta name="u2f-support" content="true">
 
+<script src="<%=request.getContextPath() %>/js/jquery-3.2.1.min.js" ></script>
+
 </head>
-</head>
 
-
-
-<body>
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
 
@@ -172,7 +174,7 @@ Edit by @Teemo
 
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
-				<form accept-charset="UTF-8" action="register" method="post">
+				<form accept-charset="UTF-8" action="register" name="register" method="post">
 					<div style="margin: 0; padding: 0; display: inline">
 						<input name="utf8" type="hidden" value="✓"><input
 							name="authenticity_token" type="hidden"
@@ -188,10 +190,12 @@ Edit by @Teemo
 
 					<div class="auth-form-body mt-3">
 
-						<label for="username"> Username </label> 
-						<input autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							<label for="username"> Username </label> 
+							<input autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="username" name="username"
-							tabindex="1" type="text" /> 
+							tabindex="1" type="text" onblur="checkUsername()"/> 
+							
+							<label for="checkusername" id="checkusername" name="checkusername"style="color:red"></label>
 							
 							<label for="password">Password </label> 
 							<input class="form-control form-control input-block"
@@ -199,7 +203,9 @@ Edit by @Teemo
 							
 							<label for="cpassword">Confirm Password </label> 
 							<input class="form-control form-control input-block"
-							id="cpassword" name="cpassword" tabindex="2" type="password" /> 
+							id="cpassword" name="cpassword" tabindex="2" type="password" onblur="checkConfirmPassword()"/> 
+							
+							<label for="error" id="error" style="color:red"></label>
 							
 							<label for="email">Email Adress </label> 
 							<input class="form-control form-control input-block"
@@ -214,8 +220,6 @@ Edit by @Teemo
 							name="commit" tabindex="3" type="submit" value="Register" />
 					</div>
 				</form>
-
-				
 			</div>
 
 		</div>
@@ -241,5 +245,35 @@ Edit by @Teemo
 
 
 </body>
-</body>
+<script type="text/javascript">
+function checkConfirmPassword(){
+	if(document.getElementById(	"password").value!=document.getElementById("cpassword").value){
+		document.getElementById("error").innerText="Two input password must be consistent !";
+		register.cpassword.focus();
+	}else{
+		document.getElementById("error").innerText="";
+	}
+}
+
+ function checkUsername(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/register/check",
+		data:{"username":$("#username").val()},
+		success:function(r){
+			if(r == "success"){
+				$("#checkusername").html("");  
+			}else{
+				$("#checkusername").html("This username has been used.");  
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+		}
+	});
+} 
+
+</script>
 </html>

@@ -15,6 +15,7 @@ import com.niit.org.bean.User;
 
 public interface IUser {
    public List<User> getAll();
+   public int getNumberOfUsers();
    public void registerUser(User user);
    public List<User> getUser(String username);
    public void updateUser(User user);
