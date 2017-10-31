@@ -56,6 +56,6 @@ public class IndexController {
     public String enterRoom(HttpSession session,@RequestParam("roomId") String roomId, ModelMap modelMap){
         session.setAttribute("roomId",roomId);
         modelMap.addAttribute("roomId",roomId);
-        return "liveroom";
+        return "redirect:/liveroom";
     }
 }

@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>这是主页面</h1>
-这个页面暂时用来模仿直播间
+这个页面暂时用来模仿主页的功能
 <form action="/LiveRoomWeb/chooseRoomId" method="post">
 	请输入房间号：<input type="text" placeholder="" name="roomId" value="" >
     <input type="submit" value="提交">      
