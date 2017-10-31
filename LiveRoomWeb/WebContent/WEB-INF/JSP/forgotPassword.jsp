@@ -5,13 +5,13 @@
 <!--
 Edit by @Teemo
 
-2017-10-25
+2017-10-31
 
-用户登录界面并完成界面设计
+用户忘记密码界面，通过邮件认证用户是否为本人
 -->
 
 <html>
-<head>
+
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -35,7 +35,7 @@ Edit by @Teemo
 
 <meta name="viewport" content="width=device-width">
 
-<title>User Login</title>
+<title>Forgot Password</title>
 
 <meta property="fb:app_id" content="1401488693436528">
 
@@ -134,13 +134,13 @@ Edit by @Teemo
 
 
 <meta name="u2f-support" content="true">
-
+<script src="<%=request.getContextPath() %>/js/jquery-3.2.1.min.js" ></script>
 </head>
-</head>
 
 
 
-<body>
+
+
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
 
@@ -172,14 +172,14 @@ Edit by @Teemo
 
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
-				<form accept-charset="UTF-8" action="login" method="post">
+				
 					<div style="margin: 0; padding: 0; display: inline">
 						<input name="utf8" type="hidden" value="✓"><input
 							name="authenticity_token" type="hidden"
 							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
 					</div>
 					<div class="auth-form-header p-0">
-						<h1>User Login</h1>
+						<h1>Forgot Password</h1>
 					</div>
 
 
@@ -187,24 +187,39 @@ Edit by @Teemo
 
 
 					<div class="auth-form-body mt-3">
-
-						<label for="username"> Username </label> <input
+						<form accept-charset="UTF-8" id="form1" action="forgotPassword" method="post">
+						<label for="Username"> Enter Username:</label> <input
 							autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="username" name="username"
-							tabindex="1" type="text" /> <label for="password">
-							Password <a href="http://localhost:8080/LiveRoomWeb/forgotPassword" class="label-link">Forgot password?</a>
-						</label> <input class="form-control form-control input-block"
-							id="password" name="password" tabindex="2" type="password" /> <input
-							class="btn btn-primary btn-block" data-disable-with="Signing in…"
-							name="commit" tabindex="3" type="submit" value="Login" />
-					</div>
+							tabindex="1" type="text" onblur="checkUsername()"/> 
+							
+							<label for="checkusername" id="checkusername" name="checkusername"style="color:red"></label>
+							<label for="Email"> Enter Email Address Please:</label> <input
+							autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							class="form-control input-block" id="email" name="email"
+							tabindex="1" type="text" /> 
+							
+							<a href="#" onclick="submit()">Send Email</a><br>
+							<label for="sendMsg" id="sendMsg" style="color:red"></label>
+							<br>
+							
+							</form>
+							<form accept-charset="UTF-8" id="form2" action="forgotPassword" method="post">
+							<label for="Email"> Enter Verification Code:</label> <input
+							autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							class="form-control input-block" id="verificationCode" name="verificationCode"
+							tabindex="1" type="text" /> 
+							<a href="#" onclick="checkVer()">Check Verification Code</a>
+							<label for="checkver" id="checkver" style="color:red"></label>
+							<input
+							class="btn btn-primary btn-block" data-disable-with="Submiting…"
+							name="submit" tabindex="3" type="submit" value="submit" />
 				</form>
+					</div>
+				
+					
+				
 
-				<p class="create-account-callout mt-3">
-					Do not have an account?<br> <a
-						href="http://localhost:8080/LiveRoomWeb/register"
-						data-ga-click="Sign in, switch to sign up">Create an account</a>.
-				</p>
 			</div>
 
 		</div>
@@ -230,5 +245,64 @@ Edit by @Teemo
 
 
 </body>
-</body>
+<script type="text/javascript">
+function submit(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/forgotPassword/sendEmail",
+		data:{"username":$("#username").val(),
+			  "email":$("#email").val()},
+	    success:function(r){
+	    	if(r=="success"){
+	    		$("#sendMsg").html("Email has been sent.");
+	    	}else{
+	    		$("#sendMsg").html("The Email Address is Wrong.");
+	    	}
+	    },
+	    error:function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+	    }
+	});
+}
+function checkUsername(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/forgotPassword/check",
+		data:{"username":$("#username").val()},
+		success:function(r){
+			if(r == "success"){
+				$("#checkusername").html("This username has been created.");  
+			}else{
+				$("#checkusername").html("");  
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+		}
+	});
+}
+ function checkVer(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/forgotPassword/checkVer",
+		data:{"ver":$("#verificationCode").val()},
+		success:function(r){
+			if(r == "success"){
+				$("#checkver").html("Correct Verification Code !");  
+			}else{
+				$("#checkver").html("Wrong Verification Code !");  
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+		}
+	}); 
+}
+</script>
 </html>

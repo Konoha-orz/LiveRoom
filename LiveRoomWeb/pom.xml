@@ -82,8 +82,25 @@
 			<artifactId>jsch</artifactId>
 			<version>0.1.54</version>
 		</dependency>
+		
+		<!-- javamail -->
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+    		<groupId>javax.mail</groupId>
+    		<artifactId>mail</artifactId>
+    		<version>1.4.7</version>
+		</dependency>
 
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>3.2.6.RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>LiveRoomWeb</finalName>
