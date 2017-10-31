@@ -36,7 +36,7 @@
 <%@ include file="header.jsp" %>
 <div class="container" id="chatroom" ref="chatroom">
     <div class="row">
-    <p style="float:left;">当前房间号：<c:out value="${sessionScope.roomId}"/></p>
+    <p style="float:left;">当前房间号：<c:out value="${sessionScope.roomId}"/></p>{{roomId}}
     </div>
     <div class="row">
         <div class="col-md-12" style="margin-bottom: 10px;">
