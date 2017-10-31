@@ -34,32 +34,24 @@ public class IndexController {
 	@RequestMapping("/index")
 	public String index(ModelMap resultMap) {
 		
-		
-		//姝ゅ閫氳繃SSH澶栭儴璁块棶杩滅▼mysql鏈嶅姟鍣ㄩ渶瑕佺敤鍒癑SCH,鏈嶅姟鍣ㄧ涓婁笉闇�瑕�
-		JschUtil sshutil=new JschUtil();
-		
-		//*************SSH绔彛杞帴寮�鍚�
-		sshutil.open();
+	
 		
 		List<Account> accountList = iac.getAll();//accountService.getCount();
             
 		List<Role> roleList=irs.getAll();
 		
-		
-		//**************SSH绔彛杞帴鍏抽棴
-				sshutil.close();
 				
 		resultMap.addAttribute("account",accountList.get(2));
 		resultMap.addAttribute("rolelist",roleList);
 		resultMap.addAttribute("role1",roleList.get(0));
 		return "index";
 	}
-	// 涓婚〉鏆傛椂鐢ㄨ緭鍏ユ埧闂村彿鏉ヨ繘鍏ュ叿浣撶殑鐩存挱闂�
+	
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String chooseRoomView() {
         return "home";
     }
-    // 杩涘叆鍏蜂綋鐨勬埧闂�
+    
     @RequestMapping(value = "/chooseRoomId",method = RequestMethod.POST)
     public String enterRoom(HttpSession session,@RequestParam("roomId") String roomId, ModelMap modelMap){
         session.setAttribute("roomId",roomId);
