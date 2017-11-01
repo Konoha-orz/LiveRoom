@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
 
 /*
@@ -37,10 +38,9 @@ public class LoginController {
 			String password_db = iuser.getUser(username_enter).get(0).getPassword();
 			String dscp_db=iuser.getUser(username_enter).get(0).getDscp();
 			String email=iuser.getUser(username_enter).get(0).getEmail();
-			System.out.println(password_db); 
-			System.out.println(dscp_db); 
-			System.out.println(email); 
 			if (password_enter.equals(password_db)) {
+				User user=iuser.getUser(username_enter).get(0);
+				session.setAttribute("user", user);
 				session.setAttribute("username", username_enter);
 				session.setAttribute("password", password_db);
 				session.setAttribute("email", email);

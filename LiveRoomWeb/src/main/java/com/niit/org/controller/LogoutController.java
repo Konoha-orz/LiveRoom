@@ -1,5 +1,7 @@
 package com.niit.org.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,7 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/logout")
 public class LogoutController {
 	@RequestMapping()
-	public String logout() {
+	public String logout(HttpSession session) {
+		session.removeAttribute("user");
 		return "logout";
 	}
 }

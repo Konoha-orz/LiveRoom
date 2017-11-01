@@ -1,3 +1,4 @@
+<%@page import="com.niit.org.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 
     pageEncoding="utf-8"%>
@@ -25,7 +26,137 @@
     <script src="js/da870659adfe1ddc.js"></script>
     <script src="js/hm.js"></script>
     <script src="js/ff7cbc1b3b59cc0a.js"></script>
+    <link href="css/videojs.css" rel="stylesheet">
+    <script src="js/videojs.js"></script>
+    
+    
+<script>
+    var dialog = new Vue({
+        el: document.querySelector(".dialog-wrapper"),
+        data: {
+            username: "",
+            tips: "请输入用户名",
+            isClose:true
+        },
+        methods: {
+            submit: function () {
+                // 确认操作，关闭遮罩层
+            },
+            close: function () {
+            	// 遮罩层关闭
+            },
+            sendRequest: function () {
+                // 使用ajax发送请求
+            }
+        }
+    });
+    var chatroom = new Vue({
+        el: '#chatroom',
+        data: {
+            socketClient: null,
+            messages: [],
+            messageinput: "",
+            rtmpSource: null,
+            videoPlayer: null,
+            numbers: 0,
+            danmu: null,
+            username:"guest",
+            roomId:document.querySelector("input[name=roomId]").value || 0,
+            danmuColor: ['#666666', 'blue', 'white', 'red', 'pink'],
+            webSocketUrl:"",
+        },
+        methods: {
+            login:function () {
+            	//登录
+            },
+            logout:function () {
+				// 登出
+            },
+            connectToSocket: function () {
+                this.socketClient = new WebSocket(this.webSocketUrl);
+                this.socketClient.onopen = function (frame) {
+                    chatroom.messages.push({
+                        creator: '系统消息',
+                        msgBody: '连接成功！'
+                    })
+                };
+                this.socketClient.onmessage = function (message) {
+                    // 你登陆之后
+                    data=JSON.parse(message.data);
+                    chatroom.roomId = data.roomId;
+                    chatroom.numbers=data.roomNumbers;
+                    console.log(this.numbers)
+                    chatroom.messages.push({
+                        creator: data.creator,
+                        msgBody: data.msgBody
+                    });
+                };
+                // 连接出错触发
+                this.socketClient.onerror = function () {
+                    console.log("websocket connect error");
+                };
+                //连接关闭触发
+                this.socketClient.onclose = function (message) {
+                    console.log("websocket connect close");
+                }
+                //when browser window closed, close the socket, to prevent server exception
+                // 浏览器关闭触发
+                window.onbeforeunload = function () {
+                    chatroom.socketClient.close();
+                }
+            },
+            sendMessage: function () {
+                if (chatroom.messageinput != "") {
+                    this.socketClient.send(chatroom.messageinput)
+                    this.messageinput = "";
+                } else if (chatroom.messageinput === "") {
+                    chatroom.messageinput = "请输入内容!!!";
+                }
+            },
+            videoInit: function(){
+            	this.videoPlayer = videojs('v-player', {
+                    //初始化数据
+                    height: '439px',
+                    width: '640px',
+                    "techOrder": ["html5", "flash"],
+                    controls: true,
+                    "autoplay": true,
+                    sources: [{
+                        /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
+                        //src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
+                        src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
+                        type: 'rtmp/flv'
+                    }]
+                },
+                function () {
+                    this.on('loadeddata', function () {
+                        console.log(this)
+                    })
 
+                    this.on('pause', function () {
+                        //alert('pause')
+                    })
+                })
+            }
+        },
+        mounted: function () {
+            //设置webSocketUrl
+            this.webSocketUrl="ws://localhost:8080/LiveRoomWeb/webSocket/"+this.roomId;
+        	//聊天室初始化
+            this.connectToSocket()
+            //视频初始化
+            this.videoInit()
+        }
+    });
+
+    function changeSrc() {
+        alert("请使用推流软件(OBS等)，推送到rtmp://139.199.82.213/live/demo,即可在本直播间看到您的直播内容!")
+        chatroom.videoPlayer.src('rtmp://139.199.82.213/live/demo')
+        chatroom.videoPlayer.load('rtmp://139.199.82.213/live/demo');
+        chatroom.videoPlayer.play()
+    }
+</script>
+    
 
 <style type="text/css" media="screen">#swf_play {visibility:hidden}</style></head>
 <body class="index-skin-anniversary">
@@ -48,15 +179,28 @@
 
 
         </div>
+            
+            <% if(session.getAttribute("username")==null){%>
             <div class="header-tool-user-info">
-                <a class="tool-user-info-login header-login-btn" href="javascript:;">登录</a>
+                <a class="tool-user-info-login header-login-btn" href="login">登录</a>
                 <b>|</b>
-                <a class="tool-user-info-regist header-register-btn" href="javascript:;">注册</a>
+                <a class="tool-user-info-regist header-register-btn" href="register">注册</a>
             </div>
-
+            <% }
+               else{
+               User user=(User)session.getAttribute("user");
+               String username=user.getUsername();
+            %>
+            <div class="header-tool-user-info">
+                <a class="tool-user-info-login header-login-btn" href="userInfo"><%=username%></a>
+                <b>|</b>
+                <a class="tool-user-info-regist header-register-btn" href="logout">注销</a>
+            </div>
+             <%} %>
+             
           <div class="panda-search header-tool">
-  <form name="room-search" action="https://www.panda.tv/search" method="get" target="_top" class="search-form">
-    <input type="text" name="kw" value="搜房间号/主播" autocomplete="off" class="search-key search-default">
+  <form name="room-search" action="/LiveRoomWeb/chooseRoomId" method="post" target="_top" class="search-form">
+    <input type="text" name="roomId" value="搜房间号/主播" autocomplete="off" class="search-key search-default">
     <div class="search-submit-btn">
       <input type="submit" class="search-submit">
     </div>
@@ -70,7 +214,7 @@
         <div class="index-slider-video-container" style="background: url(images/002.jpg) center center no-repeat rgb(28, 33, 29);">
             <div class="index-slider-video-content clearfix " style="margin:0 auto">
                 <object width="1000" height="562" id="swf_play" type="application/x-shockwave-flash" data="plugin/c8e8226cec5e1719.swf" style="visibility: visible;margin:0 9%"><param name="allowFullScreen" value="true"><param name="wMode" value="Opaque"><param name="allowScriptAccess" value="always"><param name="allowFullScreenInteractive" value="true"><param name="bgColor" value="#000"><param name="flashvars" value="resource=https://s.h2.pdim.gs/static/c8e8226cec5e1719.swf&amp;width=1000&amp;height=562&amp;sign=true&amp;protocol=https&amp;videoId=c0abfe52a35f0c1428c24f9d3ba1ff17&amp;roomUrl=https://www.panda.tv/430414&amp;plflag=2_3&amp;plflag_list=%7B%22main%22%3A%222_3%22%7D&amp;watermark_switch=&amp;watermark_loc=&amp;flashId=swf_play"></object>
-
+                
             </div>
 
         <a target="_blank" href="http://www.panda.tv/sp/anniversary.html" class="index-slider-outlink" data-toggle="panda-monitor" data-paew="shouye-bj-1"></a></div>

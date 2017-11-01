@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -14,22 +14,13 @@
 	type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
-	<link rel="shortcut icon" href="images/favicon.ico" />　　
+<link rel="shortcut icon" href="images/favicon.ico" />
 
 <meta name="viewport" content="width=device-width">
 
-<title >User Login</title>
-
-
-
-
-
+<title>User Login</title>
 
 </head>
-
-
-
-
 
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
@@ -82,7 +73,9 @@
 							autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="username" name="username"
 							tabindex="1" type="text" /> <label for="password">
-							Password <a href="http://localhost:8080/LiveRoomWeb/forgotPassword" class="label-link">Forgot password?</a>
+							Password <a
+							href="http://localhost:8080/LiveRoomWeb/forgotPassword"
+							class="label-link">Forgot password?</a>
 						</label> <input class="form-control form-control input-block"
 							id="password" name="password" tabindex="2" type="password" /> <input
 							class="btn btn-primary btn-block" data-disable-with="Signing in…"
