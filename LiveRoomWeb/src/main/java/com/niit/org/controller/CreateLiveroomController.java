@@ -11,6 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
 
+/*
+ *Edit by @Teemo
+ *
+ *2017-10-25
+ *
+ *用于处理createLiveroom请求，尚未完成。。
+ * 
+ */
+
+
 @Controller
 
 @RequestMapping("/createLiveroom")

@@ -5,13 +5,13 @@
 <!--
 Edit by @Teemo
 
-2017-10-25
+2017-10-31
+用户键入的验证码与邮件验证码不符，错误信息界面。
 
-登陆成功界面并完成界面设计
 -->
 
 <html>
-
+<head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -35,7 +35,7 @@ Edit by @Teemo
 
 <meta name="viewport" content="width=device-width">
 
-<title>Login Success</title>
+<title>Ver Error</title>
 
 <meta property="fb:app_id" content="1401488693436528">
 
@@ -136,19 +136,13 @@ Edit by @Teemo
 <meta name="u2f-support" content="true">
 
 </head>
+</head>
 
+
+
+<body>
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-	<h1>LoginSuccessfully....</h1>
-	<a href="http://localhost:8080/LiveRoomWeb/login">back</a>
-	<a href="http://localhost:8080/LiveRoomWeb/home">home</a>
-
-
-
-
-
-
-
 
 
 	<div class="position-relative js-header-wrapper ">
@@ -179,35 +173,31 @@ Edit by @Teemo
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
 
-				<div style="margin: 0; padding: 0; display: inline">
-					<input name="utf8" type="hidden" value="✓"><input
-						name="authenticity_token" type="hidden"
-						value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
-				</div>
-				<div class="auth-form-header p-0">
-					<h1>Message</h1>
-				</div>
+					<div style="margin: 0; padding: 0; display: inline">
+						<input name="utf8" type="hidden" value="✓"><input
+							name="authenticity_token" type="hidden"
+							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
+					</div>
+					<div class="auth-form-header p-0">
+						<h1>Message</h1>
+					</div>
 
 
-				<div id="js-flash-container"></div>
+					<div id="js-flash-container"></div>
 
-
-				<div class="auth-form-body mt-3">
 
 					<div class="auth-form-body mt-3">
-						<div style="text-align: center">
-							<h2 for="Success Message">Login Successfully..</h2>
-						</div>
-						<br />
-						<div style="text-align: center">
-							<a href="http://localhost:8080/LiveRoomWeb/userInfo">View
-								User Information</a>
-						</div>
+						
+						<div class="auth-form-body mt-3">
+						<div  style="text-align:center">
+						<h2 for="Success Message">Vertification Code is Wrong..</h2></div><br/>
+						<div  style="text-align:center">
+						<a href="http://localhost:8080/LiveRoomWeb/forgotPassword">Try again..</a></div>
 					</div>
-				</div>
+					</div>
 
 
-
+				
 			</div>
 
 		</div>
@@ -215,7 +205,6 @@ Edit by @Teemo
 	</div>
 
 
-
 </body>
-
+</body>
 </html>

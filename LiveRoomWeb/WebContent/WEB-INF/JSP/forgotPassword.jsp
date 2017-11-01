@@ -5,9 +5,9 @@
 <!--
 Edit by @Teemo
 
-2017-10-25
+2017-10-31
 
-登陆成功界面并完成界面设计
+用户忘记密码界面，通过邮件认证用户是否为本人
 -->
 
 <html>
@@ -35,7 +35,7 @@ Edit by @Teemo
 
 <meta name="viewport" content="width=device-width">
 
-<title>Login Success</title>
+<title>Forgot Password</title>
 
 <meta property="fb:app_id" content="1401488693436528">
 
@@ -134,21 +134,15 @@ Edit by @Teemo
 
 
 <meta name="u2f-support" content="true">
-
+<script src="<%=request.getContextPath() %>/js/jquery-3.2.1.min.js" ></script>
 </head>
+
+
+
+
 
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-	<h1>LoginSuccessfully....</h1>
-	<a href="http://localhost:8080/LiveRoomWeb/login">back</a>
-	<a href="http://localhost:8080/LiveRoomWeb/home">home</a>
-
-
-
-
-
-
-
 
 
 	<div class="position-relative js-header-wrapper ">
@@ -178,35 +172,53 @@ Edit by @Teemo
 
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
-
-				<div style="margin: 0; padding: 0; display: inline">
-					<input name="utf8" type="hidden" value="✓"><input
-						name="authenticity_token" type="hidden"
-						value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
-				</div>
-				<div class="auth-form-header p-0">
-					<h1>Message</h1>
-				</div>
-
-
-				<div id="js-flash-container"></div>
+				
+					<div style="margin: 0; padding: 0; display: inline">
+						<input name="utf8" type="hidden" value="✓"><input
+							name="authenticity_token" type="hidden"
+							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
+					</div>
+					<div class="auth-form-header p-0">
+						<h1>Forgot Password</h1>
+					</div>
 
 
-				<div class="auth-form-body mt-3">
+					<div id="js-flash-container"></div>
+
 
 					<div class="auth-form-body mt-3">
-						<div style="text-align: center">
-							<h2 for="Success Message">Login Successfully..</h2>
-						</div>
-						<br />
-						<div style="text-align: center">
-							<a href="http://localhost:8080/LiveRoomWeb/userInfo">View
-								User Information</a>
-						</div>
+						<form accept-charset="UTF-8" id="form1" action="forgotPassword" method="post">
+						<label for="Username"> Enter Username:</label> <input
+							autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							class="form-control input-block" id="username" name="username"
+							tabindex="1" type="text" onblur="checkUsername()"/> 
+							
+							<label for="checkusername" id="checkusername" name="checkusername"style="color:red"></label>
+							<label for="Email"> Enter Email Address Please:</label> <input
+							autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							class="form-control input-block" id="email" name="email"
+							tabindex="1" type="text" /> 
+							
+							<a href="#" onclick="submit()">Send Email</a><br>
+							<label for="sendMsg" id="sendMsg" style="color:red"></label>
+							<br>
+							
+							</form>
+							<form accept-charset="UTF-8" id="form2" action="forgotPassword" method="post">
+							<label for="Email"> Enter Verification Code:</label> <input
+							autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							class="form-control input-block" id="verificationCode" name="verificationCode"
+							tabindex="1" type="text" /> 
+							<a href="#" onclick="checkVer()">Check Verification Code</a>
+							<label for="checkver" id="checkver" style="color:red"></label>
+							<input
+							class="btn btn-primary btn-block" data-disable-with="Submiting…"
+							name="submit" tabindex="3" type="submit" value="submit" />
+				</form>
 					</div>
-				</div>
-
-
+				
+					
+				
 
 			</div>
 
@@ -214,8 +226,83 @@ Edit by @Teemo
 		<div class="modal-backdrop js-touch-events"></div>
 	</div>
 
+	<div class="footer container-lg p-responsive py-6 mt-6 f6"
+		role="contentinfo">
+		<ul class="list-style-none d-flex flex-justify-center">
+			<li class="mr-3"><a href="https://github.com/site/terms"
+				class="link-gray" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+			<li class="mr-3"><a href="https://github.com/site/privacy"
+				class="link-gray"
+				data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+			<li class="mr-3"><a href="https://github.com/security"
+				class="link-gray"
+				data-ga-click="Footer, go to security, text:security">Security</a></li>
+			<li><a href="https://github.com/contact" class="link-gray"
+				data-ga-click="Footer, go to contact, text:contact">Contact
+					GitHub</a></li>
+		</ul>
+	</div>
 
 
 </body>
-
+<script type="text/javascript">
+function submit(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/forgotPassword/sendEmail",
+		data:{"username":$("#username").val(),
+			  "email":$("#email").val()},
+	    success:function(r){
+	    	if(r=="success"){
+	    		$("#sendMsg").html("Email has been sent.");
+	    	}else{
+	    		$("#sendMsg").html("The Email Address is Wrong.");
+	    	}
+	    },
+	    error:function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+	    }
+	});
+}
+function checkUsername(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/forgotPassword/check",
+		data:{"username":$("#username").val()},
+		success:function(r){
+			if(r == "success"){
+				$("#checkusername").html("This username has been created.");  
+			}else{
+				$("#checkusername").html("");  
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+		}
+	});
+}
+ function checkVer(){
+	$.ajax({
+		type:"post",
+		url:"<%=request.getContextPath() %>/forgotPassword/checkVer",
+		data:{"ver":$("#verificationCode").val()},
+		success:function(r){
+			if(r == "success"){
+				$("#checkver").html("Correct Verification Code !");  
+			}else{
+				$("#checkver").html("Wrong Verification Code !");  
+			}
+		},
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			console.log(XMLHttpRequest.status);
+			console.log(XMLHttpRequest.readyState);
+			console.log(textStatus);
+		}
+	}); 
+}
+</script>
 </html>
