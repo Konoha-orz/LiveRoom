@@ -35,15 +35,15 @@ public class IndexController {
 	public String index(ModelMap resultMap) {
 		
 	
-		
-		List<Account> accountList = iac.getAll();//accountService.getCount();
-            
-		List<Role> roleList=irs.getAll();
-		
-				
-		resultMap.addAttribute("account",accountList.get(2));
-		resultMap.addAttribute("rolelist",roleList);
-		resultMap.addAttribute("role1",roleList.get(0));
+//		
+//		List<Account> accountList = iac.getAll();//accountService.getCount();
+//            
+//		List<Role> roleList=irs.getAll();
+//		
+//				
+//		resultMap.addAttribute("account",accountList.get(2));
+//		resultMap.addAttribute("rolelist",roleList);
+//		resultMap.addAttribute("role1",roleList.get(0));
 		return "index";
 	}
 	
