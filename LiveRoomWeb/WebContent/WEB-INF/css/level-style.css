@@ -1,0 +1,326 @@
+/*========================== user icon style start ============================*/
+
+.icon-level {
+  display: inline-block;
+  width: 50px;
+  height: 14px;
+  zoom: 1;
+  background: url(https://i.h2.pdim.gs/c5d63d9224614c0da7d8fc1fed55217d.png) no-repeat;
+}
+.icon-level-1 {
+  background-position: -200px 0;
+}
+
+.icon-level-2 {
+  background-position: -150px 0;
+}
+
+.icon-level-3 {
+  background-position: -100px 0;
+}
+
+.icon-level-4 {
+  background-position: -50px 0;
+}
+
+.icon-level-5 {
+  background-position: 0 0;
+}
+
+.icon-level-6 {
+  background-position: -200px -20px;
+}
+
+.icon-level-7 {
+  background-position: -150px -20px;
+}
+
+.icon-level-8 {
+  background-position: -100px -20px;
+}
+
+.icon-level-9 {
+  background-position: -50px -20px;
+}
+
+.icon-level-10 {
+  background-position: 0 -20px;
+}
+
+.icon-level-11 {
+  background-position: -200px -40px;
+}
+
+.icon-level-12 {
+  background-position: -150px -40px;
+}
+
+.icon-level-13 {
+  background-position: -100px -40px;
+}
+
+.icon-level-14 {
+  background-position: -50px -40px;
+}
+
+.icon-level-15 {
+  background-position: 0 -40px;
+}
+
+/* 铂金 段位*/
+
+.icon-level-16 {
+  background: url(https://i.h2.pdim.gs/1cb11301a839b116d84fa8e77b63984e.gif) no-repeat;
+}
+
+.icon-level-17 {
+  background: url(https://i.h2.pdim.gs/f8b47bf2ad9645de11d94d5aa01c6fd5.gif) no-repeat;
+}
+
+.icon-level-18 {                
+  background: url(https://i.h2.pdim.gs/5505ab23476fbb7a3fa0c6090c26c66f.gif) no-repeat;
+}
+
+.icon-level-19 {                    
+  background: url(https://i.h2.pdim.gs/3dfe8a4385ea1023da57b2107c8b5936.gif) no-repeat;
+}
+
+.icon-level-20 {                  
+  background: url(https://i.h2.pdim.gs/aee8f84fefc1c28126a44b374f0f920f.gif) no-repeat;
+}
+
+/* 钻石 段位 */
+
+.icon-level-21 {                  
+  background: url(https://i.h2.pdim.gs/3fea421cf705d8ccf76bc332830f4bbf.gif) no-repeat;
+}
+
+.icon-level-22 {                    
+  background: url(https://i.h2.pdim.gs/77db359da596a38a4e81e01a4efbfc17.gif) no-repeat;
+}
+
+.icon-level-23 {                 
+  background: url(https://i.h2.pdim.gs/fb57247d5b3ec335834a17fe80d08ca3.gif) no-repeat;
+}
+
+.icon-level-24 {               
+  background: url(https://i.h2.pdim.gs/83fce590bf64e78d38e10a8eb5aabd0d.gif) no-repeat;
+}
+
+.icon-level-25 {                    
+  background: url(https://i.h2.pdim.gs/eb17514ace6f317e0cc97f6b7cf14567.gif) no-repeat;
+}
+
+/* 宗师 段位 支持3级*/
+
+.icon-level-26 {           
+  background: url(https://i.h2.pdim.gs/c6b0429b82006d434145c62144f3a561.gif) no-repeat;
+}
+
+.icon-level-27 {            
+  background: url(https://i.h2.pdim.gs/bcbf252b221cc3971490219b0755e8db.gif) no-repeat;
+}
+
+.icon-level-28 {            
+  background: url(https://i.h2.pdim.gs/88eefb0e0e486b3a48318eccc4e6806d.gif) no-repeat;
+}
+
+.icon-level-29 {           
+  background: url(https://i.h2.pdim.gs/8baceaa8cafe9ef6b61d110d3d2794a6.gif) no-repeat;
+}
+
+.icon-level-30 {             
+  background: url(https://i.h2.pdim.gs/a9458456dfc6cd10e9cc0a0e7f2f300a.gif) no-repeat;
+}
+
+/* 王者 段位 */
+
+.icon-level-31 {             
+  background: url(https://i.h2.pdim.gs/f7bf052926dc65af0bc05259954db934.gif) no-repeat;
+}
+
+.icon-level-32 {               
+  background: url(https://i.h2.pdim.gs/68c6ca272b4b097ed3ceb0d85c60f8dd.gif) no-repeat;
+}
+
+.icon-level-33 {    
+  background: url(https://i.h2.pdim.gs/8814552b50ab6036ee7e2d2ff2b8489a.gif) no-repeat;
+}
+
+.icon-level-34 {   
+  background: url(https://i.h2.pdim.gs/94fcc1ee38553b340d492919067b80dd.gif) no-repeat;
+}
+
+.icon-level-35 {
+  background: url(https://i.h2.pdim.gs/cd6abd41f84bf5641fcf3e58879c918c.gif) no-repeat;
+}
+
+/* 至尊 段位 */
+
+.icon-level-36 {
+  background: url(https://i.h2.pdim.gs/9e37e156e3576cf370ed776a64efb85c.gif) no-repeat;
+}
+
+.icon-level-37 { 
+  background: url(https://i.h2.pdim.gs/21140fe621ea676aceccc5f81882c7a5.gif) no-repeat;
+}
+
+.icon-level-38 {
+  background: url(https://i.h2.pdim.gs/223be6ca1f98d237515b2f7802826ae7.gif) no-repeat;
+}
+
+.icon-level-39 {
+  background: url(https://i.h2.pdim.gs/01e713822ca93908744d16412972283d.gif) no-repeat;
+}
+
+.icon-level-40 {
+  background: url(https://i.h2.pdim.gs/2a1b7b357dc5b7b09456c640912d41e3.gif) no-repeat;
+}
+/* 史诗 段位 */                           
+                                          
+.icon-level-41 { 
+  background: url(https://i.h2.pdim.gs/edac899e2a57d023e3129f157cec5106.gif) no-repeat;
+}                                         
+                                          
+.icon-level-42 {                          
+  background: url(https://i.h2.pdim.gs/5bf0306e041698d23cfe596aab5814bd.gif) no-repeat;
+}                                         
+                                          
+.icon-level-43 {                          
+  background: url(https://i.h2.pdim.gs/eb8a310e47b0af6b8cbdc2e13f5a7941.gif) no-repeat;
+}                                         
+                                          
+.icon-level-44 {                          
+  background: url(https://i.h2.pdim.gs/17fadce21552cc7e2546627bbabe010e.gif) no-repeat;
+}                                         
+                                          
+.icon-level-45 {                            
+  background: url(https://i.h2.pdim.gs/a2de7e6440a38b7edce7713a4d594162.gif) no-repeat;
+} 
+/*========================== user icon style end ============================*/
+/*========================== host icon style start ============================*/
+
+.icon-host-level {
+  display: inline-block;
+  width: 30px;
+  height: 14px;
+  zoom: 1;
+  background: url(https://i.h2.pdim.gs/a25719e88d15deae66d9d5ae37dcbf4c.png) no-repeat;
+}
+
+/*兼容初创没有等级的房间*/
+.icon-host-level- {
+  background-position: -5px -5px;
+}
+
+.icon-host-level-0 {
+  background-position: -5px -5px;
+}
+
+.icon-host-level-1 {
+  background-position: -5px -29px;
+}
+
+.icon-host-level-2 {
+  background-position: -5px -53px;
+}
+
+.icon-host-level-3 {
+  background-position: -5px -77px;
+}
+
+.icon-host-level-4 {
+  background-position: -5px -101px;
+}
+
+.icon-host-level-5 {
+  background-position: -5px -125px;
+}
+
+.icon-host-level-6 {
+  background-position: -5px -149px;
+}
+
+.icon-host-level-7 {
+  background-position: -5px -173px;
+}
+
+.icon-host-level-8 {
+  background-position: -5px -197px;
+}
+
+.icon-host-level-9 {
+  background-position: -5px -221px;
+}
+
+.icon-host-level-10 {
+  background-position: -5px -245px;
+}
+
+.icon-host-level-11 {
+  background-position: -5px -269px;
+}
+
+.icon-host-level-12 {
+  background-position: -5px -293px;
+}
+
+.icon-host-level-13 {
+  background-position: -5px -317px;
+}
+
+.icon-host-level-14 {
+  background-position: -5px -341px;
+}
+
+.icon-host-level-15 {
+  background-position: -5px -365px;
+}
+
+.icon-host-level-16 {
+  background-position: -5px -389px;
+}
+
+.icon-host-level-17 {
+  background-position: -5px -413px;
+}
+
+.icon-host-level-18 {
+  background-position: -5px -437px;
+}
+
+.icon-host-level-19 {
+  background-position: -5px -461px;
+}
+
+.icon-host-level-20 {
+  background-position: -5px -485px;
+}
+
+/*
+* 主播等级图标 - 灰色
+*/
+
+.icon-host-level-grey {
+  background-position-x: -45px;
+}
+
+
+/*
+* 加v
+*/
+
+.icon-host-level-vip{
+  width: 14px;
+  height: 14px;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAAAXNSR0IArs4c6QAAAmZJREFUKBVFkttL1FEQx79z9uLuZqvmrZTSoExTHzTIjQUjQiiwh/IlqD+g+0MvQg8SvXahl4xAqpegl9LKIoxepG2jG4USSF5WclNiN9109be7/vb0PT+NBuYwvznzmZkzvxGsi9Y6QNOP+IuDmLx3FQWbRpyrzHwz6s/1oLz9Jb+XRCRt/GIOQoKx21eQeH8Yyc81WBgpW7/ibR6oDCfhrZhAVccQdp3uIazdBqRswczQIcQG9jiptHE5hzGAmUgpz1K4gh6CvbRnRX/va0E82ovYkxCsBHTNcWA1DYk/Mwh09RFAeSA/HgPeIqC2M4KtB84r2N42TDwPYZFQjpHbTwDBJuhVF/I6CITvAnVn1u7SKSD2Ogwr1+LG8vwCVCED+RobsCOXIOKC+HawArtjLjv+FmKxMB8mKGRgdllhfLAbiQkgy7ZYMU91dz4FKvYjH2w03SI7HYFtujGaZOzYYLdCcd044GNaZqPqpQRJP3RJE1BCUGvkpt+tQQbUjC3aOa5Q1dYHfzUHsgYiNYv8/BSkrBGqvAn2r1EoKwXFIQtjEGBsdahPIbO624HodIbDrLlYBK6yekcdm7/SgdgR0oswjOvynYEvyFqCdKJVUnNem0GZ37OsVg879ROZ4evwriTh5qpIRfMiQhduYu+pa/82ZwP6z/brT/c7cpkMVrI2kzI7xcdJ+jwCj38jpPXkKxy9dYybs+Rsjtk/PfXmgRRvG1Xxb/u8Hx+GJMCxUzx5C6q1K6orG6JSG/5qION3KhrDCAcoy9PDmz0fHt2wCoIjLkVw5U9zrrHrYqChfU7k/x7+BRH384cHcsgDAAAAAElFTkSuQmCC") 0 0 no-repeat;
+}
+
+.icon-host-level-vip-big{
+  width:16px;
+  height:16px;
+  zoom: 1;
+  background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RTA2RDQwQTA3NzY0MTFFN0E5QzRCNUE0NjUxNjgzOUQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RTA2RDQwQTE3NzY0MTFFN0E5QzRCNUE0NjUxNjgzOUQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpFMDZENDA5RTc3NjQxMUU3QTlDNEI1QTQ2NTE2ODM5RCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpFMDZENDA5Rjc3NjQxMUU3QTlDNEI1QTQ2NTE2ODM5RCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PniZaZwAAAMLSURBVHjaPJNdaFRHFMd/c+/dT2/SbMwqJrW6GkmtSIxPpaIUEZL6UYqIL1Uw0IotvjS+VNA3QQXxSdTqgw99KFTUiopBSlFjU1oKfgQMsho3mi/c1WST1U02997xzHV1YLjcOf/fmTP/M6O01oTDn4aRq1FSbTFKj3/k3oFOFm3vQUks9/taVh06h9t8kvG7MzRurmDHQ0xpHZgPeKXlPDnbxeRQI6Pd6yk8jGO9C2EkDZ9Ns6DjL2o+HmHp98dx3H7QOJRfiEiUr59uoafrO0pVICEzWk0gxZGVhE8ebsQ1ydZkmZPpRzYXUtfy7PJW7h/bw2sJOrKUWi7wPLOBVGaSxKA2AxGJmQ2M1jDCWlJBBw9+ucCD85lwp4WbYOd/0PoTFOW/5KA/P4redgPmr4OKSSBawwjriBnjFIfDMo0d2rfQuZvw+DrqjYjrG1AtuyGZwC9LybPGOFk3jLAOlZIoXE8O4xCRirPXCXK3cJq/Rqefo+0oTiyBHv4Xb7BXRMLZ5ljCCGtx++A+8lnHmKUlu1+QGpftwP7qDIG7GB1JowSYHfgHb8IL/Q6HYXoO7rNIt2ZR8SA0S6ZlpuWiIjG024JOrRQvNbO5u+jyu4aFPhimoTVrsXrvKWqaK6YDlgn60sWBv9HTRVSmHWtxB7pUIBjtQ72/E8YbV5i2vaccikNNFHLxsD3SLUt6Xx7rIzJRINLSLpCFN/aIIN9PLCkb+9UEL4WZGmqyqGkcpG3X/9TVhgElCYLCBDN9f0iVcptiMSp9F7Emp3EiVbhWtIZxGwdV+Bb82TS9x8/x68+bAjlGWeabeB32pxsk5hM8+pOkN0XCq7bw2yPXWNPViR3JKx2YVbF5fGAzp7+5ogt5PJ1nquBTniA8dyIFc+ZaRNV8uRdp+OHSFlJLrsqlQX14jUFQTzG3zi+PpYPuE/v93t8ylfqFvkkQffXctr/Y8VS17z5sJ+ryfLTitjj+qvoaqwmqw5vJEQxOdqhnd7aV7aBHwjqp7bV88uUFtcjpdqJNokp+0L8VYADGSUIiA4B/sAAAAABJRU5ErkJggg==") 0 0 no-repeat;
+}
+
+/*========================== host icon style end ============================*/

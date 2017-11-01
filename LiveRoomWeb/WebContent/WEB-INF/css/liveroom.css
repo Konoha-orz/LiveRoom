@@ -1,0 +1,37 @@
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tab-content > .active {
+    border: 1px solid #ddd;
+    height: 360px;
+    /*border-top: none;*/
+    overflow: auto;
+}
+
+.nav-pills > li > a {
+    border-radius: 0px;
+}
+
+#chatinput .form-control {
+    border-radius: 0px;
+}
+
+#chatinput .btn {
+    border-radius: 0px;
+}
+
+.anchorNotice {
+    width: 15px;
+    font-size: 15px;
+    word-wrap: break-word;
+    letter-spacing: 0px;
+    margin-left: 20px;
+    color: white;
+}
+#danmu {
+    width: 100% !important;
+}

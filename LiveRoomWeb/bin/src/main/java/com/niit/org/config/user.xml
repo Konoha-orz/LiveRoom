@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+Edit by Teemo
+
+2017-10-24
+
+registerUser-用于用户注册的SQL语句。
+getUser-用于登陆中获取用户密码以判断输入密码正误的SQL语句。
+
+  -->
+  
+<mapper namespace="com.niit.org.mapper.IUser">
+	<select id="registerUser" resultType="com.niit.org.bean.User">
+     	insert into user(username,password,dscp) values(#{username},#{password},#{dscp})
+    </select>
+	<select id="getUser" resultType="com.niit.org.bean.User">
+    	select * from user where username=#{username}
+    </select> 
+	<select id="getAll" resultType="com.niit.org.bean.User">
+		select * from user
+	</select>
+	<select id="updateUser" resultType="com.niit.org.bean.User">
+		update user set password=#{password},dscp=#{dscp} where id=#{id}
+	</select>
+</mapper>
