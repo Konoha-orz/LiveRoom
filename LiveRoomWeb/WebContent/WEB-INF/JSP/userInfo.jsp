@@ -7,11 +7,11 @@ Edit by @Teemo
 
 2017-10-25
 
-登陆成功界面并完成界面设计
+用户个人信息
 -->
 
 <html>
-
+<head>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -35,7 +35,7 @@ Edit by @Teemo
 
 <meta name="viewport" content="width=device-width">
 
-<title>Login Success</title>
+<title>User Infomation</title>
 
 <meta property="fb:app_id" content="1401488693436528">
 
@@ -136,19 +136,13 @@ Edit by @Teemo
 <meta name="u2f-support" content="true">
 
 </head>
+</head>
 
+
+
+<body>
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-	<h1>LoginSuccessfully....</h1>
-	<a href="http://localhost:8080/LiveRoomWeb/login">back</a>
-	<a href="http://localhost:8080/LiveRoomWeb/home">home</a>
-
-
-
-
-
-
-
 
 
 	<div class="position-relative js-header-wrapper ">
@@ -178,44 +172,62 @@ Edit by @Teemo
 
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
-
-				<div style="margin: 0; padding: 0; display: inline">
-					<input name="utf8" type="hidden" value="✓"><input
-						name="authenticity_token" type="hidden"
-						value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
-				</div>
-				<div class="auth-form-header p-0">
-					<h1>Message</h1>
-				</div>
-
-
-				<div id="js-flash-container"></div>
+				<form accept-charset="UTF-8" action="login" method="post">
+					<div style="margin: 0; padding: 0; display: inline">
+						<input name="utf8" type="hidden" value="✓"><input
+							name="authenticity_token" type="hidden"
+							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
+					</div>
+					<div class="auth-form-header p-0">
+						<h1>User Information</h1>
+					</div>
 
 
-				<div class="auth-form-body mt-3">
+					<div id="js-flash-container"></div>
+
 
 					<div class="auth-form-body mt-3">
-						<div style="text-align: center">
-							<h2 for="Success Message">Login Successfully..</h2>
-						</div>
-						<br />
-						<div style="text-align: center">
-							<a href="http://localhost:8080/LiveRoomWeb/userInfo">View
-								User Information</a>
-						</div>
+						
+						<div class="auth-form-body mt-3">
+						<div  style="text-align:center">
+						<h2 for="greeting">Hello: <%=session.getAttribute("username").toString() %> </h2></div><br/>
+						<label for="username"> Username:<%=session.getAttribute("username").toString() %> </label> 
+						<label for="password"> Password:<%=session.getAttribute("password").toString() %> </label> 
+						<label for="email"> EmailAddress:<%=session.getAttribute("email").toString() %> </label> 
+						<label for="dscp"> Description:<%=session.getAttribute("dscp").toString() %> </label> <br/>
+						<div  style="text-align:center">
+						<a href="http://localhost:8080/LiveRoomWeb/logout">Logout</a><br/>
+						
+						<a href="http://localhost:8080/LiveRoomWeb/updateUserInfo">Update My Information</a></div>
 					</div>
-				</div>
+					</div>
+				</form>
 
-
-
+				
 			</div>
 
 		</div>
 		<div class="modal-backdrop js-touch-events"></div>
 	</div>
 
+	<div class="footer container-lg p-responsive py-6 mt-6 f6"
+		role="contentinfo">
+		<ul class="list-style-none d-flex flex-justify-center">
+			<li class="mr-3"><a href="https://github.com/site/terms"
+				class="link-gray" data-ga-click="Footer, go to terms, text:terms">Terms</a></li>
+			<li class="mr-3"><a href="https://github.com/site/privacy"
+				class="link-gray"
+				data-ga-click="Footer, go to privacy, text:privacy">Privacy</a></li>
+			<li class="mr-3"><a href="https://github.com/security"
+				class="link-gray"
+				data-ga-click="Footer, go to security, text:security">Security</a></li>
+			<li><a href="https://github.com/contact" class="link-gray"
+				data-ga-click="Footer, go to contact, text:contact">Contact
+					GitHub</a></li>
+		</ul>
+	</div>
 
 
 </body>
-
+</body>
 </html>

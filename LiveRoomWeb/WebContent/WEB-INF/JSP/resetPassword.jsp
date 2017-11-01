@@ -6,11 +6,8 @@
 
 Edit by @Teemo
 
-2017-10-25
-用户注册界面并完成界面设计
-
-2017-10-27
-完成用户名重复性验证及两次密码输入是否相同的验证
+2017-10-31
+用户重置密码界面，通过验证的用户在此界面重置密码
 
 -->
 
@@ -174,14 +171,14 @@ Edit by @Teemo
 
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
-				<form accept-charset="UTF-8" action="register" name="register" method="post">
+				<form accept-charset="UTF-8" action="resetPassword" name="resetPassword" method="post">
 					<div style="margin: 0; padding: 0; display: inline">
 						<input name="utf8" type="hidden" value="✓"><input
 							name="authenticity_token" type="hidden"
 							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
 					</div>
 					<div class="auth-form-header p-0">
-						<h1>User Register</h1>
+						<h1>Reset Password</h1>
 					</div>
 
 
@@ -190,34 +187,15 @@ Edit by @Teemo
 
 					<div class="auth-form-body mt-3">
 
-							<label for="username"> Username </label> 
-							<input autocapitalize="off" autocorrect="off" autofocus="autofocus"
-							class="form-control input-block" id="username" name="username"
-							tabindex="1" type="text" onblur="checkUsername()"/> 
-							
-							<label for="checkusername" id="checkusername" name="checkusername"style="color:red"></label>
+							<label for="username"> Hello ${username},</label> 
 							
 							<label for="password">Password </label> 
 							<input class="form-control form-control input-block"
 							id="password" name="password" tabindex="2" type="password" /> 
 							
-							<label for="cpassword">Confirm Password </label> 
-							<input class="form-control form-control input-block"
-							id="cpassword" name="cpassword" tabindex="2" type="password" onblur="checkConfirmPassword()"/> 
-							
-							<label for="error" id="error" style="color:red"></label>
-							
-							<label for="email">Email Adress </label> 
-							<input class="form-control form-control input-block"
-							id="email" name="email" tabindex="2" type="text" /> 
-							
-							<label for="dscp">Description </label> 
-							<input class="form-control form-control input-block"
-							id="dscp" name="dscp" tabindex="2" type="text" /> 
-							
 							<input
-							class="btn btn-primary btn-block" data-disable-with="Signing in…"
-							name="commit" tabindex="3" type="submit" value="Register" />
+							class="btn btn-primary btn-block" data-disable-with="Setting…"
+							name="commit" tabindex="3" type="submit" value="Reset" />
 					</div>
 				</form>
 			</div>
@@ -245,33 +223,4 @@ Edit by @Teemo
 
 
 </body>
-<script type="text/javascript">
-function checkConfirmPassword(){
-	if(document.getElementById(	"password").value!=document.getElementById("cpassword").value){
-		document.getElementById("error").innerText="Two input password must be consistent !";
-	}else{
-		document.getElementById("error").innerText="";
-	}
-}
-
- function checkUsername(){
-	$.ajax({
-		type:"post",
-		url:"<%=request.getContextPath() %>/register/check",
-		data:{"username":$("#username").val()},
-		success:function(r){
-			if(r == "success"){
-				$("#checkusername").html("");  
-			}else{
-				$("#checkusername").html("This username has been used.");  
-			}
-		},
-		error: function(XMLHttpRequest, textStatus, errorThrown){
-			console.log(XMLHttpRequest.status);
-			console.log(XMLHttpRequest.readyState);
-			console.log(textStatus);
-		}
-	});
-} 
-</script>
 </html>
