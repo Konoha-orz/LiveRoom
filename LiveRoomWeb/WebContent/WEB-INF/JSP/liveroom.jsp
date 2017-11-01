@@ -31,9 +31,6 @@
     </style>
 </head>
 <body>
-<!--/*@thymesVar id="online_guests" /-->
-<!--/*@thymesVar id="history_guests" */-->
-<%@ include file="header.jsp" %>
 <div class="container" id="chatroom" ref="chatroom">
     <div class="row">
     <p style="float:left;">当前房间号：<c:out value="${sessionScope.roomId}"/></p>{{roomId}}
@@ -143,7 +140,7 @@
         <!--右侧讨论区结束-->
     </div>
 </div>
-<%@ include file="footer.jsp" %>
+
 <!-- 遮罩层 -->
 <div class="dialog-wrapper" v-show="!isClose" ref="dialog">
     <div class="dialog dialog-small">

@@ -22,4 +22,9 @@ public class LiveController {
         HttpSession session = request.getSession();
         return "liveroom";
     }
+    
+    @RequestMapping(value = "/liveroom_test",method = RequestMethod.GET)
+    public String index1(HttpServletRequest request, ModelMap modelMap){
+        return "liveroom1";
+    }
 }
