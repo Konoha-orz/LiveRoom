@@ -1,20 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<!--
-Edit by @Teemo
-
-2017-10-25
-
-用户登录界面并完成界面设计
--->
-
 <html>
+
 <head>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
 	type="text/css" />
@@ -22,16 +13,14 @@ Edit by @Teemo
 	type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
+	<link rel="shortcut icon" href="images/favicon.ico" />　　
 
 <meta name="viewport" content="width=device-width">
 
-<title>User Login</title>
 
-
+<title >User Login</title>
 
 </head>
-
-
 
 
 <body
@@ -104,6 +93,7 @@ Edit by @Teemo
 		<div class="modal-backdrop js-touch-events"></div>
 	</div>
 
+
 <!-- 	<div class="footer container-lg p-responsive py-6 mt-6 f6"
 		role="contentinfo">
 		<ul class="list-style-none d-flex flex-justify-center">
@@ -123,5 +113,5 @@ Edit by @Teemo
 
 
 </body>
-
 </html>
+

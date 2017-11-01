@@ -192,7 +192,7 @@ Edit by @Teemo
 						<div  style="text-align:center">
 						<h2 for="Success Message">Login Failed..</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/userInfo">Try again..</a></div>
+						<a href="http://localhost:8080/LiveRoomWeb/login">Try again..</a></div>
 					</div>
 					</div>
 

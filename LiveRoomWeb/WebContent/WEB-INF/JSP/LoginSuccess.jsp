@@ -137,13 +137,8 @@ Edit by @Teemo
 
 </head>
 
-
-
-
-
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-
 
 	<div class="position-relative js-header-wrapper ">
 
@@ -173,36 +168,41 @@ Edit by @Teemo
 				<!-- '"` -->
 				<!-- </textarea></xmp> -->
 
-					<div style="margin: 0; padding: 0; display: inline">
-						<input name="utf8" type="hidden" value="✓"><input
-							name="authenticity_token" type="hidden"
-							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
-					</div>
-					<div class="auth-form-header p-0">
-						<h1>Message</h1>
-					</div>
+				<div style="margin: 0; padding: 0; display: inline">
+					<input name="utf8" type="hidden" value="✓"><input
+						name="authenticity_token" type="hidden"
+						value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
+				</div>
+				<div class="auth-form-header p-0">
+					<h1>Message</h1>
+				</div>
 
 
-					<div id="js-flash-container"></div>
+				<div id="js-flash-container"></div>
 
+
+				<div class="auth-form-body mt-3">
 
 					<div class="auth-form-body mt-3">
-						
-						<div class="auth-form-body mt-3">
-						<div  style="text-align:center">
-						<h2 for="Success Message">Login Successfully..</h2></div><br/>
-						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/userInfo">View User Information</a></div>
+						<div style="text-align: center">
+							<h2 for="Success Message">Login Successfully..</h2>
+						</div>
+						<br />
+						<div style="text-align: center">
+							<a href="http://localhost:8080/LiveRoomWeb/userInfo">View
+								User Information</a>
+						</div>
 					</div>
-					</div>
+				</div>
 
 
-				
+
 			</div>
 
 		</div>
 		<div class="modal-backdrop js-touch-events"></div>
 	</div>
+
 
 
 </body>

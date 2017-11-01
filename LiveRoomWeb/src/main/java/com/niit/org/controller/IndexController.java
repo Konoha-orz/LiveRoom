@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.org.bean.Account;
 import com.niit.org.bean.Role;
@@ -17,9 +20,6 @@ import com.niit.org.service.IAccount;
 import com.niit.org.util.JschUtil;
 
 @Controller
-
-@RequestMapping("/index")
-
 public class IndexController {
 
 	@Resource
@@ -31,30 +31,31 @@ public class IndexController {
 	@Resource
 	private IAccountService iac;
 	
-	@RequestMapping()
-
+	@RequestMapping("/index")
 	public String index(ModelMap resultMap) {
 		
-		
-		//此处通过SSH外部访问远程mysql服务器需要用到JSCH,服务器端上不需要
-		JschUtil sshutil=new JschUtil();
-		
-		//*************SSH端口转接开启
-		sshutil.open();
-		
-		List<Account> accountList = iac.getAll();//accountService.getCount();
-            
-		List<Role> roleList=irs.getAll();
-		
-		
-		//**************SSH端口转接关闭
-				sshutil.close();
-				
-		resultMap.addAttribute("account",accountList.get(2));
-		resultMap.addAttribute("rolelist",roleList);
-		resultMap.addAttribute("role1",roleList.get(0));
+	
+//		
+//		List<Account> accountList = iac.getAll();//accountService.getCount();
+//            
+//		List<Role> roleList=irs.getAll();
+//		
+//				
+//		resultMap.addAttribute("account",accountList.get(2));
+//		resultMap.addAttribute("rolelist",roleList);
+//		resultMap.addAttribute("role1",roleList.get(0));
 		return "index";
-
 	}
-
+	
+    @RequestMapping(value = "/home",method = RequestMethod.GET)
+    public String chooseRoomView() {
+        return "home";
+    }
+    
+    @RequestMapping(value = "/chooseRoomId",method = RequestMethod.POST)
+    public String enterRoom(HttpSession session,@RequestParam("roomId") String roomId, ModelMap modelMap){
+        session.setAttribute("roomId",roomId);
+        modelMap.addAttribute("roomId",roomId);
+        return "redirect:/liveroom";
+    }
 }

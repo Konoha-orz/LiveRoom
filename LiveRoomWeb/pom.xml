@@ -82,15 +82,44 @@
 			<artifactId>jsch</artifactId>
 			<version>0.1.54</version>
 		</dependency>
-		
+
+		<!-- jackson包 支持对象和Json相互转化 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+
 		<!-- javamail -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
-    		<groupId>javax.mail</groupId>
-    		<artifactId>mail</artifactId>
-    		<version>1.4.7</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+
 		</dependency>
 
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-annotations -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.8.1</version>
+		</dependency>
+		<!-- Provided Websocket API, because tomcat has its own implementation -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
@@ -100,7 +129,7 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
 			<version>3.2.6.RELEASE</version>
-		</dependency>
+        </dependency>
 	</dependencies>
 	<build>
 		<finalName>LiveRoomWeb</finalName>
