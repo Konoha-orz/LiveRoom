@@ -23,7 +23,7 @@ import com.niit.org.util.MailUtil;
  *
  *2017-10-31
  *
- *用于处理forgotPassword请求，向用户邮箱发送携带验证码的邮件，提供本人验证，检查用户名是否存在，以及验证码是否正确，以减少误操作带来的冗余操作。
+ *鐢ㄤ簬澶勭悊forgotPassword璇锋眰锛屽悜鐢ㄦ埛閭鍙戦�佹惡甯﹂獙璇佺爜鐨勯偖浠讹紝鎻愪緵鏈汉楠岃瘉锛屾鏌ョ敤鎴峰悕鏄惁瀛樺湪锛屼互鍙婇獙璇佺爜鏄惁姝ｇ‘锛屼互鍑忓皯璇搷浣滃甫鏉ョ殑鍐椾綑鎿嶄綔銆�
  * 
  */
 
@@ -61,15 +61,15 @@ public class ForgotPasswordController {
 		if (email_db.equals(email)) {
 			this.username = username;
 			MailUtil mu = new MailUtil();
-			String subject = "Verification Code for Retrieving Password";
+			String subject = "Liveroom正在为您找回密码";
 			int radomInt = new Random().nextInt(999999);
 			this.random = Integer.toString(radomInt);
 			StringBuilder builder = new StringBuilder();
-			builder.append("Hello: " + username + ",We Are Trying Retrieving Your Password.");
+			builder.append("您好：" + username + "，我们正在尝试为您找回密码。");
 			builder.append("<br>");
-			builder.append("This is Your Verification Code:<br>" + random);
+			builder.append("这是您的验证码:<br>" + random);
 			builder.append("<br>");
-			builder.append("No Need to reply this offical Email.");
+			builder.append("请勿回复官方邮件。唯一官方邮箱：liveroom_admin@yeah.net。");
 			builder.append("<br>");
 			builder.append("Liveroom Administrator");
 			String content = builder.toString();

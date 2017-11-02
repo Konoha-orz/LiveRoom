@@ -3,22 +3,23 @@ package com.niit.org.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 /*
  *Edit by @Teemo
  *
  *2017-10-25
  *
- *ç”¨äºå¤„ç†lougotè¯·æ±‚ï¼Œå®ç°ç™»å‡ºã€‚
+ *ÓÃÓÚ´¦ÀílogoutÇëÇó£¬ÊµÏÖÓÃ»§µÇ³ö
  * 
  */
 
-@Controller
 
+@Controller
 @RequestMapping("/logout")
 public class LogoutController {
+
 	@RequestMapping()
 	public String logout() {
 		return "logout";
 	}
+	
 }

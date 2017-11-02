@@ -53,7 +53,17 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-    public void login(HttpSession session) {}
+    public String login(HttpSession session) {
+		try {
+		if(session.getAttribute("username")!=null) {
+			return "userInfo";
+		}else {
+			return "login";
+		}
+		}catch(Exception e) {
+			return "login";
+		}
+	}
 
 	
 }

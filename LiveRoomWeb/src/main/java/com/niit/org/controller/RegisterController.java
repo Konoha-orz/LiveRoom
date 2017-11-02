@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
+import com.niit.org.util.MailUtil;
 
 /*
  *Edit by @Teemo
@@ -40,6 +41,8 @@ public class RegisterController {
 	
 	@Resource
 	private IUser iuser;
+	String random;
+	String username;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public String register(HttpServletRequest request) {
@@ -82,5 +85,41 @@ public class RegisterController {
 		return flag;
 	}
 	
+	@ResponseBody
+	@RequestMapping("/sendEmail")
+	public String checkUsername(String username, String email) throws Exception {
+		String flag = "success";
+     		this.username = username;
+			MailUtil mu = new MailUtil();
+			String subject = "Liveroom正在确认您的邮箱";
+			int radomInt = new Random().nextInt(999999);
+			this.random = Integer.toString(radomInt);
+			StringBuilder builder = new StringBuilder();
+			builder.append("您好： " + username + "，我们正在努力确认此邮箱是否为您本人使用，请获取验证码。");
+			builder.append("<br>");
+			builder.append("您的验证码为:<br>" + random);
+			builder.append("<br>");
+			builder.append("请勿回复官方邮件。唯一官方邮箱：liveroom_admin@yeah.net");
+			builder.append("<br>");
+			builder.append("Liveroom Administrator");
+			String content = builder.toString();
+			mu.setEmailFrom("liveroom_admin@yeah.net");
+			mu.setEmailTo(email);
+			mu.setSubject(subject);
+			mu.setContent(content);
+			mu.sendEmail();
+			return flag;
+
+	}
+	
+	@ResponseBody
+	@RequestMapping("/checkVer")
+	public String checkVer(String ver) {
+		if (ver.equals(random)) {
+			return "success";
+		} else {
+			return "fail";
+		}
+	}
 	
 }
