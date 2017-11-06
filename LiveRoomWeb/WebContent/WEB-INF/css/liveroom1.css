@@ -90,7 +90,7 @@ a,a:hover{
     text-align: center;
     color: #bfcbd9;
     transition: all .3s;
-    line-height: 50px;
+    line-height: 35px;
 }
 .nav-search-wrapper .search-input{
     -webkit-appearance: none;
@@ -175,5 +175,8 @@ a,a:hover{
 	height:85%;
 	bottom:45px;
 	left:0;
+}
+#members {
+	height:85%;
 }
 /*中间的视频播放区结束*/
