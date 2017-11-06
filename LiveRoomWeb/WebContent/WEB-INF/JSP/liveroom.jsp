@@ -132,7 +132,8 @@ var chatroom = new Vue({
     	messages: [],
     	messageinput:"",
     	socketClient:null,
-        danmu: null,
+        danmuArr: [],
+        beginTime:Date.now(),
         username:"guest",
         roomId:document.querySelector("input[name=roomId]").value || 0,
         danmuColor: ['#666666', 'blue', 'white', 'red', 'pink'],
@@ -146,17 +147,43 @@ var chatroom = new Vue({
                     creator: '系统消息',
                     msgBody: '连接成功！'
                 })
+                $("danmu").danmu({
+                	height: 360,  //弹幕区高度
+                	width: 640,   //弹幕区宽度
+                	zindex :100,   //弹幕区域z-index属性
+                	speed:7000,      //滚动弹幕的默认速度，这是数值值得是弹幕滚过每672像素所需要的时间（毫秒）
+                	sumTime:65535,   //弹幕流的总时间
+                	danmuLoop:false,   //是否循环播放弹幕
+                	defaultFontColor:"#FFFFFF",   //弹幕的默认颜色
+                	fontSizeSmall:16,     //小弹幕的字号大小
+                	FontSizeBig:24,       //大弹幕的字号大小
+                	opacity:"0.9",			//默认弹幕透明度
+                	topBottonDanmuTime:6000,   // 顶部底部弹幕持续时间（毫秒）
+                	SubtitleProtection:false,     //是否字幕保护
+                	positionOptimize:false,         //是否位置优化，位置优化是指像AB站那样弹幕主要漂浮于区域上半部分
+
+                	maxCountInScreen: 40,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
+                	maxCountPerSec: 10      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
+                	});
+                chatroom.beginTime = Date.now()
+                $('#danmu').danmu('danmuStart');
             };
             this.socketClient.onmessage = function (message) {
                 // 你登陆之后
                 data=JSON.parse(message.data);
                 chatroom.roomId = data.roomId;
-                chatroom.numbers=data.roomNumbers;
-                console.log(this.numbers)
+                chatroom.numbers = data.roomNumbers;
                 chatroom.messages.push({
                     creator: data.creator,
                     msgBody: data.msgBody
                 });
+                console.log(data.sTime,chatroom.beginTime)
+                if (data.msgBody && data.msgBody!=="") {
+                	let time = parseInt((Date.now() - chatroom.beginTime)/100); 
+                	var obj = { text:data.msgBody ,color:"white",size:1,position:0,time:time}
+                	chatroom.danmuArr.push(obj);
+                    $('#danmu').danmu("addDanmu",chatroom.danmuArr) 
+                }
             };
             // 连接出错触发
             this.socketClient.onerror = function () {
@@ -175,6 +202,7 @@ var chatroom = new Vue({
         sendMessage: function () {
             if (chatroom.messageinput != "") {
                 this.socketClient.send(chatroom.messageinput)
+                // 自己发送信息不发送弹幕，服务器返回消息时会发送给聊天室的所有人。
                 this.messageinput = "";
             } else if (chatroom.messageinput === "") {
                 chatroom.messageinput = "请输入内容!!!";
@@ -221,7 +249,6 @@ var liveroom = new Vue({
                 this.on('loadeddata', function () {
                     console.log(this)
                 })
-
                 this.on('pause', function () {
                     //alert('pause')
                 })

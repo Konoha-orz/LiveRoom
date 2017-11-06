@@ -1,7 +1,6 @@
 package com.niit.org.service;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -85,7 +84,6 @@ public class WebSocketServer {
          msg.setRoomId(roomId);
      }
      msg.setRoomNumbers(this.roomNumbers);
-     msg.setsTime(Calendar.getInstance());
      String serialized = new ObjectMapper().writeValueAsString(msg);
      broadcast(roomId, serialized);
      System.out.println("onOpen:"+serialized);
@@ -101,7 +99,6 @@ public class WebSocketServer {
      Msg msg = new Msg();
      msg.setCreator(this.username);
      msg.setMsgBody(message);
-     msg.setsTime(Calendar.getInstance());
      msg.setRoomId(roomId);
      msg.setRoomNumbers(this.roomNumbers);
      String serialized = new ObjectMapper().writeValueAsString(msg);
@@ -120,8 +117,8 @@ public class WebSocketServer {
      Msg msg = new Msg();
      msg.setCreator("系统消息");
      msg.setMsgBody(this.username+"离开了聊天室链接");
-     msg.setsTime(Calendar.getInstance());
      msg.setRoomNumbers(this.roomNumbers);
+ 
      String serialized = new ObjectMapper().writeValueAsString(msg);
      String roomId=this.session.getPathParameters().get("roomId");
      msg.setRoomId(roomId);
