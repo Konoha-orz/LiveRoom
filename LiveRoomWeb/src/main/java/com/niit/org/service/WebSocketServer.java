@@ -1,7 +1,6 @@
 package com.niit.org.service;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -57,7 +56,7 @@ public class WebSocketServer {
      this.roomId=roomId;
      // 由于websocket是建立在http基础之上的，有js发起连接的所以一旦刷新页面链接就会被重置。
      if (Integer.parseInt(roomId)==0 && httpSession.getAttribute("roomId") != null ){
-         this.roomId=roomId=httpSession.getAttribute("roomId").toString();
+         this.roomId = roomId=httpSession.getAttribute("roomId").toString();
      }
      webSocketSet.add(this);
      // 一个数据结构可以用来区分多个房间
@@ -85,7 +84,6 @@ public class WebSocketServer {
          msg.setRoomId(roomId);
      }
      msg.setRoomNumbers(this.roomNumbers);
-     msg.setsTime(Calendar.getInstance());
      String serialized = new ObjectMapper().writeValueAsString(msg);
      broadcast(roomId, serialized);
      System.out.println("onOpen:"+serialized);
@@ -101,7 +99,6 @@ public class WebSocketServer {
      Msg msg = new Msg();
      msg.setCreator(this.username);
      msg.setMsgBody(message);
-     msg.setsTime(Calendar.getInstance());
      msg.setRoomId(roomId);
      msg.setRoomNumbers(this.roomNumbers);
      String serialized = new ObjectMapper().writeValueAsString(msg);
@@ -120,8 +117,8 @@ public class WebSocketServer {
      Msg msg = new Msg();
      msg.setCreator("系统消息");
      msg.setMsgBody(this.username+"离开了聊天室链接");
-     msg.setsTime(Calendar.getInstance());
      msg.setRoomNumbers(this.roomNumbers);
+ 
      String serialized = new ObjectMapper().writeValueAsString(msg);
      String roomId=this.session.getPathParameters().get("roomId");
      msg.setRoomId(roomId);

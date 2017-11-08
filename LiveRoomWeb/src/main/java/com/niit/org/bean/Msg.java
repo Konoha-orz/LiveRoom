@@ -22,7 +22,13 @@ public class Msg {
 	private String roomId;
 	private Integer roomNumbers;
 
-	
+	public Msg() {
+		Calendar cal = Calendar.getInstance() ;
+		int zoneOffset = cal.get(java.util.Calendar.ZONE_OFFSET);
+		int dstOffset = cal.get(java.util.Calendar.DST_OFFSET);
+		cal.add(java.util.Calendar.MILLISECOND, -(zoneOffset + dstOffset));
+		this.setsTime(cal);	
+	}
 	public String getRoomId() {
 		return roomId;
 	}
