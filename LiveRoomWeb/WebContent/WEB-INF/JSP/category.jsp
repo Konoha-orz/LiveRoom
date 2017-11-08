@@ -248,8 +248,7 @@
 
 		<!-- 频道版块 start -->
 		<div class="index-channel">
-            
-            <!-- 美食频道start -->
+
 			<div
 				class="index-channel-list index-channel-food  index-channel-even  index-channel-food ">
 				<div class="bw">
@@ -362,8 +361,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- 美食频道end -->
-			<!-- 户外频道start -->
 			<div
 				class="index-channel-list index-channel-hwzb    index-channel-hwzb ">
 				<div class="bw">
@@ -475,8 +472,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- 户外频道end -->
-			<!-- 游戏频道start -->
 			<div
 				class="index-channel-list index-channel-zhuji  index-channel-even  index-channel-zhuji ">
 				<div class="bw">
@@ -487,7 +482,7 @@
 									class="avt"> <i class="avt-bg"
 										style="background-image: url(https://i.h2.pdim.gs/f0ed6e56b26c57d24794f57f8c9f98f8.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/f0ed6e56b26c57d24794f57f8c9f98f8.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
 								</span> <span class="tips tips-color-green"><i class="num">97</i><i
-										class="txt">个直播</i></span><span class="name">游戏</span> </a>
+										class="txt">个直播</i></span><span class="name">主机游戏</span> </a>
 							</div>
 
 							<div class="more">
@@ -587,7 +582,8 @@
 					</div>
 				</div>
 			</div>
-            <!-- 游戏频道end -->
+
+
 
 		</div>
 		<!-- 频道版块 end -->
@@ -614,49 +610,5 @@
 	<!-- footer end -->
 
 
-
-
-
-	<script>
-		var chatroom = new Vue({
-			el : '#chatroom',
-			data : {
-				rtmpSource : null,
-				videoPlayer : null,
-			},
-			methods : {
-				videoInit : function() {
-					this.videoPlayer = videojs('v-player', {
-						//初始化数据
-						height : '562px',
-						width : '1000px',
-						"techOrder" : [ "html5", "flash" ],
-						controls : true,
-						"autoplay" : true,
-						sources : [ {
-							/*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
-							//src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
-							src : 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
-							type : 'rtmp/flv'
-						} ]
-					}, function() {
-						this.on('loadeddata', function() {
-							console.log(this)
-						})
-
-						this.on('pause', function() {
-							//alert('pause')
-						})
-					})
-				}
-			},
-			mounted : function() {
-				//视频初始化
-				this.videoInit()
-			}
-		});
-	</script>
-
-	<!--4.284.0.19765-->
 </body>
 </html>
