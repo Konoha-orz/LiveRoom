@@ -13,7 +13,7 @@
 <link href="css/bootstrap.css" rel="stylesheet"/>
 <link rel="stylesheet"  href="css/liveroom.css"/>
 <link href="css/videojs.css" rel="stylesheet">
-<script src="js/videojs.js"></script>
+<script src="js/video.js"></script>
 <link rel="stylesheet"  href="css/reset.css"/>
 <link rel="stylesheet"  href="css/liveroom1.css"/>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
@@ -220,8 +220,8 @@ var chatroom = new Vue({
                 	SubtitleProtection:false,     //是否字幕保护
                 	positionOptimize:false,         //是否位置优化，位置优化是指像AB站那样弹幕主要漂浮于区域上半部分
 
-                	maxCountInScreen: 40,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
-                	maxCountPerSec: 10      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
+                	maxCountInScreen: 100,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
+                	maxCountPerSec: 100      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
                 	});
                 chatroom.beginTime = Date.now()
                 $('#danmu').danmu('danmuStart');
@@ -303,8 +303,8 @@ var liveroom = new Vue({
                 "autoplay": true,
                 sources: [{
                     /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
-                    //src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
-                    src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
+                    src:'rtmp://120.78.81.233/live/test1',
+                    //src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
                     type: 'rtmp/flv'
                 }]
             },

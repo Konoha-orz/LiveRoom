@@ -1,3 +1,7 @@
+
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="com.niit.org.bean.LiveRoom"%>
 <%@page import="com.niit.org.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -16,6 +20,7 @@
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<% List<LiveRoom> roolist=(List<LiveRoom>)session.getAttribute("roomlist"); %>
 
 <title>在线直播间</title>
 
@@ -29,7 +34,7 @@
 <script src="js/hm.js"></script>
 <script src="js/ff7cbc1b3b59cc0a.js"></script>
 <link href="css/videojs.css" rel="stylesheet">
-<script src="js/videojs.js"></script>
+<script src="js/video.js"></script>
 <script src="js/vue.js"></script>
 
 
@@ -258,7 +263,7 @@
 							<div class="index-channel-name">
 								<a href="https://www.panda.tv/cate/food" target="_blank"><span
 									class="avt"> <i class="avt-bg"
-										style="background-image: url(https://i.h2.pdim.gs/ec004e6db0a3390e1a1e0c3caaf1b96d.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/ec004e6db0a3390e1a1e0c3caaf1b96d.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
+										style="background-image: url(images/foodchannel.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/ec004e6db0a3390e1a1e0c3caaf1b96d.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
 								</span> <span class="tips tips-color-green"><i class="num">38</i><i
 										class="txt">个直播</i></span><span class="name">美食</span> </a>
 							</div>
@@ -270,7 +275,9 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<li class="list-item"><a href="https://www.panda.tv/435501"
+							
+							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
+							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
 									<div class="pd-thumb">
 										<div class="pictures">
@@ -283,81 +290,17 @@
 									</div>
 									<div class="thumb-info">
 										<div class="thumb-list">
-											<div class="title">#厨娘#粉蒸牛肉，花生酥抽奖</div>
+											<div class="title"><%=room.getTitle()%></div>
 											<div class="thumb-list-info">
-												<span class="nickname">家有果儿酱</span> <span
+												<span class="nickname"><%=room.getUserid()%></span> <span
 													class="thumb-number">4645</span>
 											</div>
 										</div>
 										<div class="thumb-bar"></div>
 									</div>
 							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/550326"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/5aaff3beaf4ec7ac37afbdca2c6f8d67/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">开开火箭 带你们买菜</div>
-											<div class="thumb-list-info">
-												<span class="nickname">金华老腊肉</span> <span
-													class="thumb-number">2119</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/1263561"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/42785cdd33d08c5bb3c87b9a1747cff3/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">野食小哥yesman的直播间</div>
-											<div class="thumb-list-info">
-												<span class="nickname">野食小哥yesman</span> <span
-													class="thumb-number">1477</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/657443"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/ecc675c9302d6cd39ca0a86c7229a309/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">杨迪挑战卤100只乐山甜皮鸭</div>
-											<div class="thumb-list-info">
-												<span class="nickname">摆摊摊的鸭头哥</span> <span
-													class="thumb-number">1455</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
+							
+						  <%}%>
 						</ul>
 					</div>
 				</div>
@@ -372,7 +315,7 @@
 							<div class="index-channel-name">
 								<a href="https://www.panda.tv/cate/hwzb" target="_blank"><span
 									class="avt"> <i class="avt-bg"
-										style="background-image: url(https://i.h2.pdim.gs/d225c1864e5735ad08d2b0ff3569e666.png); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/d225c1864e5735ad08d2b0ff3569e666.png, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
+										style="background-image: url(images/outsidechannel.png); background-image: none\9;"></i>
 								</span> <span class="tips tips-color-green"><i class="num">105</i><i
 										class="txt">个直播</i></span><span class="name">户外直播</span> </a>
 							</div>
@@ -383,7 +326,9 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<li class="list-item"><a href="https://www.panda.tv/1018259"
+							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
+							
+							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
 									<div class="pd-thumb">
 										<div class="pictures">
@@ -396,81 +341,16 @@
 									</div>
 									<div class="thumb-info">
 										<div class="thumb-list">
-											<div class="title">折多山海拔4000+好坑好冷</div>
+											<div class="title"><%=room.getTitle()%></div>
 											<div class="thumb-list-info">
-												<span class="nickname">一条龙户外</span> <span
+												<span class="nickname"><%=room.getUserid()%></span> <span
 													class="thumb-number">65628</span>
 											</div>
 										</div>
 										<div class="thumb-bar"></div>
 									</div>
 							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/337852"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/0f1fda0c3d40e4fe173ee97737ea4dd3/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">萝卜岛（第六天）</div>
-											<div class="thumb-list-info">
-												<span class="nickname">洪湖小肖户外打野</span> <span
-													class="thumb-number">59264</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/628284"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/7c17347ffd90af12bdaed035eea7d779/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">倒骑驴山东至罗布泊（31）陕西</div>
-											<div class="thumb-list-info">
-												<span class="nickname">A大军</span> <span class="thumb-number">37509</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/257838"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/c3f1e7592dc6d1b6c619b8952d6daefe/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">大花角钓鱼浮潜</div>
-											<div class="thumb-list-info">
-												<span class="nickname">熊猫丶浩哥户外</span> <span
-													class="thumb-number">36030</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-
+                           <% }%>
 						</ul>
 					</div>
 				</div>
@@ -485,7 +365,7 @@
 							<div class="index-channel-name">
 								<a href="https://www.panda.tv/cate/zhuji" target="_blank"><span
 									class="avt"> <i class="avt-bg"
-										style="background-image: url(https://i.h2.pdim.gs/f0ed6e56b26c57d24794f57f8c9f98f8.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/f0ed6e56b26c57d24794f57f8c9f98f8.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
+										style="background-image: url(images/gamechannel.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/f0ed6e56b26c57d24794f57f8c9f98f8.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
 								</span> <span class="tips tips-color-green"><i class="num">97</i><i
 										class="txt">个直播</i></span><span class="name">游戏</span> </a>
 							</div>
@@ -496,7 +376,8 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<li class="list-item"><a href="https://www.panda.tv/11989"
+							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
+							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
 									<div class="pd-thumb">
 										<div class="pictures">
@@ -509,81 +390,17 @@
 									</div>
 									<div class="thumb-info">
 										<div class="thumb-list">
-											<div class="title">【旧血脉】假如德军赢得二战</div>
+											<div class="title"><%=room.getTitle()%></div>
 											<div class="thumb-list-info">
-												<span class="nickname">Dell小明</span> <span
+												<span class="nickname"><%=room.getUserid()%></span> <span
 													class="thumb-number">10418</span>
 											</div>
 										</div>
 										<div class="thumb-bar"></div>
 									</div>
 							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/491128"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/352317c2ab194d20ef977aaccc41105f/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">《乔我说》系列经典轮播</div>
-											<div class="thumb-list-info">
-												<span class="nickname">老司机严肃出品</span> <span
-													class="thumb-number">21131</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/347836"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/c4900e4b2e560a948d66fff59870a45f/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">【SIM】猎人-西伯利亚篇</div>
-											<div class="thumb-list-info">
-												<span class="nickname">大龄中二病患者</span> <span
-													class="thumb-number">12041</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-							<li class="list-item"><a href="https://www.panda.tv/488636"
-								target="_blank">
-									<div class="pd-thumb">
-										<div class="pictures">
-											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/70171694eff48225cdf302a75596c7ee/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-										</div>
-										<div class="thumb-layer"></div>
-										<div class="play-btn"></div>
-									</div>
-									<div class="thumb-info">
-										<div class="thumb-list">
-											<div class="title">【行尸走肉】萝莉成长日记</div>
-											<div class="thumb-list-info">
-												<span class="nickname">马小宇</span> <span class="thumb-number">7355</span>
-											</div>
-										</div>
-										<div class="thumb-bar"></div>
-									</div>
-							</a></li>
-						</ul>
+							<%} %>
+							</ul>
 					</div>
 				</div>
 			</div>
