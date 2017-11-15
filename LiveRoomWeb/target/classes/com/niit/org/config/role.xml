@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.niit.org.mapper.IRoleService">
+	<select id="getAll" resultType="com.niit.org.bean.Role">
+		select * from role
+	</select>
+	<insert id="insertRole">
+        insert into role(role_name,description) values
+		(#{role_name},#{description})
+    </insert>
+</mapper>
