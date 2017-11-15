@@ -1,6 +1,6 @@
-package com.niit.org.bean;
+package com.niit.org.dto;
 
-public class LiveRoom {
+public class LiveRoomDTO {
    private int id;
    private String title;
    private String dscp;
@@ -9,15 +9,20 @@ public class LiveRoom {
    private String rtmpurl;
    private int status;
    private String seriescode;
+   private String username;
    
    
 public String getSeriescode() {
 	return seriescode;
 }
-
-
 public void setSeriescode(String seriescode) {
 	this.seriescode = seriescode;
+}
+public String getUsername() {
+	return username;
+}
+public void setUsername(String username) {
+	this.username = username;
 }
 public int getId() {
 	return id;

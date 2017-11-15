@@ -9,4 +9,25 @@
      select * from liveroom
     </select>
     
+    
+    <select id="searchByKey" resultType="com.niit.org.dto.LiveRoomDTO"  parameterType="String">
+    
+    select 
+    l.id as id ,
+    l.title as title,
+    l.dscp as dscp ,
+    l.userid as userid ,
+    l.categoryname as categoryname,
+    l.rtmpurl as rtmpurl,
+    l.status as status,
+    l.seriescode as seriescode ,
+    u.username as username  
+    from liveroom l left join user u on l.userid=u.id  
+    where 
+    title like CONCAT('%',#{key},'%')
+    or l.dscp like CONCAT('%',#{key},'%')
+    or l.categoryname like CONCAT('%',#{key},'%')
+    
+    
+    </select>
 </mapper>
