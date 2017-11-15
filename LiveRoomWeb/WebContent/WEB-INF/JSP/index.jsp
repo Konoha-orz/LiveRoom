@@ -1,4 +1,3 @@
-
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="com.niit.org.bean.LiveRoom"%>
@@ -15,7 +14,6 @@
 <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +34,7 @@
 <link href="css/videojs.css" rel="stylesheet">
 <script src="js/video.js"></script>
 <script src="js/vue.js"></script>
-
+<title>在线直播间</title>
 
 
 <style type="text/css" media="screen">
@@ -460,7 +458,10 @@
 						this.on('loadeddata', function() {
 							console.log(this)
 						})
+<<<<<<< HEAD
+=======
 
+>>>>>>> origin/Konoha-orz
 						this.on('pause', function() {
 							//alert('pause')
 						})

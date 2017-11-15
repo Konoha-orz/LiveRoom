@@ -8,11 +8,11 @@ import com.niit.org.bean.LiveRoom;
 import com.niit.org.dto.LiveRoomDTO;
 
 public interface ILiveRoomService {
- 
-	public List<LiveRoom> queryAllLiveRoom() ;
-    
-	public List<LiveRoomDTO> searchByKey(@Param(value="key") String key);
-	
-	
-	
+
+	public List<LiveRoom> queryAllLiveRoom();
+
+	public List<LiveRoomDTO> searchByKey(@Param(value = "key") String key);
+
+	public LiveRoom queryRoomById(Integer roomId);
+
 }

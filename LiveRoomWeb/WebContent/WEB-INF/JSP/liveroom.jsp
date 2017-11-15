@@ -74,8 +74,8 @@
 				</div>
 				<div class="room-detail">
 					<dl>
-						<dt><h3>香港卫视</h3></dt>
-						<dd><p>房间号：{{roomId}}   简介：海外的电视直播</p></dd>
+						<dt><h3>{{roomInfo.title}}</h3></dt>
+						<dd><p>房间号：{{roomInfo.id}}   简介：{{roomInfo.dscp | defaultDscp}}</p></dd>
 						<dd></dd>
 					</dl>
 					<button type="button" class="collect btn btn-default">订阅</button>
@@ -94,7 +94,8 @@
                 </video>
 
             </div>
-
+			<p v-if="roomInfo.status===1">正在直播中</p>
+			<p v-else>主播不在线</p>
 		</div>
 		<!-- 中间的视频播放区结束-->
 		<!-- 右侧聊天室 -->
@@ -179,7 +180,7 @@
 
 </div>
 
-<input type="hidden" name="roomId" value="${sessionScope.roomId}" />
+<input type="hidden" name="roomId" value="${roomId}" />
 
 <script>
 
@@ -292,8 +293,40 @@ var liveroom = new Vue({
         rtmpSource: null,
         videoPlayer: null,
         roomId:0,
+        roomInfo: {
+        	id: "",
+        	title:"",
+        	dscp:"",
+        	rtmpurl:"",
+        	categoryname:"",
+        	seriescode:"",
+        	status:""
+        }
 	},
+	filters: {  
+	    defaultDscp: function (value) {
+	      var defaultValue = "暂无简介"
+	      return value || defaultValue;
+	    }  
+	}, 
 	methods:{
+		getRoomInfo:function(){
+			var obj = {roomId:chatroom.roomId}
+			 $.ajax({
+                 type: 'get',
+                 url: '/LiveRoomWeb/isOnline',
+                 data: obj,
+                 contentType: "application/json"
+             }).done(function (data) {
+                 if (data.code === 1 && data.room_info !== null) {
+                     liveroom.roomInfo = data.room_info;
+                     liveroom.rtmpSource = data.room_info.rtmpurl+"/"+data.room_info.seriescode;
+                     liveroom.videoInit();
+                 }
+             }).fail(function (err) {
+            	 console.log(err)
+             });
+		},
 		videoInit: function(){
         	this.videoPlayer = videojs('v-player', {
                 //初始化数据
@@ -304,7 +337,7 @@ var liveroom = new Vue({
                 "autoplay": true,
                 sources: [{
                     /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
-                    src:'rtmp://120.78.81.233/live/test1',
+                    src: liveroom.rtmpSource,
                     //src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
                     type: 'rtmp/flv'
                 }]
@@ -320,7 +353,7 @@ var liveroom = new Vue({
         }
 	},
 	mounted() {
-		this.videoInit();
+		this.getRoomInfo();
 	}
 })
 
