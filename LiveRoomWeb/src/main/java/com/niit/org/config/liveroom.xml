@@ -8,5 +8,7 @@
 	<select id="queryAllLiveRoom" resultType="com.niit.org.bean.LiveRoom">
      select * from liveroom
     </select>
-    
+    <select id="queryRoomById" resultType="com.niit.org.bean.LiveRoom">
+     	select * from liveroom where id=#{roomId}
+    </select>
 </mapper>

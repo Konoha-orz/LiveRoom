@@ -8,5 +8,5 @@ public interface ILiveRoomService {
  
 	public List<LiveRoom> queryAllLiveRoom() ;
 		
-	
+	public LiveRoom queryRoomById(Integer roomId);
 }
