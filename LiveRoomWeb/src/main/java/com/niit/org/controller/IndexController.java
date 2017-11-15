@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.org.bean.Account;
+import com.niit.org.bean.LiveRoom;
 import com.niit.org.bean.Role;
 import com.niit.org.mapper.IAccountService;
+import com.niit.org.mapper.ILiveRoomService;
 import com.niit.org.mapper.IRoleService;
 import com.niit.org.service.IAccount;
 import com.niit.org.util.JschUtil;
@@ -31,19 +33,17 @@ public class IndexController {
 	@Resource
 	private IAccountService iac;
 	
+	@Resource
+	private ILiveRoomService ilrs;
+	
 	@RequestMapping("/index")
-	public String index(ModelMap resultMap) {
+	public String index(ModelMap resultMap,HttpSession session) {
 		
 	
-//		
-//		List<Account> accountList = iac.getAll();//accountService.getCount();
-//            
-//		List<Role> roleList=irs.getAll();
-//		
-//				
-//		resultMap.addAttribute("account",accountList.get(2));
-//		resultMap.addAttribute("rolelist",roleList);
-//		resultMap.addAttribute("role1",roleList.get(0));
+		List<LiveRoom> roomlist=ilrs.queryAllLiveRoom();
+		session.setAttribute("roomlist", roomlist);
+		resultMap.addAttribute("roomlist",roomlist);
+		
 		return "index";
 	}
 	

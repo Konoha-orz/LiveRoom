@@ -16,15 +16,13 @@ import java.util.Map;
 public class LiveController {
 
 
-    @RequestMapping(value = "/liveroom",method = RequestMethod.GET)
-    public String index(HttpServletRequest request, ModelMap modelMap){
+    @RequestMapping(value = "/liveroom/{id}",method = RequestMethod.GET)
+    public String index(@PathVariable("id") String id,HttpServletRequest request, ModelMap modelMap){
         // 有session会获取当前的session,没有就会创建一个session
         HttpSession session = request.getSession();
+        modelMap.addAttribute("MyId",id);
         return "liveroom";
     }
     
-    @RequestMapping(value = "/liveroom_test",method = RequestMethod.GET)
-    public String index1(HttpServletRequest request, ModelMap modelMap){
-        return "liveroom1";
-    }
+   
 }

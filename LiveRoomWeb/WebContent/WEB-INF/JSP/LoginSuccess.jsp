@@ -15,16 +15,7 @@ Edit by @Teemo
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="dns-prefetch" href="https://assets-cdn.github.com/">
-<link rel="dns-prefetch" href="https://avatars0.githubusercontent.com/">
-<link rel="dns-prefetch" href="https://avatars1.githubusercontent.com/">
-<link rel="dns-prefetch" href="https://avatars2.githubusercontent.com/">
-<link rel="dns-prefetch" href="https://avatars3.githubusercontent.com/">
-<link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com/">
-<link rel="dns-prefetch"
-	href="https://user-images.githubusercontent.com/">
 
-<meta content="origin" name="referrer">
 
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
 	type="text/css" />
@@ -37,72 +28,10 @@ Edit by @Teemo
 
 <title>Login Success</title>
 
-<meta property="fb:app_id" content="1401488693436528">
-
-<meta property="og:url" content="https://github.com">
-<meta property="og:site_name" content="GitHub">
-<meta property="og:title" content="Build software better, together">
-<meta property="og:description"
-	content="GitHub is where people build software. More than 25 million people use GitHub to discover, fork, and contribute to over 69 million projects.">
-<meta property="og:image"
-	content="https://assets-cdn.github.com/images/modules/open_graph/github-logo.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
-<meta property="og:image"
-	content="https://assets-cdn.github.com/images/modules/open_graph/github-mark.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="620">
-<meta property="og:image"
-	content="https://assets-cdn.github.com/images/modules/open_graph/github-octocat.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="620">
 
 
 <link rel="assets" href="https://assets-cdn.github.com/">
 
-<meta name="pjax-timeout" content="1000">
-
-<meta name="request-id" content="34C1:1BF2C:2ED5E2E:465471B:59EFF213"
-	data-pjax-transient="">
-
-
-<meta name="selected-link" value="/login" data-pjax-transient="">
-
-<meta name="google-site-verification"
-	content="KT5gs8h0wvaagLKAVWq8bbeNwnZZK1r1XQysX3xurLU">
-<meta name="google-site-verification"
-	content="ZzhVyEFwb7w3e0-uOTltm8Jsck2F5StVihD0exw2fsA">
-<meta name="google-analytics" content="UA-3769691-2">
-
-<meta content="collector.githubapp.com" name="octolytics-host">
-<meta content="github" name="octolytics-app-id">
-<meta
-	content="https://collector.githubapp.com/github-external/browser_event"
-	name="octolytics-event-url">
-<meta content="34C1:1BF2C:2ED5E2E:465471B:59EFF213"
-	name="octolytics-dimension-request_id">
-<meta content="sea" name="octolytics-dimension-region_edge">
-<meta content="iad" name="octolytics-dimension-region_render">
-<meta content="true" data-pjax-transient="true"
-	name="analytics-location-query-strip">
-
-
-
-
-<meta class="js-ga-set" name="dimension1" content="Logged Out">
-
-
-
-
-<meta name="hostname" content="github.com">
-<meta name="user-login" content="">
-
-<meta name="expected-hostname" content="github.com">
-<meta name="js-proxy-site-detection-payload"
-	content="ZjQ5YjhhMzY3NWNkMWFiNWE3NzE4YWIxY2QyMDdiNDQxYzc4YjNlNTk3M2MxMTE3ZmE4MmEzOGQ2M2JhNjFkYXx7InJlbW90ZV9hZGRyZXNzIjoiMjE5LjE0Ni4yNDIuMTM0IiwicmVxdWVzdF9pZCI6IjM0QzE6MUJGMkM6MkVENUUyRTo0NjU0NzFCOjU5RUZGMjEzIiwidGltZXN0YW1wIjoxNTA4ODk3MzA3LCJob3N0IjoiZ2l0aHViLmNvbSJ9">
 
 
 <meta name="html-safe-nonce"

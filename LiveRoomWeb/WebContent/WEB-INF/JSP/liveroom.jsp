@@ -1,28 +1,38 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
+
     pageEncoding="utf-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<%String context=request.getContextPath();%>/
 <html>
+
 <head>
-<link href="css/bootstrap.css" rel="stylesheet"/>
-<link rel="stylesheet"  href="css/liveroom.css"/>
-<link href="css/videojs.css" rel="stylesheet">
-<script src="js/videojs.js"></script>
-<link rel="stylesheet"  href="css/reset.css"/>
-<link rel="stylesheet"  href="css/liveroom1.css"/>
+
+<link href="<%=context %>/css/bootstrap.css" rel="stylesheet"/>
+<link rel="stylesheet"  href="<%=context %>/css/liveroom.css"/>
+<link href="<%=context %>/css/videojs.css" rel="stylesheet">
+<script src="<%=context %>/js/video.js"></script>
+<link rel="stylesheet"  href="<%=context %>/css/reset.css"/>
+<link rel="stylesheet"  href="<%=request.getContextPath()%>/css/liveroom1.css"/>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/vue.js"></script>
-<script src="js/jquery.danmu.min.js"></script>
+<script src="<%=context %>/js/bootstrap.js"></script>
+<script src="<%=context %>/js/vue.js"></script>
+<script src="<%=context %>/js/jquery.danmu.min.js"></script>
 <title>LiveRoom</title>    
+
 </head>
+
 <body>
+
 <div class="container">
 	<div class="row clearfix">
 		<!-- 左侧导航栏开始 -->
 		<div class="nav left-nav b1 ">
 			<div class="nav-header">
-				<a href="#"><img src="images/6.jpg" /></a>
+				<a href="#"><img src="<%=context %>/images/6.jpg" /></a>
 			</div>
 			<div class="nav-search">
 				<div class="nav-search-wrapper">
@@ -60,7 +70,7 @@
 		<div class="main b2" id="liveroom">
 			<div class="room-info">
 				<div class="user-avatar">
-					<a href="#"><img src="images/6.jpg" /> </a>
+					<a href="#"><img src="<%=context %>/images/6.jpg" /> </a>
 				</div>
 				<div class="room-detail">
 					<dl>
@@ -72,59 +82,107 @@
 				</div>	
 			</div>
 			<div style="position:relative; background-color: black ; height: 439px; width: 100%;">
+
                 <div id="danmu" style=""></div>
+
                 <video id="v-player"
+
                        class="video-js col-center-block">
+
                     <!--<source src="rtmp://live.hkstv.hk.lxdns.com/live/hks"  type="rtmp/flv"></source>-->
+
                 </video>
+
             </div>
+
 		</div>
 		<!-- 中间的视频播放区结束-->
 		<!-- 右侧聊天室 -->
 		<div class="chatroom b1" id="chatroom">
 			 <ul id="menuTabs" class="nav nav-pills nav-justified">
+
                 <li class="active">
+
                     <a href="#discussion" data-toggle="tab"><i class="fa fa-tree"></i>互动聊天({{numbers}})</a>
+
                 </li>
+
                 <li>
+
                     <a href="#members" data-toggle="tab"><i class="fa fa-tree"></i>现场嘉宾({{numbers}})</a>
+
                 </li>
+
             </ul>
+
             <!--内容滚动区域开始-->
+
             <div id="tabContent" class="tab-content">
+
                 <div class="tab-pane fade active in" id="discussion" style="padding:10px;">
+
                     <div v-for="message in messages">
+
                         <span style="color: cornflowerblue;">{{message.creator}}:</span>
+
                         <span>{{message.msgBody}}</span>
+
                     </div>
+
                 </div>
+
                 <!--内容滚动区域结束-->
+
                 <!--现场观众统计开始-->
+
                 <div class="tab-pane fade in" style="padding-top: 10px;" id="members" style="padding:10px;">
+
                 	<c:forEach items="${online_guests}" var="user">
+
                 		<span style="color: cornflowerblue;">
+
                 			<c:out value="${user.randomName}"/>
+
                 		</span>
+
                 	</c:forEach>
+
                 </div>
+
                 <!--现场观众统计结束-->
+
                 <!-- 发送消息开始 -->
                 <div id="chatinput" class="input-group" style="margin-top: 5px;width: 100%;">
               		<input type="text" class="form-control" v-model="messageinput"
+
                        @keyup.13="sendMessage"
+
                        placeholder="参与话题讨论">
+
                        <span class="input-group-btn">
+
 				        	<button class="btn btn-success" type="button" @click="sendMessage">发送!</button>
+
                 		</span>
+
+
                 </div>
+
                 <!-- 发送消息结束  -->
+
             </div>
+
         </div>
+
 		<!-- 右侧聊天室结束 -->
 	</div>
+
 </div>
+
 <input type="hidden" name="roomId" value="${sessionScope.roomId}" />
+
 <script>
+
 var chatroom = new Vue({
     el: '#chatroom',
     data: {
@@ -147,6 +205,7 @@ var chatroom = new Vue({
                     creator: '系统消息',
                     msgBody: '连接成功！'
                 })
+
                 $("danmu").danmu({
                 	height: 360,  //弹幕区高度
                 	width: 640,   //弹幕区宽度
@@ -162,8 +221,8 @@ var chatroom = new Vue({
                 	SubtitleProtection:false,     //是否字幕保护
                 	positionOptimize:false,         //是否位置优化，位置优化是指像AB站那样弹幕主要漂浮于区域上半部分
 
-                	maxCountInScreen: 40,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
-                	maxCountPerSec: 10      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
+                	maxCountInScreen: 100,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
+                	maxCountPerSec: 100      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
                 	});
                 chatroom.beginTime = Date.now()
                 $('#danmu').danmu('danmuStart');
@@ -197,8 +256,11 @@ var chatroom = new Vue({
             // 浏览器关闭触发
             window.onbeforeunload = function () {
                 chatroom.socketClient.close();
+
             }
+
         },
+
         sendMessage: function () {
             if (chatroom.messageinput != "") {
                 this.socketClient.send(chatroom.messageinput)
@@ -220,7 +282,9 @@ var chatroom = new Vue({
         this.webSocketUrl=basePath+this.roomId;
     	//聊天室初始化
         this.connectToSocket()
+
     }
+
 });
 var liveroom = new Vue({
 	el: "#liveroom",
@@ -240,8 +304,8 @@ var liveroom = new Vue({
                 "autoplay": true,
                 sources: [{
                     /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
-                    //src:'rtmp://rlive.jia.360.cn/live_camera/36054700726',
-                    src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
+                    src:'rtmp://120.78.81.233/live/test1',
+                    //src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
                     type: 'rtmp/flv'
                 }]
             },
@@ -259,6 +323,10 @@ var liveroom = new Vue({
 		this.videoInit();
 	}
 })
+
 </script>
+
+
 </body>
+
 </html>
