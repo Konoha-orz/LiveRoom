@@ -17,7 +17,7 @@ public class LiveController {
 
 
     @RequestMapping(value = "/liveroom/{id}",method = RequestMethod.GET)
-    public String index(@RequestParam("id") String id,HttpServletRequest request, ModelMap modelMap){
+    public String index(@PathVariable("id") String id,HttpServletRequest request, ModelMap modelMap){
         // 有session会获取当前的session,没有就会创建一个session
         HttpSession session = request.getSession();
         return "liveroom";
