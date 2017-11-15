@@ -6,20 +6,21 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%String context=request.getContextPath();%>/
 <html>
 
 <head>
 
-<link href="css/bootstrap.css" rel="stylesheet"/>
-<link rel="stylesheet"  href="css/liveroom.css"/>
-<link href="css/videojs.css" rel="stylesheet">
-<script src="js/video.js"></script>
-<link rel="stylesheet"  href="css/reset.css"/>
-<link rel="stylesheet"  href="css/liveroom1.css"/>
+<link href="<%=context %>/css/bootstrap.css" rel="stylesheet"/>
+<link rel="stylesheet"  href="<%=context %>/css/liveroom.css"/>
+<link href="<%=context %>/css/videojs.css" rel="stylesheet">
+<script src="<%=context %>/js/video.js"></script>
+<link rel="stylesheet"  href="<%=context %>/css/reset.css"/>
+<link rel="stylesheet"  href="<%=request.getContextPath()%>/css/liveroom1.css"/>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/bootstrap.js"></script>
-<script src="js/vue.js"></script>
-<script src="js/jquery.danmu.min.js"></script>
+<script src="<%=context %>/js/bootstrap.js"></script>
+<script src="<%=context %>/js/vue.js"></script>
+<script src="<%=context %>/js/jquery.danmu.min.js"></script>
 <title>LiveRoom</title>    
 
 </head>
@@ -31,7 +32,7 @@
 		<!-- 左侧导航栏开始 -->
 		<div class="nav left-nav b1 ">
 			<div class="nav-header">
-				<a href="#"><img src="images/6.jpg" /></a>
+				<a href="#"><img src="<%=context %>/images/6.jpg" /></a>
 			</div>
 			<div class="nav-search">
 				<div class="nav-search-wrapper">
@@ -69,7 +70,7 @@
 		<div class="main b2" id="liveroom">
 			<div class="room-info">
 				<div class="user-avatar">
-					<a href="#"><img src="images/6.jpg" /> </a>
+					<a href="#"><img src="<%=context %>/images/6.jpg" /> </a>
 				</div>
 				<div class="room-detail">
 					<dl>
