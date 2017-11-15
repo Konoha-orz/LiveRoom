@@ -8,10 +8,8 @@
 	<select id="queryAllLiveRoom" resultType="com.niit.org.bean.LiveRoom">
 		select * from liveroom
 	</select>
-	<select id="searchByKey" resultType="com.niit.org.dto.LiveRoomDTO"
-		parameterType="String">
-
-		select
+	<select id="searchByKey" resultType="com.niit.org.dto.LiveRoomDTO" parameterType="String">
+        select
 		l.id as id ,
 		l.title as title,
 		l.dscp as dscp ,
@@ -36,4 +34,5 @@
 		where id=#{roomId}
 
 	</select>
+	
 </mapper>

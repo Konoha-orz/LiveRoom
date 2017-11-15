@@ -80,7 +80,7 @@
 			%>
 
 			<div class="panda-search header-tool">
-				<form name="room-search" action="/LiveRoomWeb/chooseRoomId"
+				<form name="room-search" action="/LiveRoomWeb/index/search"
 					method="post" target="_top" class="search-form">
 					<input type="text" name="roomId" value="搜房间号/主播" autocomplete="off"
 						class="search-key search-default">

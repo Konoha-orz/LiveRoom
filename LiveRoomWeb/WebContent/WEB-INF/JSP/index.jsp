@@ -457,11 +457,7 @@
 					}, function() {
 						this.on('loadeddata', function() {
 							console.log(this)
-						})
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/Konoha-orz
+						})+
 						this.on('pause', function() {
 							//alert('pause')
 						})
