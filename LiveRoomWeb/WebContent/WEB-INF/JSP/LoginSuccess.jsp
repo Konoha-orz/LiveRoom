@@ -22,7 +22,7 @@ Edit by @Teemo
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
 	<link rel="shortcut icon" href="images/favicon.ico" />　　
-
+<meta http-equiv="Refresh" content="3;url=http://localhost:8080/LiveRoomWeb/userInfo">
 <title>登陆成功</title>
 
 </head>
@@ -76,6 +76,7 @@ Edit by @Teemo
 					<div class="auth-form-body mt-3">
 						<div style="text-align: center">
 							<h2 for="Success Message">登陆成功</h2>
+							<p>3秒后自动跳转</p>
 						</div>
 						<br />
 						<div style="text-align: center">

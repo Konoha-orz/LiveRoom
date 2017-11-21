@@ -22,91 +22,49 @@ Edit by @Teemo
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
 	<link rel="shortcut icon" href="images/favicon.ico" />　　
-
+<link rel="stylesheet" type="text/css" href="css/nav.css">
+<link rel="stylesheet" type="text/css" href="css/teemocss.css" />
 <meta name="viewport" content="width=device-width">
 
 <title>更新用户个人信息</title>
 
 </head>
 
-<body
-	class="logged-out env-production page-responsive min-width-0 session-authentication">
+<body>
+ <div class="div_nav">
+	<iframe src="nav" frameborder="0" scrolling="no" height="800px"></iframe>
+</div> 
 
+<div class="div_main">
+	
 
-	<div class="position-relative js-header-wrapper ">
+			<div class="smart-green" id="login">
 
-		<div id="js-pjax-loader-bar" class="pjax-loader-bar">
-			<div class="progress"></div>
-		</div>
-
-		<div class="header header-logged-out width-full pt-5 pb-4"
-			role="banner">
-			<div class="container clearfix width-full"></div>
-		</div>
-
-
-	</div>
-
-	<div id="start-of-content" class="show-on-focus"></div>
-
-
-
-	<div role="main">
-
-		<div id="js-pjax-container" data-pjax-container="">
-
-
-			<div class="auth-form px-3" id="login">
-
-				<!-- '"` -->
-				<!-- </textarea></xmp> -->
 				<form accept-charset="UTF-8" action="updateUserInfo" method="post">
-					<div style="margin: 0; padding: 0; display: inline">
-						<input name="utf8" type="hidden" value="✓"><input
-							name="authenticity_token" type="hidden"
-							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
-					</div>
-					<div class="auth-form-header p-0">
+				
 						<h1>更新用户个人信息</h1>
-					</div>
 
-
-					<div id="js-flash-container"></div>
-
-
-					<div class="auth-form-body mt-3">
 
 						<label for="username"> 用户名 </label> 
-						<input autocapitalize="off" autocorrect="off" autofocus="autofocus"
-							class="form-control input-block" id="username" name="username"
-							tabindex="1" type="text" value="${username }"/> 
+						<input autofocus="autofocus" id="username" name="username" tabindex="1" type="text" value="${username }"/> 
 							
 							<label for="password">密码 </label> 
-							<input class="form-control form-control input-block"
-							id="password" name="password" tabindex="2" type="password" value="${password }" /> 
+							<input id="password" name="password" tabindex="2" type="password" value="${password }" /> 
 							
 							<label for="cpassword">确认密码 </label> 
-							<input class="form-control form-control input-block"
-							id="cpassword" name="cpassword" tabindex="2" type="password" value="${password }" /> 
+							<input id="cpassword" name="cpassword" tabindex="2" type="password" value="${password }" /> 
 							
 							<label for="email">电子邮箱地址 </label> 
-							<input class="form-control form-control input-block"
-							id="email" name="email" tabindex="2" type="text" value="${email }"/> 
+							<input id="email" name="email" tabindex="2" type="text" value="${email }"/> 
 							
 							<label for="dscp">个人简介 </label> 
-							<input class="form-control form-control input-block"
-							id="dscp" name="dscp" tabindex="2" type="text" value="${dscp }"/> 
+							<input id="dscp" name="dscp" tabindex="2" type="text" value="${dscp }"/> 
 							
-							<input
-							class="btn btn-primary btn-block" data-disable-with="Signing in…"
-							name="commit" tabindex="3" type="submit" value="保存" />
-					</div>
+							<input class="button" tabindex="3" type="submit" value="保存" />
+					
 				</form>
 			</div>
 
-		</div>
-		<div class="modal-backdrop js-touch-events"></div>
-	</div>
-
+</div>
 </body>
 </html>

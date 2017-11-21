@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 
@@ -13,6 +13,7 @@
 	type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
+	<link rel="stylesheet" type="text/css" href="css/nav.css">
 <link rel="shortcut icon" href="images/favicon.ico" />　　
 
 <meta name="viewport" content="width=device-width">
@@ -25,6 +26,7 @@
 
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
+
 
 
 	<div class="position-relative js-header-wrapper ">
