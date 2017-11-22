@@ -1,9 +1,9 @@
 package com.niit.org.bean;
 
 /*
- * Edit By Teemo
+ * Edit By @Teemo
  * 
- * 2017-10-24
+ * 2017-10-25
  * 
  * 用户账户实体类
  * 
@@ -14,6 +14,7 @@ public class User {
 	private String username;
 	private String password;
 	private String dscp;
+	private String email;
 
 	public int getId() {
 		return id;
@@ -47,4 +48,14 @@ public class User {
 		this.dscp = dscp;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+	
 }

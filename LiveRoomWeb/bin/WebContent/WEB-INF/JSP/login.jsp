@@ -1,36 +1,104 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<!--
-Edit by Teemo
-
-2017-10-24
-
-用户登录界面
--->
-
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UtF-8">
+
+
+
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
+	type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
+	type="text/css" />
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
+	type="text/css" />
+<link rel="shortcut icon" href="images/favicon.ico" />
+
+<meta name="viewport" content="width=device-width">
+
+<title>User Login</title>
+
 </head>
 
+<body
+	class="logged-out env-production page-responsive min-width-0 session-authentication">
 
-<body>
-<%
-	if(session.getAttribute("username")!=null){
-	String username=session.getAttribute("username").toString();
-	out.println("Hello "+username+" !");
-	out.println("<a href='http://localhost:8080/LiveRoomWeb/logout'>Logout</a>");
-	}
-%>
-<form action="login" method="post">
-<label for="username">Username:</label><input type="text" id="username" name="username" />
-<label for="password">Password:</label><input type="text" id="password" name="password" />
-<input type="submit" value="login" />
-</form>
 
-<a href="http://localhost:8080/LiveRoomWeb/updateUserInfo">updateUserInfo</a>
+	<div class="position-relative js-header-wrapper ">
+
+		<div id="js-pjax-loader-bar" class="pjax-loader-bar">
+			<div class="progress"></div>
+		</div>
+
+		<div class="header header-logged-out width-full pt-5 pb-4"
+			role="banner">
+			<div class="container clearfix width-full"></div>
+		</div>
+
+
+	</div>
+
+	<div id="start-of-content" class="show-on-focus"></div>
+
+
+
+	<div role="main">
+
+		<div id="js-pjax-container" data-pjax-container="">
+
+
+			<div class="auth-form px-3" id="login">
+
+				<!-- '"` -->
+				<!-- </textarea></xmp> -->
+				<form accept-charset="UTF-8" action="login" method="post">
+					<div style="margin: 0; padding: 0; display: inline">
+						<input name="utf8" type="hidden" value="✓"><input
+							name="authenticity_token" type="hidden"
+							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
+					</div>
+					<div class="auth-form-header p-0">
+						<h1>User Login</h1>
+					</div>
+
+
+					<div id="js-flash-container"></div>
+
+
+					<div class="auth-form-body mt-3">
+
+						<label for="username"> Username </label> <input
+							autocapitalize="off" autocorrect="off" autofocus="autofocus"
+							class="form-control input-block" id="username" name="username"
+							tabindex="1" type="text" /> <label for="password">
+							Password <a
+							href="http://localhost:8080/LiveRoomWeb/forgotPassword"
+							class="label-link">Forgot password?</a>
+						</label> <input class="form-control form-control input-block"
+							id="password" name="password" tabindex="2" type="password" /> <input
+							class="btn btn-primary btn-block" data-disable-with="Signing in…"
+							name="commit" tabindex="3" type="submit" value="Login" />
+					</div>
+				</form>
+
+				<p class="create-account-callout mt-3">
+					Do not have an account?<br> <a
+						href="http://localhost:8080/LiveRoomWeb/register"
+						data-ga-click="Sign in, switch to sign up">Create an account</a>.
+				</p>
+			</div>
+
+		</div>
+		<div class="modal-backdrop js-touch-events"></div>
+	</div>
+
+
+
+</body>
 </body>
 </html>
+
+
+

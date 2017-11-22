@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.niit.org.mapper.ILiveRoomService">
+	<select id="queryAllLiveRoom" resultType="com.niit.org.dto.LiveRoomDTO">
+		select
+		l.id as id ,
+		l.title as title,
+		l.dscp as dscp ,
+		l.userid as userid ,
+		l.categoryname as categoryname,
+		l.rtmpurl as rtmpurl,
+		l.status as status,
+		l.seriescode as seriescode ,
+		u.username as username
+		from liveroom l left join user u on l.userid=u.id
+		where l.status = 1
+	</select>
+	<select id="searchByKey" resultType="com.niit.org.dto.LiveRoomDTO" parameterType="String">
+        select
+		l.id as id ,
+		l.title as title,
+		l.dscp as dscp ,
+		l.userid as userid ,
+		l.categoryname as categoryname,
+		l.rtmpurl as rtmpurl,
+		l.status as status,
+		l.seriescode as seriescode ,
+		u.username as username
+		from liveroom l left join user u on l.userid=u.id
+		where
+		u.username like CONCAT('%',#{key},'%')
+		and
+		l.status = 1
+	</select>
+	<select id="queryRoomById" resultType="com.niit.org.bean.LiveRoom">
+		select * from liveroom
+		where id=#{roomId}
+    </select>
+    <select id="getListByType" resultType="com.niit.org.dto.LiveRoomDTO" parameterType="String">
+        select
+		l.id as id ,
+		l.title as title,
+		l.dscp as dscp ,
+		l.userid as userid ,
+		l.categoryname as categoryname,
+		l.rtmpurl as rtmpurl,
+		l.status as status,
+		l.seriescode as seriescode ,
+		u.username as username
+		from liveroom l left join user u on l.userid=u.id
+		where l.categoryname =#{type}
+		and 
+		l.status = 1
+    </select>
+    
+	
+</mapper>
