@@ -19,12 +19,20 @@
 <meta name="viewport" content="width=device-width">
 
 <title>User Login</title>
+<STYLE TYPE="text/css">
+<!--
+.aa{background-image: URL(images/bb2.png);
+
+background-repeat: no-repeat;
+background-attachment: fixed;}
+
+</STYLE>
 
 </head>
 
-<body
+<body 
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-
+     
 
 	<div class="position-relative js-header-wrapper ">
 

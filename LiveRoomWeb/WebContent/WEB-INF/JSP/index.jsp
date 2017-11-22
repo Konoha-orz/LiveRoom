@@ -1,6 +1,7 @@
+<%@page import="java.util.HashMap"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
-<%@page import="com.niit.org.bean.LiveRoom"%>
+<%@page import="com.niit.org.dto.*"%>
 <%@page import="com.niit.org.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
@@ -18,7 +19,14 @@
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<% List<LiveRoom> roolist=(List<LiveRoom>)session.getAttribute("roomlist"); %>
+<% 
+   HashMap roomMap=(HashMap)session.getAttribute("roomMap");
+   List<LiveRoomDTO> outsideList=(List<LiveRoomDTO>)roomMap.get("outsideList");
+   List<LiveRoomDTO> gameList=(List<LiveRoomDTO>)roomMap.get("gameList");
+   List<LiveRoomDTO> foodList=(List<LiveRoomDTO>)roomMap.get("foodList");
+
+
+%>
 
 <title>在线直播间</title>
 
@@ -274,7 +282,7 @@
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
 							
-							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
+							<%for(LiveRoomDTO room:foodList){  String url= "liveroom/"+room.getId();           %>
 							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
 									<div class="pd-thumb">
@@ -290,7 +298,7 @@
 										<div class="thumb-list">
 											<div class="title"><%=room.getTitle()%></div>
 											<div class="thumb-list-info">
-												<span class="nickname"><%=room.getUserid()%></span> <span
+												<span class="nickname"><%=room.getUsername()%></span> <span
 													class="thumb-number">4645</span>
 											</div>
 										</div>
@@ -324,7 +332,7 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
+							<%for(LiveRoomDTO room:outsideList){  String url= "liveroom/"+room.getId();           %>
 							
 							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
@@ -341,7 +349,7 @@
 										<div class="thumb-list">
 											<div class="title"><%=room.getTitle()%></div>
 											<div class="thumb-list-info">
-												<span class="nickname"><%=room.getUserid()%></span> <span
+												<span class="nickname"><%=room.getUsername()%></span> <span
 													class="thumb-number">65628</span>
 											</div>
 										</div>
@@ -374,7 +382,7 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
+							<%for(LiveRoomDTO room:gameList){  String url= "liveroom/"+room.getId();           %>
 							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
 									<div class="pd-thumb">
@@ -390,7 +398,7 @@
 										<div class="thumb-list">
 											<div class="title"><%=room.getTitle()%></div>
 											<div class="thumb-list-info">
-												<span class="nickname"><%=room.getUserid()%></span> <span
+												<span class="nickname"><%=room.getUsername()%></span> <span
 													class="thumb-number">10418</span>
 											</div>
 										</div>

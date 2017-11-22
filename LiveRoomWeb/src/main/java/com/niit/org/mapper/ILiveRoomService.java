@@ -9,10 +9,15 @@ import com.niit.org.dto.LiveRoomDTO;
 
 public interface ILiveRoomService {
 
-	public List<LiveRoom> queryAllLiveRoom();
+	public List<LiveRoomDTO> queryAllLiveRoom();
 
 	public List<LiveRoomDTO> searchByKey(@Param(value = "key") String key);
 
 	public LiveRoom queryRoomById(Integer roomId);
+	
+	public List<LiveRoomDTO> getListByType(@Param(value="type")String type);
+	
+	
 
+	
 }
