@@ -1,40 +1,23 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/Konoha-orz
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="com.niit.org.bean.LiveRoom"%>
 <%@page import="com.niit.org.bean.User"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <html lang="zh-cmn-Hans">
 <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<<<<<<< HEAD
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<% List<LiveRoom> roolist=(List<LiveRoom>)session.getAttribute("roomlist"); %>
-=======
-
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<% List<LiveRoom> roolist=(List<LiveRoom>)session.getAttribute("roomlist"); %>
-
+<%
+	List<LiveRoom> roolist = (List<LiveRoom>) session.getAttribute("roomlist");
+%>
 <title>在线直播间</title>
-
 <link rel="stylesheet" href="css/d4e0488237db533e.css">
 <link rel="stylesheet" href="css/ruc_v1.1.5.css">
 <link rel="stylesheet" href="css/fc9e619cd23e8c28.css">
@@ -47,28 +30,6 @@
 <link href="css/videojs.css" rel="stylesheet">
 <script src="js/video.js"></script>
 <script src="js/vue.js"></script>
->>>>>>> origin/Konoha-orz
-
-<title>在线直播间</title>
-
-<<<<<<< HEAD
-<link rel="stylesheet" href="css/d4e0488237db533e.css">
-<link rel="stylesheet" href="css/ruc_v1.1.5.css">
-<link rel="stylesheet" href="css/fc9e619cd23e8c28.css">
-<link rel="stylesheet" href="css/596c2be88ac9a5a0.css">
-<link rel="stylesheet" href="css/93c97f35e37e6edb.css">
-<link rel="stylesheet" href="css/level-style.css">
-<script src="js/da870659adfe1ddc.js"></script>
-<script src="js/hm.js"></script>
-<script src="js/ff7cbc1b3b59cc0a.js"></script>
-<link href="css/videojs.css" rel="stylesheet">
-<script src="js/video.js"></script>
-<script src="js/vue.js"></script>
-
-
-=======
->>>>>>> origin/Konoha-orz
-
 <style type="text/css" media="screen">
 #swf_play {
 	visibility: hidden
@@ -93,8 +54,6 @@
 				<div id="panda_header_go_sort" class="header-tab">
 					<a href="https://www.panda.tv/cate">分类</a>
 				</div>
-
-
 
 			</div>
 
@@ -121,7 +80,7 @@
 			%>
 
 			<div class="panda-search header-tool">
-				<form name="room-search" action="/LiveRoomWeb/chooseRoomId"
+				<form name="room-search" action="/LiveRoomWeb/index/search"
 					method="post" target="_top" class="search-form">
 					<input type="text" name="roomId" value="搜房间号/主播" autocomplete="off"
 						class="search-key search-default">
@@ -283,8 +242,8 @@
 
 		<!-- 频道版块 start -->
 		<div class="index-channel">
-            
-            <!-- 美食频道start -->
+
+			<!-- 美食频道start -->
 			<div
 				class="index-channel-list index-channel-food  index-channel-even  index-channel-food ">
 				<div class="bw">
@@ -305,10 +264,12 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							
-							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
-							<li class="list-item"><a href="<%=url%>"
-								target="_blank">
+
+							<%
+								for (LiveRoom room : roolist) {
+									String url = "liveroom/" + room.getId();
+							%>
+							<li class="list-item"><a href="<%=url%>" target="_blank">
 									<div class="pd-thumb">
 										<div class="pictures">
 											<img class="thumb-img thumb-img-lazy"
@@ -329,8 +290,10 @@
 										<div class="thumb-bar"></div>
 									</div>
 							</a></li>
-							
-						  <%}%>
+
+							<%
+								}
+							%>
 						</ul>
 					</div>
 				</div>
@@ -356,10 +319,12 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
-							
-							<li class="list-item"><a href="<%=url%>"
-								target="_blank">
+							<%
+								for (LiveRoom room : roolist) {
+									String url = "liveroom/" + room.getId();
+							%>
+
+							<li class="list-item"><a href="<%=url%>" target="_blank">
 									<div class="pd-thumb">
 										<div class="pictures">
 											<img class="thumb-img thumb-img-lazy"
@@ -380,7 +345,9 @@
 										<div class="thumb-bar"></div>
 									</div>
 							</a></li>
-                           <% }%>
+							<%
+								}
+							%>
 						</ul>
 					</div>
 				</div>
@@ -406,9 +373,11 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<%for(LiveRoom room:roolist){  String url= "liveroom/"+room.getId();           %>
-							<li class="list-item"><a href="<%=url%>"
-								target="_blank">
+							<%
+								for (LiveRoom room : roolist) {
+									String url = "liveroom/" + room.getId();
+							%>
+							<li class="list-item"><a href="<%=url%>" target="_blank">
 									<div class="pd-thumb">
 										<div class="pictures">
 											<img class="thumb-img thumb-img-lazy"
@@ -429,12 +398,14 @@
 										<div class="thumb-bar"></div>
 									</div>
 							</a></li>
-							<%} %>
-							</ul>
+							<%
+								}
+							%>
+						</ul>
 					</div>
 				</div>
 			</div>
-            <!-- 游戏频道end -->
+			<!-- 游戏频道end -->
 
 		</div>
 		<!-- 频道版块 end -->
@@ -490,10 +461,7 @@
 						this.on('loadeddata', function() {
 							console.log(this)
 						})
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/Konoha-orz
 						this.on('pause', function() {
 							//alert('pause')
 						})

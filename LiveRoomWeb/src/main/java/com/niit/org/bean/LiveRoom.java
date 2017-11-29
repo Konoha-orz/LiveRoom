@@ -1,6 +1,7 @@
 package com.niit.org.bean;
 
 public class LiveRoom {
+
 	private int id;
 	private String title;
 	private String dscp;
@@ -73,5 +74,4 @@ public class LiveRoom {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-
 }
