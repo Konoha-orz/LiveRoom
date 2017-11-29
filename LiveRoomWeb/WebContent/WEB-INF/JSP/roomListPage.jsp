@@ -1,4 +1,5 @@
 
+<%@page import="com.niit.org.bean.Category"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 <%@page import="com.niit.org.dto.LiveRoomDTO"%>
@@ -22,6 +23,7 @@
 
 <%
 	List<LiveRoomDTO> roomList = (List<LiveRoomDTO>) session.getAttribute("roomList");
+    List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
 %>
 
 <title>直播间列表</title>
@@ -44,7 +46,7 @@
 						<br /> <br /> <br /> <br />
 						<div class="sidebar-search">
 							<div class="panda-search ">
-								<form name="room-search" action="/LiveRoomWeb/roomlist/roomid"
+								<form name="room-search" action="/LiveRoomWeb/roomlist/search"
 									method="post" target="_top" class="search-form">
 									<input type="text" name="searchKey" value="搜房間號/主播" 
 										autocomplete="off" class="search-key search-default">
@@ -77,13 +79,17 @@
 
 						<!-- sidebar-cates start -->
 						<div class="sidebar-cates">
+						
+						    <%  for(Category category:categoryList){
+						    	String categoryUrl="/LiveRoomWeb/roomlist/category/"+category.getCategoryname();
+						    	%>
 							<div class="sidebar-cate-item-1stlevel cate-jingji"
 								data-cate="jingji">
 								<div class="title" data-cate="jingji">
 									<a target="_top" class="link"
-										href="https://www.panda.tv/cate/jingji" data-cate="jingji"
+										href="<%=categoryUrl%>" data-cate="jingji"
 										data-toggle="panda-monitor"
-										data-paew="pc_web-all-sidebar_cate1_jingji"> 热门竞技 </a> <span
+										data-paew="pc_web-all-sidebar_cate1_jingji"><%=category.getCategoryname()%> </a> <span
 										class="expand"> <i class="sidebar-icon"> </i> <span
 										class="sidebar-expand"> 展开 </span>
 									</span>
@@ -91,7 +97,7 @@
 
 
 							</div>
-
+                            <%} %>
 						</div>
 						<!-- sidebar-cates end -->
 
