@@ -180,7 +180,7 @@
 
 </div>
 
-<input type="hidden" name="roomId" value="${roomId}" />
+<input type="hidden" name="roomId" value="${room_info.id}" />
 
 <script>
 
@@ -237,7 +237,6 @@ var chatroom = new Vue({
                     creator: data.creator,
                     msgBody: data.msgBody
                 });
-                console.log(data.sTime,chatroom.beginTime)
                 if (data.msgBody && data.msgBody!=="") {
                 	let time = parseInt((Date.now() - chatroom.beginTime)/100); 
                 	var obj = { text:data.msgBody ,color:"white",size:1,position:0,time:time}
@@ -270,12 +269,7 @@ var chatroom = new Vue({
             } else if (chatroom.messageinput === "") {
                 chatroom.messageinput = "请输入内容!!!";
             }
-        },
-    },
-    watch: {
-    	roomId(newVal) {
-    		window.liveroom.roomId=newVal;
-    	}
+        }
     },
     mounted: function () {
         //设置webSocketUrl
@@ -283,7 +277,6 @@ var chatroom = new Vue({
         this.webSocketUrl=basePath+this.roomId;
     	//聊天室初始化
         this.connectToSocket()
-
     }
 
 });
@@ -292,9 +285,8 @@ var liveroom = new Vue({
 	data: {
         rtmpSource: null,
         videoPlayer: null,
-        roomId:0,
         roomInfo: {
-        	id: "",
+        	id: 0,
         	title:"",
         	dscp:"",
         	rtmpurl:"",
@@ -311,23 +303,15 @@ var liveroom = new Vue({
 	}, 
 	methods:{
 		getRoomInfo:function(){
-			var obj = {roomId:chatroom.roomId}
-			 $.ajax({
-                 type: 'get',
-                 url: '/LiveRoomWeb/isOnline',
-                 data: obj,
-                 contentType: "application/json"
-             }).done(function (data) {
-                 if (data.code === 1 && data.room_info !== null) {
-                     liveroom.roomInfo = data.room_info;
-                     liveroom.rtmpSource = data.room_info.rtmpurl+"/"+data.room_info.seriescode;
-                     liveroom.videoInit();
-                 }
-             }).fail(function (err) {
-            	 console.log(err)
-             });
+            this.roomInfo.id = ${room_info.id};
+            this.roomInfo.title = "${room_info.title}";
+            this.roomInfo.dscp = "${room_info.dscp}";
+            this.roomInfo.rtmpurl = "${room_info.rtmpurl}";
+            this.roomInfo.seriescode = ${room_info.seriescode};
+            this.rtmpSource = this.roomInfo.rtmpurl+"/"+this.roomInfo.seriescode;
 		},
 		videoInit: function(){
+			let me = this
         	this.videoPlayer = videojs('v-player', {
                 //初始化数据
                 height: '439px',
@@ -337,7 +321,7 @@ var liveroom = new Vue({
                 "autoplay": true,
                 sources: [{
                     /*rtmp://live.hkstv.hk.lxdns.com/live/hks*/
-                    src: liveroom.rtmpSource,
+                    src: me.rtmpSource,
                     //src: 'rtmp://live.hkstv.hk.lxdns.com/live/hks',
                     type: 'rtmp/flv'
                 }]
@@ -354,6 +338,7 @@ var liveroom = new Vue({
 	},
 	mounted() {
 		this.getRoomInfo();
+		this.videoInit();
 	}
 })
 

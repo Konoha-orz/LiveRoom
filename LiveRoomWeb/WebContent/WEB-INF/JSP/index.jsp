@@ -54,6 +54,70 @@
 <body class="index-skin-anniversary">
 
 	<!-- header start -->
+	<style>
+	.text-break{
+	    overflow: hidden;
+	    word-break: break-word;
+	    white-space: nowrap;
+	    text-overflow: ellipsis;
+    }
+	#go_sort_select{
+		width: 250px;
+		min-height: 100px;
+		background-color:#fff;
+		box-shadow: 1px 1px 10px #bbb; 
+		position: absolute;
+		left:-100px;
+		z-index: 10;
+		padding:10px;
+	}
+	#go_sort_select i{
+	    width: 0;
+	   height: 0;
+	   position: absolute;
+	   top: -7px;
+	   right: 50%;
+	   margin-right: -7px;
+	   border-top: 0;
+	   border-left: 7px solid transparent;
+	   border-right: 7px solid transparent;
+	   border-bottom: 7px solid #ddd;
+	}
+	#go_sort_select i:after{
+	    content: '';
+	    width: 0;
+	    height: 0;
+	    position: absolute;
+	    top: 1px;
+	    right: -7px;
+	    border-top: 0;
+	    border-left: 7px solid transparent;
+	    border-right: 7px solid transparent;
+   		border-bottom: 7px solid #fff;
+	}
+	.sort-header{
+		margin-bottom:15px;
+	}
+	.sort-body{
+		display:flex;
+		flex-flow:row wrap;
+	}
+	.tag-item{
+		max-width: 100px;
+		box-sizing: border-box;
+		border-color: transparent;
+		background-color: #f0f2f5;
+	    margin:0 5px 10px 0;
+		padding: 5px 8px;
+		font-size:14px;
+		color:#fff;
+	}
+	.tag-info{
+		background-color: hsla(220,8%,56%,.1);
+	    border-color: hsla(220,8%,56%,.2);
+	    color: #878d99;
+	}
+	</style>
 	<header id="panda_header" data-current="index"
 		data-logo-url="https://i.h2.pdim.gs/bae905b5ccc183b82c00b445c5fb4c89.png">
 	<div class="panda-header-container clearfix">
@@ -68,10 +132,18 @@
 				</div>
 				<div id="panda_header_go_sort" class="header-tab">
 					<a href="https://www.panda.tv/cate">分类</a>
+					<div id="go_sort_select">
+						<i></i>
+						<div class="sort-header"><p>直播分类</p></div>	
+						<div class="sort-body">
+							<span class="tag-item tag-info text-break">美食</span>
+							<span class="tag-item tag-info text-break">户外直播666666666666666666</span>
+							<span class="tag-item tag-info text-break">游戏</span>
+							<span class="tag-item tag-info text-break">游戏</span>
+							<span class="tag-item tag-info text-break">游戏</span>
+						</div>
+					</div>
 				</div>
-
-
-
 			</div>
 
 			<%
@@ -110,7 +182,7 @@
 	</div>
 	</header>
 	<!-- header end -->
-	<div class="index-wrapper">
+	<div class="index-wrapper" style="position:relative;z-index:0;">
 		<div class="index-slider-video-container"
 			style="background: url(images/002.jpg) center center no-repeat rgb(28, 33, 29);">
 			<div id="chatroom" class="index-slider-video-content clearfix "

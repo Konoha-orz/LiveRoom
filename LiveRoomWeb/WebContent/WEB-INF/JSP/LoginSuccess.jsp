@@ -70,7 +70,7 @@ Edit by @Teemo
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
 	<h1>LoginSuccessfully....</h1>
 	<a href="http://localhost:8080/LiveRoomWeb/login">back</a>
-	<a href="http://localhost:8080/LiveRoomWeb/home">home</a>
+	<a href="http://localhost:8080/LiveRoomWeb/index">home</a>
 
 
 

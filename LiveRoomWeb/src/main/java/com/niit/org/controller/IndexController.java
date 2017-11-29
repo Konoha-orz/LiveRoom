@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.niit.org.bean.Account;
 import com.niit.org.bean.LiveRoom;
 import com.niit.org.bean.Role;
 import com.niit.org.dto.LiveRoomDTO;

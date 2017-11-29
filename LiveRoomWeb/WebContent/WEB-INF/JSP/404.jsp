@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>出错了</title>
+<title>404 -- 页面找不到</title>
 </head>
 <body>
-${pageContext.exception.message}
+<h2>您要访问的资源不存在！！！</h2>
+<a href="/LiveRoomWeb/index">返回首页</a>
 </body>
 </html>

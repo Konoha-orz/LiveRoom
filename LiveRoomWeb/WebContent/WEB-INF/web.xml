@@ -57,7 +57,7 @@
 <welcome-file-list>
     <welcome-file>index</welcome-file>
 </welcome-file-list>
-<!-- 全局捕获异常代码 -->
+<!-- 全局捕获异常代码 
  <error-page>
      <error-code>404</error-code>
      <location>/WEB-INF/JSP/error.jsp</location>
@@ -70,4 +70,5 @@
      <exception-type>java.lang.NullPointException</exception-type>
      <location>/WEB-INF/JSP/error.jsp</location>
  </error-page>
+ -->
 </web-app>
