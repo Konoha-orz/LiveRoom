@@ -1,3 +1,4 @@
+<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -6,7 +7,7 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%String context=request.getContextPath();%>/
+<%String context=request.getContextPath();%>
 <html>
 
 <head>
@@ -26,6 +27,8 @@
 </head>
 
 <body>
+
+<jsp:include page="NavigateHeader.jsp"/>
 
 <div class="container">
 	<div class="row clearfix">
@@ -319,8 +322,12 @@ var liveroom = new Vue({
                  contentType: "application/json"
              }).done(function (data) {
                  if (data.code === 1 && data.room_info !== null) {
+                	 // 1号房间
                      liveroom.roomInfo = data.room_info;
-                     liveroom.rtmpSource = data.room_info.rtmpurl+"/"+data.room_info.seriescode;
+                     if(liveroom.roomInfo.id!=1){
+                	   liveroom.rtmpSource =data.room_info.rtmpurl+"/"+data.room_info.seriescode;
+                     }else
+                    	 liveroom.rtmpSource =data.room_info.rtmpurl;
                      liveroom.videoInit();
                  }
              }).fail(function (err) {

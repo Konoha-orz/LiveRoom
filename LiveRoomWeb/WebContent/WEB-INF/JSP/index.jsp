@@ -24,6 +24,7 @@
    List<LiveRoomDTO> outsideList=(List<LiveRoomDTO>)roomMap.get("outsideList");
    List<LiveRoomDTO> gameList=(List<LiveRoomDTO>)roomMap.get("gameList");
    List<LiveRoomDTO> foodList=(List<LiveRoomDTO>)roomMap.get("foodList");
+   List<LiveRoomDTO> hotList=(List<LiveRoomDTO>)roomMap.get("hotList");
 
 
 %>
@@ -54,61 +55,7 @@
 <body class="index-skin-anniversary">
 
 	<!-- header start -->
-	<header id="panda_header" data-current="index"
-		data-logo-url="https://i.h2.pdim.gs/bae905b5ccc183b82c00b445c5fb4c89.png">
-	<div class="panda-header-container clearfix">
-		<div class="panda-header">
-
-			<div class="header-tab-container clearfix">
-				<div id="panda_header_index" class="header-tab ">
-					<a href="index">首页</a>
-				</div>
-				<div id="panda_header_all_lives" class="header-tab">
-					<a href="https://www.panda.tv/all">全部</a>
-				</div>
-				<div id="panda_header_go_sort" class="header-tab">
-					<a href="https://www.panda.tv/cate">分类</a>
-				</div>
-
-
-
-			</div>
-
-			<%
-				if (session.getAttribute("username") == null) {
-			%>
-			<div class="header-tool-user-info">
-				<a class="tool-user-info-login header-login-btn" href="login">登录</a>
-				<b>|</b> <a class="tool-user-info-regist header-register-btn"
-					href="register">注册</a>
-			</div>
-			<%
-				} else {
-					User user = (User) session.getAttribute("user");
-					String username = user.getUsername();
-			%>
-			<div class="header-tool-user-info">
-				<a class="tool-user-info-login header-login-btn" href="userInfo"><%=username%></a>
-				<b>|</b> <a class="tool-user-info-regist header-register-btn"
-					href="logout">注销</a>
-			</div>
-			<%
-				}
-			%>
-
-			<div class="panda-search header-tool">
-				<form name="room-search" action="/LiveRoomWeb/search"
-					method="post" target="_top" class="search-form">
-					<input type="text" name="searchKey" value="搜房间号/主播" autocomplete="off"
-						class="search-key search-default">
-					<div class="search-submit-btn">
-						<input type="submit" class="search-submit">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	</header>
+	<jsp:include page="NavigateHeader.jsp"/>
 	<!-- header end -->
 	<div class="index-wrapper">
 		<div class="index-slider-video-container"
@@ -121,7 +68,7 @@
 				</video>
 			</div>
 
-			<a target="_blank" href="http://www.panda.tv/sp/anniversary.html"
+			<a target="_blank" href="liveroom/1"
 				class="index-slider-outlink" data-toggle="panda-monitor"
 				data-paew="shouye-bj-1"></a>
 		</div>
@@ -142,7 +89,8 @@
 				</div>
 			</div>
 			<ul class="figrues-list clearfix">
-				<li class="list-item"><a href="https://www.panda.tv/453109"
+				<%for(LiveRoomDTO room:hotList){  String url= "liveroom/"+room.getId();           %>
+				<li class="list-item"><a href="<%=url%>"
 					target="_blank" data-toggle="panda-monitor" data-paew="shouye-rm-1">
 						<div class="pd-thumb">
 							<div class="pictures">
@@ -152,100 +100,17 @@
 							</div>
 							<div class="thumb-layer"></div>
 							<div class="play-btn"></div>
-							<div class="thumb-title" title="KPL22日精彩重播">KPL22日精彩重播</div>
+							<div class="thumb-title" title="<%=room.getTitle()%>"><%=room.getTitle()%></div>
 						</div>
 						<div class="thumb-info">
 							<div class="thumb-list">
-								<span class="thumb-nickname">KPL职业联赛</span> <span
+								<span class="thumb-nickname"><%=room.getUsername()%></span> <span
 									class="thumb-number">20047</span>
 							</div>
 							<div class="thumb-bar"></div>
 						</div>
 				</a></li>
-				<li class="list-item"><a href="https://www.panda.tv/404055"
-					target="_blank" data-toggle="panda-monitor" data-paew="shouye-rm-2">
-						<div class="pd-thumb">
-							<div class="pictures">
-								<img class="thumb-img thumb-img-lazy"
-									data-original="https://i.h2.pdim.gs/90/9645de158023974d052aa0d7b7921e2c/w338/h190.jpg"
-									src="images/h190.jpg" style="display: block;">
-							</div>
-							<div class="thumb-layer"></div>
-							<div class="play-btn"></div>
-							<div class="thumb-title" title="我们是非主流职业队">我们是非主流职业队</div>
-						</div>
-						<div class="thumb-info">
-							<div class="thumb-list">
-								<span class="thumb-nickname">主播少囧</span> <span
-									class="thumb-number">947351</span>
-							</div>
-							<div class="thumb-bar"></div>
-						</div>
-				</a></li>
-				<li class="list-item"><a href="https://www.panda.tv/371037"
-					target="_blank" data-toggle="panda-monitor" data-paew="shouye-rm-3">
-						<div class="pd-thumb">
-							<div class="pictures">
-								<img class="thumb-img thumb-img-lazy"
-									data-original="https://i.h2.pdim.gs/beb7620618734698301c039873dcd136.jpeg"
-									src="images/beb7620618734698301c039873dcd136.jpeg"
-									style="display: block;">
-							</div>
-							<div class="thumb-layer"></div>
-							<div class="hot-tips hot2">蓝光</div>
-							<div class="play-btn"></div>
-							<div class="thumb-title" title="S7八强赛第四日精彩回放">S7八强赛第四日精彩回放</div>
-						</div>
-						<div class="thumb-info">
-							<div class="thumb-list">
-								<span class="thumb-nickname">S7全球总决赛</span> <span
-									class="thumb-number">146761</span>
-							</div>
-							<div class="thumb-bar"></div>
-						</div>
-				</a></li>
-				<li class="list-item"><a href="https://www.panda.tv/135069"
-					target="_blank" data-toggle="panda-monitor" data-paew="shouye-rm-4">
-						<div class="pd-thumb">
-							<div class="pictures">
-								<img class="thumb-img thumb-img-lazy"
-									data-original="https://i.h2.pdim.gs/90/53c4b78094876ebecc12809839894684/w338/h190.jpg"
-									src="images/h190.jpg">
-							</div>
-							<div class="thumb-layer"></div>
-							<div class="play-btn"></div>
-							<div class="thumb-title" title="脏活累活让我来！？">脏活累活让我来！？</div>
-						</div>
-						<div class="thumb-info">
-							<div class="thumb-list">
-								<span class="thumb-nickname">守卫者</span> <span
-									class="thumb-number">54512</span>
-							</div>
-							<div class="thumb-bar"></div>
-						</div>
-				</a></li>
-				<li class="list-item"><a href="https://www.panda.tv/11991"
-					target="_blank" data-toggle="panda-monitor" data-paew="shouye-rm-5">
-						<div class="pd-thumb">
-							<div class="pictures">
-								<img class="thumb-img thumb-img-lazy"
-									data-original="https://i.h2.pdim.gs/90/c7e6d97fd163f2d6e36bf96814c3c83b/w338/h190.jpg"
-									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-							</div>
-							<div class="thumb-layer"></div>
-							<div class="play-btn"></div>
-							<div class="thumb-title" title="第一老鼠，走A一秀五 8分羊刀">第一老鼠，走A一秀五
-								8分羊刀</div>
-						</div>
-						<div class="thumb-info">
-							<div class="thumb-list">
-								<span class="thumb-nickname">瓜皮乐QvQ</span> <span
-									class="thumb-number">10663</span>
-							</div>
-							<div class="thumb-bar"></div>
-						</div>
-				</a></li>
-
+				<%}%>
 			</ul>
 		</div>
 		<!-- 热门直播 end -->
@@ -332,7 +197,7 @@
 
 						</div>
 						<ul class="figrues-list figrues-list-line1 clearfix">
-							<%for(LiveRoomDTO room:outsideList){  String url= "liveroom/"+room.getId();           %>
+							<%for(LiveRoomDTO room:outsideList){  String url= "liveroom/"+room.getId();%>
 							
 							<li class="list-item"><a href="<%=url%>"
 								target="_blank">
