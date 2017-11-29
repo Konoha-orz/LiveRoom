@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import com.niit.org.bean.LiveRoom;
+import com.niit.org.dto.LiveRoomDTO;
 import com.niit.org.mapper.ILiveRoomService;
 import com.niit.org.util.ThumbNailUtil;
 
@@ -26,8 +27,7 @@ public class LiveController {
 	
     @RequestMapping(value = "/liveroom/{id}",method = RequestMethod.GET)
     public String index(@PathVariable("id") Integer roomId,HttpServletRequest request, ModelMap modelMap){
-
-        LiveRoom room = ilrs.queryRoomById(roomId);
+		LiveRoomDTO room = ilrs.queryRoomById(roomId).get(0);
         modelMap.addAttribute("room_info",room);
         // 进入直播间有两种方式（检索进入，url输入进入），判断房间是否存在
         if (room == null) {
@@ -38,7 +38,8 @@ public class LiveController {
     // 主播是否在线
     @RequestMapping(value = "/isOnline",method = RequestMethod.GET)
     public @ResponseBody Map<String,Object> isOnline(@RequestParam("roomId")Integer roomId){
-        LiveRoom room = ilrs.queryRoomById(roomId);
+    	
+    	LiveRoomDTO room = ilrs.queryRoomById(roomId).get(0);
     	Map<String, Object> map = new HashMap<>();
     	if (room == null) {
     		map.put("code", 0);

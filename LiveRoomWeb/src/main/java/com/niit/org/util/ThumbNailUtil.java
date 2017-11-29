@@ -100,43 +100,8 @@ public class ThumbNailUtil {
     	}
     	return name;
     }
-    // ָ��ĳ�������ts���н�ͼ
-    public static Map<String,ArrayList<Integer>> maxNumber(File[] files) {
-    	Map<String,ArrayList<Integer>> map = new HashMap<String,ArrayList<Integer>>();
-    	String fileName = "",id="";
-    	ArrayList<Integer> ts = new ArrayList<Integer>();
-    	
-    	if (files.length == 0) {
-    		//�ļ���Ϊ��
-    	} else {
-    		for (File file : files) {
-    			if (fileName.endsWith(".ts")) {
-	    			fileName = file.getName();
-	    			id = fileName.split("-")[0];
-	    			if(map.containsKey(id)) {
-	    				ts = map.get(id);
-	    				ts.add(Integer.valueOf(fileName.split("-")[1]));
-	    			} else {
-	    				ts = new ArrayList<Integer>();
-	    				ts.add(Integer.valueOf(fileName.split("-")[1]));
-	    				map.put(id, ts);
-	    			}
-    			}
-    		}
-    	}
-    	for (String str : map.keySet()) {
-    		ts = map.get(str);
-			Collections.sort(ts, new Comparator<Integer>() {
-				@Override
-				public int compare(Integer o1, Integer o2) {
-					return o1.compareTo(o2);
-				}
-		    });
-	       System.out.println("key= "+ str + " and value= " + map.get(str));
-        }
-    	return map; 
-    }
 }
+
 /**
  *     使用方法
  *   	String toolPath = "D:\\\\Plugins\\\\ffmpeg-20171120-8f4702a-win64-static\\\\bin\\\\ffmpeg.exe";
@@ -147,4 +112,3 @@ public class ThumbNailUtil {
 //    	tnu.traverseFolder(sourcePath);
  * 
  * */
- */

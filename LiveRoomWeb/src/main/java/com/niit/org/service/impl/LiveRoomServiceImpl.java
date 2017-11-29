@@ -28,7 +28,7 @@ public class LiveRoomServiceImpl implements LiveRoomService{
 	}
 
 	@Override
-	public LiveRoom queryRoomById(Integer roomId) {
+	public List<LiveRoomDTO> queryRoomById(Integer roomId) {
 		
 		return ilrs.queryRoomById(roomId);
 	}
@@ -37,6 +37,18 @@ public class LiveRoomServiceImpl implements LiveRoomService{
 	public List<LiveRoomDTO> getListByType(String type) {
 		
 		return ilrs.getListByType(type);
+	}
+
+	@Override
+	public List<LiveRoomDTO> getHotList() {
+		// TODO Auto-generated method stub
+		return ilrs.getHotList();
+	}
+
+	@Override
+	public List<LiveRoomDTO> getListByType(String type, int num) {
+		// TODO Auto-generated method stub
+		return ilrs.getListByTypeInNum(type, num);
 	}
 
 }
