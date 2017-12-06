@@ -32,6 +32,7 @@
 
 <body>
 
+    <jsp:include page="NavigateHeader.jsp"/>
 	<div class="pd-sc-container">
 		<!-- side tools bar start -->
 		<div id="side-tools-bar" class="pd-sc-sidebar">
@@ -128,6 +129,7 @@
 
 		</div>
 		<!-- side tools bar end -->
+		
 		<div id="main-container" class="pd-sc-content"
 			style="visibility: visible;">
 
