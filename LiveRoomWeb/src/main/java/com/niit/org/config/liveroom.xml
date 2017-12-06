@@ -13,6 +13,19 @@
 		select * from liveroom where userid=#{userid} 
 	</select>
 	<select id="createLiveroom" resultType="com.niit.org.bean.Liveroom">
-		insert into Liveroom(title,dscp,userid,username,categoryname,rtmpurl,status) values(#{title},#{dscp},#{userid},#{username},#{categoryname},#{rtmpurl},#{status})
+		insert into Liveroom(title,dscp,userid,categoryname,rtmpurl,status) values(#{title},#{dscp},#{userid},#{categoryname},#{rtmpurl},#{status})
+	</select>
+	<select id="queryLiveRoomById" resultType="com.niit.org.dto.LiveRoomDTO">
+		select
+		l.id as id ,
+		l.title as title,
+		l.dscp as dscp ,
+		l.userid as userid ,
+		l.categoryname as categoryname,
+		l.rtmpurl as rtmpurl,
+		l.status as status,
+		u.username as username
+		from liveroom l left join user u on l.userid=u.id
+		where l.id=#{userid}
 	</select>
 </mapper>

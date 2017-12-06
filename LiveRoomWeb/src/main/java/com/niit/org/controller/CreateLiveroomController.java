@@ -45,7 +45,6 @@ public class CreateLiveroomController {
 		int status=0;
 		Liveroom liveroom = new Liveroom();
 		liveroom.setUserid(userid);
-		liveroom.setUsername(username);
 		liveroom.setTitle(title);
 		liveroom.setDscp(dscp);
 		liveroom.setCategoryname(categoryname);

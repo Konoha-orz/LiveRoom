@@ -26,3 +26,14 @@ public class NavController {
 		return "nav";
 	}
 }
+@Controller
+
+@RequestMapping("/userInfo")
+class UserInfoController {
+	
+	@RequestMapping()
+	public String userInfo() {
+		return "userInfo";
+	}
+	
+}
