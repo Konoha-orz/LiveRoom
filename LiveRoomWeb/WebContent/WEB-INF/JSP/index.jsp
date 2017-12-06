@@ -298,12 +298,8 @@
 
 	</div>
 	</footer>
-
 	<!-- footer end -->
-
-
-
-
+	<jsp:include page="message.jsp" />
 
 	<script>
 		var chatroom = new Vue({

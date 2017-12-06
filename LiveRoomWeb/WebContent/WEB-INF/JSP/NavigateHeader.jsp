@@ -129,9 +129,21 @@
 <script>
 var oSort = $("#panda_header_go_sort").children('a');
 var oMenu = $("#go_sort_select");
+var oForm = document.forms['room-search'];
 console.log(oSort,oMenu)
 oSort.on('click',function(){
 	oMenu.fadeToggle(500);
 })
+console.log(oForm)
+// 表单提交判断
+oForm.addEventListener("submit",function(event){
+	var content = oForm.searchKey.value;
+	event = event || window.event;
+	if(!(content && content.length > 0)) {
+		window.alert.show();
+		event.preventDefault();
+	}
+})
+
 </script>
 </html>

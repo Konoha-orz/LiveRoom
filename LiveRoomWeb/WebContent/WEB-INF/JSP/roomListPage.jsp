@@ -29,7 +29,20 @@
 <title>直播间列表</title>
 <jsp:include page="StaticResources.jsp" />
 </head>
-
+<style>
+	.video-list-item {
+		width: 317px !important;
+	}
+	
+	.video-list-item .video-img {
+		height: 178px !important;
+	}
+	
+	.video-highlight .video-hls {
+		width: 782px !important;
+		left: -68px !important;
+	}
+</style>
 <body>
 
 	<div class="pd-sc-container">
@@ -48,7 +61,7 @@
 							<div class="panda-search ">
 								<form name="room-search" action="/LiveRoomWeb/roomlist/search"
 									method="post" target="_top" class="search-form">
-									<input type="text" name="searchKey" value="搜房間號/主播" 
+									<input type="text" name="searchKey" placeholder="搜房間號/主播" 
 										autocomplete="off" class="search-key search-default">
 									<div class="search-submit-btn" data-toggle="panda-monitor"
 										data-paew="pc_web-all-sidebar_search">
@@ -179,30 +192,20 @@
             <%} %>
 		</div>
 	</div>
+	<jsp:include page="message.jsp" />
 
-
-
-
-
-
-	<!--4.326.0.19852-->
-	<div style="display: none;">
-		<style>
-.video-list-item {
-	width: 317px !important;
-}
-
-.video-list-item .video-img {
-	height: 178px !important;
-}
-
-.video-highlight .video-hls {
-	width: 782px !important;
-	left: -68px !important;
-}
-</style>
-	</div>
-
-	</div>
 </body>
+<script>
+var oForm = document.forms['room-search'];
+// 表单提交判断
+oForm.addEventListener("submit",function(event){
+	var content = oForm.searchKey.value;
+	event = event || window.event;
+	if(!(content && content.length > 0)) {
+		window.alert.show();
+		event.preventDefault();
+	}
+})
+
+</script>
 </html>
