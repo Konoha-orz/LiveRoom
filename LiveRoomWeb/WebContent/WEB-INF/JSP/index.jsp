@@ -29,20 +29,7 @@
 
 %>
 
-<title>在线直播间</title>
-
-<link rel="stylesheet" href="css/d4e0488237db533e.css">
-<link rel="stylesheet" href="css/ruc_v1.1.5.css">
-<link rel="stylesheet" href="css/fc9e619cd23e8c28.css">
-<link rel="stylesheet" href="css/596c2be88ac9a5a0.css">
-<link rel="stylesheet" href="css/93c97f35e37e6edb.css">
-<link rel="stylesheet" href="css/level-style.css">
-<script src="js/da870659adfe1ddc.js"></script>
-<script src="js/hm.js"></script>
-<script src="js/ff7cbc1b3b59cc0a.js"></script>
-<link href="css/videojs.css" rel="stylesheet">
-<script src="js/video.js"></script>
-<script src="js/vue.js"></script>
+<jsp:include page="StaticResources.jsp"/>
 <title>在线直播间</title>
 
 
@@ -85,7 +72,7 @@
 					class="tit2">热门</span>
 
 				<div class="more">
-					<a href="https://www.panda.tv/all" target="_blank">更多</a>
+					<a href="/LiveRoomWeb/roomlist/all" target="_blank">更多</a>
 				</div>
 			</div>
 			<ul class="figrues-list clearfix">
@@ -132,7 +119,7 @@
 					<div class="index-channel-cnt clearfix">
 						<div class="index-channel-title">
 							<div class="index-channel-name">
-								<a href="https://www.panda.tv/cate/food" target="_blank"><span
+								<a href="/LiveRoomWeb/roomlist/category/美食" target="_blank"><span
 									class="avt"> <i class="avt-bg"
 										style="background-image: url(images/foodchannel.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/ec004e6db0a3390e1a1e0c3caaf1b96d.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
 								</span> <span class="tips tips-color-green"><i class="num">38</i><i
@@ -141,7 +128,7 @@
 							<ul class="labers clearfix">
 							</ul>
 							<div class="more">
-								<a href="https://www.panda.tv/cate/food" target="_blank">更多</a>
+								<a href="/LiveRoomWeb/roomlist/category/美食" target="_blank">更多</a>
 							</div>
 
 						</div>
@@ -184,7 +171,7 @@
 					<div class="index-channel-cnt clearfix">
 						<div class="index-channel-title">
 							<div class="index-channel-name">
-								<a href="https://www.panda.tv/cate/hwzb" target="_blank"><span
+								<a href="/LiveRoomWeb/roomlist/category/户外直播" target="_blank"><span
 									class="avt"> <i class="avt-bg"
 										style="background-image: url(images/outsidechannel.png); background-image: none\9;"></i>
 								</span> <span class="tips tips-color-green"><i class="num">105</i><i
@@ -192,7 +179,7 @@
 							</div>
 
 							<div class="more">
-								<a href="https://www.panda.tv/cate/hwzb" target="_blank">更多</a>
+								<a href="/LiveRoomWeb/roomlist/category/户外直播" target="_blank">更多</a>
 							</div>
 
 						</div>
@@ -234,7 +221,7 @@
 					<div class="index-channel-cnt clearfix">
 						<div class="index-channel-title">
 							<div class="index-channel-name">
-								<a href="https://www.panda.tv/cate/zhuji" target="_blank"><span
+								<a href="/LiveRoomWeb/roomlist/category/游戏" target="_blank"><span
 									class="avt"> <i class="avt-bg"
 										style="background-image: url(images/gamechannel.jpeg); background-image: none\9; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src=https://i.h2.pdim.gs/f0ed6e56b26c57d24794f57f8c9f98f8.jpeg, sizingMethod=&amp;#39;scale&amp;#39;)"></i>
 								</span> <span class="tips tips-color-green"><i class="num">97</i><i
@@ -242,7 +229,7 @@
 							</div>
 
 							<div class="more">
-								<a href="https://www.panda.tv/cate/zhuji" target="_blank">更多</a>
+								<a href="/LiveRoomWeb/roomlist/category/游戏" target="_blank">更多</a>
 							</div>
 
 						</div>
@@ -285,6 +272,7 @@
 	</div>
 
 
+<<<<<<< HEAD
 	<!-- footer start -->
 	<footer id="panda_footer">
 	<div class="footer-text">
@@ -300,6 +288,13 @@
 	</footer>
 	<!-- footer end -->
 	<jsp:include page="message.jsp" />
+=======
+<jsp:include page="footer.jsp"/>
+
+
+
+
+>>>>>>> ae9e6a609e056110b37302d7a9d778b79d12d047
 
 	<script>
 		var chatroom = new Vue({

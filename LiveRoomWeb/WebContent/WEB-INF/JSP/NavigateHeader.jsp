@@ -93,9 +93,9 @@
 				if (session.getAttribute("username") == null) {
 			%>
 			<div class="header-tool-user-info">
-				<a class="tool-user-info-login header-login-btn" href="login">登录</a>
+				<a class="tool-user-info-login header-login-btn" href="/LiveRoomWeb/login">登录</a>
 				<b>|</b> <a class="tool-user-info-regist header-register-btn"
-					href="register">注册</a>
+					href="/LiveRoomWeb/register">注册</a>
 			</div>
 			<%
 				} else {
