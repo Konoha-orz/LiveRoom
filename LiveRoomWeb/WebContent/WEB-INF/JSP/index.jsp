@@ -270,31 +270,7 @@
 		<div class="bw pd-plouto-container index-plouto-4"></div>
 
 	</div>
-
-
-<<<<<<< HEAD
-	<!-- footer start -->
-	<footer id="panda_footer">
-	<div class="footer-text">
-		<p>
-			<a href="http://www.miitbeian.gov.cn/" target="_blank">主页</a> | <a
-				href="http://www.panda.tv/news/1101414857/3700943925/3701130188.html"
-				target="_blank">全部</a> | <a target="_blank"
-				href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010802001046">分类</a>
-		</p>
-		<p>本网站为学校NIIT学生实训项目| Konoha&Tom&Teemo | 联系方式QQ：517136675</p>
-
-	</div>
-	</footer>
-	<!-- footer end -->
-	<jsp:include page="message.jsp" />
-=======
 <jsp:include page="footer.jsp"/>
-
-
-
-
->>>>>>> ae9e6a609e056110b37302d7a9d778b79d12d047
 
 	<script>
 		var chatroom = new Vue({

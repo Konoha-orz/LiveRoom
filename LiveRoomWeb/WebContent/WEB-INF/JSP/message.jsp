@@ -50,19 +50,27 @@
 		<p class="message-content">关键字不能为空哦！</p>
 	</div>
 </transition>
-<script>
-	var alert = new Vue({
-		el: "#alert",
+<script>	
+	var alert = [];
+	var nodeList = document.querySelectorAll(".message");
+	var len = nodeList.length;
+	var node = nodeList[len-1];
+	console.log(node,nodeList.length)
+	alert[len] = new Vue({
+		el: node,
 		data:{
 			duration:2000,
 			timer:null,
 			isShow:false
+		},		
+		mounted(){
+			console.log(this)
 		},
 		methods: {
 			show(){
-				clearInterval(window.alert.timer);
-				this.isShow = true;
 				var me = this;
+				clearInterval(this.timer);
+				this.isShow = true;
 				this.timer = setInterval(function(){
 					me.hide();
 				},this.duration)
