@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="<%=context%>/css/jquery.datetimepicker.css">
 <link rel="stylesheet" href="<%=context%>/css/sidebar_v1.1.0.css">
 <link rel="stylesheet" href="<%=context%>/css/level-style.css">
+<link rel="stylesheet" href="<%=context%>/css/navigate-header.css">
 <script src="<%=context%>/js/da870659adfe1ddc.js"></script>
 <script src="<%=context%>/js/hm.js"></script>
 <script src="<%=context%>/js/ff7cbc1b3b59cc0a.js"></script>
@@ -57,9 +58,17 @@
 				<div id="panda_header_go_sort" class="header-tab">
 					<a href="https://www.panda.tv/cate">分类</a>
 				</div>
-
-
-
+				<div id="go_sort_select">
+					<i></i>
+					<div class="sort-header"><p>直播分类</p></div>	
+					<div class="sort-body">
+						<span class="tag-item tag-info text-break" href="/LiveRoomweb/roomlist/id">美食</span>
+						<span class="tag-item tag-info text-break">户外直播666666666666666666</span>
+						<span class="tag-item tag-info text-break">游戏</span>
+						<span class="tag-item tag-info text-break">游戏</span>
+						<span class="tag-item tag-info text-break">游戏</span>
+					</div>
+				</div>
 			</div>
 
 			<%

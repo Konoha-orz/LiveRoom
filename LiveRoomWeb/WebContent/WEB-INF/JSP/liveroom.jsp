@@ -306,34 +306,12 @@ var liveroom = new Vue({
 	}, 
 	methods:{
 		getRoomInfo:function(){
-<<<<<<< HEAD
             this.roomInfo.id = ${room_info.id};
             this.roomInfo.title = "${room_info.title}";
             this.roomInfo.dscp = "${room_info.dscp}";
             this.roomInfo.rtmpurl = "${room_info.rtmpurl}";
             this.roomInfo.seriescode = ${room_info.seriescode};
             this.rtmpSource = this.roomInfo.rtmpurl+"/"+this.roomInfo.seriescode;
-=======
-			var obj = {roomId:chatroom.roomId}
-			 $.ajax({
-                 type: 'get',
-                 url: '/LiveRoomWeb/isOnline',
-                 data: obj,
-                 contentType: "application/json"
-             }).done(function (data) {
-                 if (data.code === 1 && data.room_info !== null) {
-                	 // 1号房间
-                     liveroom.roomInfo = data.room_info;
-                     if(liveroom.roomInfo.id!=1){
-                	   liveroom.rtmpSource =data.room_info.rtmpurl+"/"+data.room_info.seriescode;
-                     }else
-                    	 liveroom.rtmpSource =data.room_info.rtmpurl;
-                     liveroom.videoInit();
-                 }
-             }).fail(function (err) {
-            	 console.log(err)
-             });
->>>>>>> a31546da5a0c9658af6b4c239ef4a08a65db6f00
 		},
 		videoInit: function(){
 			let me = this
