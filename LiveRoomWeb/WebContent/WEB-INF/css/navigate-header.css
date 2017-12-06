@@ -1,2 +1,80 @@
 @charset "UTF-8";
+#go_sort_select{
+	box-shadow:1px 1px 10px #ccc;
+	width:300px;
+	min-height:50px;
+	background:#fff;
+	padding:5px 20px;
+	padding-bottom:20px;
+	position:relative;
+    left: -50%;
+   	margin-left: 60px;
+}
+#go_sort_select i{
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -7px;
+    right: 50%;
+    margin-right: -7px;
+    border-top: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #ddd;
+   }
+   #go_sort_select i:after{
+    content: '';
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: 1px;
+    right: -7px;
+    border-top: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #fff;
+   }
+   .sort-header p{
+       margin: 8px 0 4px;
+    color: #444;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    font-family: "microsoft yahei";
+    text-align: left;
+   }
+   .sort-body{
+   	margin-top:10px;
+   	display:flex;
+   	flex-flow: row wrap;
+   }
+  #go_sort_select .sort-body a.tag-item{
+  		flex-shrink: 0;
+       display: block;
+    padding: 0;
+    width: 80px !important;
+    height: 24px;
+    background: #ececec;
+    border: none;
+    font-size: 12px;
+    line-height: 24px;
+    color: #797979;
+    text-align: center;
+    border-radius: 3px;
+    margin:0 5px 5px 0;
+    cursor:pointer;
+   }
+   #go_sort_select .sort-body a.tag-item:hover{
+   	color:#fff;
+   	background: #00ac97;
+   }
+   #go_sort_select .sort-body a.text-break{
+  	    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+   }
+   #go_sort_select .no-data-tip{
+   	text-align:center;
+   	padding:10px;
+   }
 

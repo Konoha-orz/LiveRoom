@@ -28,6 +28,7 @@
 <link rel="stylesheet" href="<%=context%>/css/navigate-header.css">
 <script src="<%=context%>/js/da870659adfe1ddc.js"></script>
 <script src="<%=context%>/js/hm.js"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="<%=context%>/js/ff7cbc1b3b59cc0a.js"></script>
 <link href="<%=context%>/css/videojs.css" rel="stylesheet">
 <script src="<%=context%>/js/video.js"></script>
@@ -40,6 +41,29 @@
 	visibility: hidden
 }
 </style>
+
+<script>
+(function(){
+	//查看全部分类
+	$.ajax({
+		type:'get',
+		url:'/LiveRoomWeb/category/all',
+		dataType:"json"
+	}).done(function(res) {
+		var oSelect = $("#go_sort_select .sort-body"),htmlTemplate="";
+		if(!(res && res.length> 0)) return;
+		res.forEach(function(item){
+			htmlTemplate += '<a class="tag-item tag-info text-break" href="/LiveRoomWeb/roomlist/category/'+item.categoryname+'">'+item.categoryname+'</a>';		
+		})
+		oSelect.append(htmlTemplate);
+	}).fail(function(err) {
+		var oSelect = $("#go_sort_select .sort-body"),
+		htmlTemplate = '<h3 class="no-data-tip">暂无数据</h3>';
+		oSelect.append(htmlTemplate);
+		console.log(err)
+	})
+})()
+</script>
 </head>
 <body>
 	<!-- header start -->
@@ -56,17 +80,11 @@
 					<a href="/LiveRoomWeb/roomlist/all">全部</a>
 				</div>
 				<div id="panda_header_go_sort" class="header-tab">
-					<a href="https://www.panda.tv/cate">分类</a>
-				</div>
-				<div id="go_sort_select">
-					<i></i>
-					<div class="sort-header"><p>直播分类</p></div>	
-					<div class="sort-body">
-						<span class="tag-item tag-info text-break" href="/LiveRoomweb/roomlist/id">美食</span>
-						<span class="tag-item tag-info text-break">户外直播666666666666666666</span>
-						<span class="tag-item tag-info text-break">游戏</span>
-						<span class="tag-item tag-info text-break">游戏</span>
-						<span class="tag-item tag-info text-break">游戏</span>
+					<a href="javascript:;">分类</a>
+					<div id="go_sort_select" style="display:none;">
+						<i></i>
+						<div class="sort-header"><p>直播分类</p></div>	
+						<div class="sort-body"></div>
 					</div>
 				</div>
 			</div>
@@ -96,7 +114,7 @@
 			<div class="panda-search header-tool">
 				<form name="room-search" action="/LiveRoomWeb/roomlist/search" method="post"
 					target="_top" class="search-form">
-					<input type="text" name="searchKey" value="搜房间号/主播"
+					<input type="text" name="searchKey" placeholder="搜房间号/主播"
 						autocomplete="off" class="search-key search-default">
 					<div class="search-submit-btn">
 						<input type="submit" class="search-submit">
@@ -108,4 +126,12 @@
 	</header>
 	<!-- header end -->
 </body>
+<script>
+var oSort = $("#panda_header_go_sort").children('a');
+var oMenu = $("#go_sort_select");
+console.log(oSort,oMenu)
+oSort.on('click',function(){
+	oMenu.fadeToggle(500);
+})
+</script>
 </html>

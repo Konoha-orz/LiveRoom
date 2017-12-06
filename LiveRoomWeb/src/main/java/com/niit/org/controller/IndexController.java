@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.niit.org.bean.Account;
 import com.niit.org.bean.LiveRoom;
 import com.niit.org.bean.Role;
 import com.niit.org.dto.LiveRoomDTO;
@@ -22,7 +23,7 @@ import com.niit.org.mapper.IRoleService;
 
 import com.niit.org.service.LiveRoomService;
 import com.niit.org.util.JschUtil;
-import com.niit.org.util.SearchKeyJudge;
+import com.niit.org.util.SearchKeyJudgeUtil;
 
 @Controller
 public class IndexController {
@@ -38,45 +39,30 @@ public class IndexController {
 	
 	
 	@Resource
-	private LiveRoomService lrs;
+	private LiveRoomService liveRoomService;
 	
 	@RequestMapping("/index")
 	public String index(ModelMap resultMap,HttpSession session) {
 		
 	    HashMap<String,List<LiveRoomDTO>> roomMap=new HashMap<>();
-		List<LiveRoomDTO> outsideList=lrs.getListByType("户外直播");
-		List<LiveRoomDTO> gameList=lrs.getListByType("游戏");
-		List<LiveRoomDTO> foodList=lrs.getListByType("美食");
+		List<LiveRoomDTO> outsideList=liveRoomService.getListByType("户外直播",4);
+		List<LiveRoomDTO> gameList=liveRoomService.getListByType("游戏",4);
+		List<LiveRoomDTO> foodList=liveRoomService.getListByType("美食",4);
+		List<LiveRoomDTO> hotList=liveRoomService.getHotList();
 		roomMap.put("outsideList", outsideList);
 		roomMap.put("gameList", gameList);
 		roomMap.put("foodList", foodList);
+		roomMap.put("hotList", hotList);
 		session.setAttribute("roomMap", roomMap);
 		
 		
 		return "index";
 	}
-		
+	
     @RequestMapping(value = "/home",method = RequestMethod.GET)
     public String chooseRoomView() {
         return "home";
     }
     
-    @RequestMapping(value = "/search",method = RequestMethod.POST)
-    public String enterRoom(HttpSession session,@RequestParam("searchKey") String searchKey, ModelMap modelMap){
-        
-    	SearchKeyJudge scJudge=new SearchKeyJudge();
-    	if(scJudge.isRoom(searchKey))
-    	{   
-    		return "redirect:/liveroom/"+searchKey;
-    	}
-    	else {
-              List<LiveRoomDTO> roomlist=lrs.searchByKey(searchKey);
-              
-              session.setAttribute("roomlist", roomlist);
-              return "roomListPage";
 
-    	}
-    	
-    		
-    }
 }

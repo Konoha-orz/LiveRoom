@@ -1,14 +1,11 @@
 =\=\=\=\=\=\=
 <<<<<<<=HEAD
->>>>>>>=origin/Konoha-orz
+>>>>>>>=a31546da5a0c9658af6b4c239ef4a08a65db6f00
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/JSP/LoginFail.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/LoginSuccess.jsp=UTF-8
-<<<<<<< HEAD
-encoding//WebContent/WEB-INF/JSP/error.jsp=UTF-8
-=======
 encoding//WebContent/WEB-INF/JSP/NavigateHeader.jsp=UTF-8
->>>>>>> a31546da5a0c9658af6b4c239ef4a08a65db6f00
+encoding//WebContent/WEB-INF/JSP/error.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/login.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/logout.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/registerSuccess.jsp=UTF-8

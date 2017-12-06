@@ -594,10 +594,6 @@
 	color: #fff
 }
 
-.panda-header-container .header-tab-container .header-tab:hover a {
-	color: #fff !important
-}
-
 .panda-header-container .header-tab-container .header-tab a {
 	color: #3c3c3c;
 	height: 56px;
@@ -607,10 +603,6 @@
 	text-align: center
 }
 
-.panda-header-container .header-tab-container .header-tab a:hover {
-	color: #fff;
-	background: #1cd388\9
-}
 
 .panda-header-container .header-tab-container .header-tab:nth-child(1):hover
 	~.header-tab-hover {
