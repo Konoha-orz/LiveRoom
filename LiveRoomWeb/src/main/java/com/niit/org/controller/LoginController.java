@@ -42,7 +42,7 @@ public class LoginController {
 				session.setAttribute("password", password_db);
 				session.setAttribute("email", email);
 				session.setAttribute("dscp", dscp_db);
-				return "LoginSuccess";
+				return "redirect:/index";
 			} else {
 				return "LoginFail";
 			}

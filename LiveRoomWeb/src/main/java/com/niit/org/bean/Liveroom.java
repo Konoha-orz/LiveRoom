@@ -9,6 +9,7 @@ public class Liveroom {
 	private String categoryname;
 	private String rtmpurl;
 	private int status;
+	private String seriescode;
 	public int getId() {
 		return id;
 	}
@@ -51,6 +52,12 @@ public class Liveroom {
 	}
 	public void setStatus(int status) {
 		this.status = status;
+	}
+	public String getSeriescode() {
+		return seriescode;
+	}
+	public void setSeriescode(String seriescode) {
+		this.seriescode = seriescode;
 	}
 	
 	
