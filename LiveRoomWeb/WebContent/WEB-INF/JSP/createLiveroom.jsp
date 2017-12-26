@@ -1,30 +1,46 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<!--
-Edit by @Teemo
-
-2017-10-25
-
-创建直播间界面，尚未完成。
--->
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<link rel="stylesheet" type="text/css" href="css/nav.css" />
+<link rel="stylesheet" type="text/css" href="css/teemocss.css" />
+<link rel="shortcut icon" href="images/favicon.ico" />
+<meta name="viewport" content="width=device-width">
+
+
+<title>直播间信息</title>
 </head>
+
 <body>
-<form>
-<p>Create Liveroom..</p>
-<select name="user">
-<option value="-1">请选择</option>
-<c:forEach items="${userList}" var="ul">
-<option value="${ul.username}">${ul.username}</option>
-</c:forEach>
-</select>
-</form>
+
+	<div class="div_nav">
+
+		<iframe src="nav" frameborder="0" scrolling="no" height="800px"></iframe>
+	</div>
+
+	<div class="div_main">
+	<div style="padding-top:20px" class="smart-green">
+		<h1>直播间信息</h1>
+		<form action="createLiveroom" name="createLiveroom" method="post">
+		<label for="title">直播间标题</label><input type="text" id="title" name="title" autofocus="autofocus"/><br />
+		<label for="dscp">直播间描述</label><input type="text" id="dscp" name="dscp" /><br />
+		<label for="categoryname">直播分类</label>
+		<select name="categoryname">
+			<option value="-1">请选择</option>
+			<c:forEach items="${categoryList}" var="cl">
+				<option value="${cl.categoryname}">${cl.categoryname}</option>
+			</c:forEach>
+		</select><br />
+		<label for="rtmpuel">推流地址</label><input type="text" id="rtmpurl" name="rtmpurl" /><br />
+		<input class="button" type="submit" value="开始直播" />
+		</form>
+		</div>
+	</div>
 </body>
 </html>

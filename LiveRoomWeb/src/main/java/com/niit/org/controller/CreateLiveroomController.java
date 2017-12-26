@@ -3,22 +3,19 @@ package com.niit.org.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.niit.org.bean.User;
+import com.niit.org.bean.Category;
+import com.niit.org.bean.LiveRoom;
+import com.niit.org.mapper.ICategory;
+import com.niit.org.mapper.ILiveroom;
 import com.niit.org.mapper.IUser;
-
-/*
- *Edit by @Teemo
- *
- *2017-10-25
- *
- *用于处理createLiveroom请求，尚未完成。。
- * 
- */
 
 
 @Controller
@@ -27,13 +24,58 @@ import com.niit.org.mapper.IUser;
 public class CreateLiveroomController {
 
 	@Resource
-	private IUser iuser; 
+	private ICategory icategory;
 	
-	@RequestMapping()
-	public String createLiveroom(ModelMap map) {
-		List<User> list = iuser.getAll();
-		map.addAttribute("userList", list);
-		return "createLiveroom";
+	@Resource
+	private IUser iuser;
+	
+	@Resource
+	private ILiveroom iliveroom;
+	
+	
+	
+	@RequestMapping(method=RequestMethod.POST)
+	public String createLiveroom(HttpServletRequest request,HttpSession session) {
+		String username=session.getAttribute("username").toString();
+		int userid =iuser.getUser(username).get(0).getId();
+		String title=request.getParameter("title").toString();
+		String dscp=request.getParameter("dscp").toString();
+		String categoryname=request.getParameter("categoryname").toString();
+		String rtmpurl=request.getParameter("rtmpurl").toString();
+		int status=0;
+		LiveRoom liveroom = new LiveRoom();
+		liveroom.setUserid(userid);
+		liveroom.setTitle(title);
+		liveroom.setDscp(dscp);
+		liveroom.setCategoryname(categoryname);
+		liveroom.setRtmpurl(rtmpurl);
+		liveroom.setStatus(status);
+		iliveroom.createLiveroom(liveroom);
+		return "myLiveroom";
 	}
 	
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public String liveroom(ModelMap map,HttpSession session) {
+		
+		String username=session.getAttribute("username").toString();
+		int userid =iuser.getUser(username).get(0).getId();
+		
+		try {
+			List<LiveRoom> liveroomList=iliveroom.getLiveroomByUserid(userid);
+			int status=liveroomList.get(0).getStatus();		
+			return "myLiveroom";
+		
+		}catch(Exception e){
+			List<Category> list =icategory.getAll();
+			map.addAttribute("categoryList", list);
+			return "createLiveroom";
+		
+		}
+	}
+	
+	
+	
 }
+
+

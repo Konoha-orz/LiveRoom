@@ -14,16 +14,12 @@ Edit by @Teemo
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
 	type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
 	type="text/css" />
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
-
 <meta name="viewport" content="width=device-width">
 
 <title>Login Success</title>
@@ -63,22 +59,14 @@ Edit by @Teemo
 
 
 <meta name="u2f-support" content="true">
-
+<link rel="shortcut icon" href="images/favicon.ico" />
+<meta http-equiv="Refresh"
+	content="3;url=http://localhost:8080/LiveRoomWeb/userInfo">
+<title>登陆成功</title>
 </head>
 
 <body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-	<h1>LoginSuccessfully....</h1>
-	<a href="http://localhost:8080/LiveRoomWeb/login">back</a>
-	<a href="http://localhost:8080/LiveRoomWeb/home">home</a>
-
-
-
-
-
-
-
-
 
 	<div class="position-relative js-header-wrapper ">
 
@@ -114,7 +102,7 @@ Edit by @Teemo
 						value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
 				</div>
 				<div class="auth-form-header p-0">
-					<h1>Message</h1>
+					<h1>消息</h1>
 				</div>
 
 
@@ -125,12 +113,12 @@ Edit by @Teemo
 
 					<div class="auth-form-body mt-3">
 						<div style="text-align: center">
-							<h2 for="Success Message">Login Successfully..</h2>
+							<h2 for="Success Message">登陆成功</h2>
+							<p>3秒后自动跳转</p>
 						</div>
 						<br />
 						<div style="text-align: center">
-							<a href="http://localhost:8080/LiveRoomWeb/userInfo">View
-								User Information</a>
+							<a href="http://localhost:8080/LiveRoomWeb/userInfo">查看个人信息</a>
 						</div>
 					</div>
 				</div>
@@ -142,8 +130,6 @@ Edit by @Teemo
 		</div>
 		<div class="modal-backdrop js-touch-events"></div>
 	</div>
-
-
 
 </body>
 

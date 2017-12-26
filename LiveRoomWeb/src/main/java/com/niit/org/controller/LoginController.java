@@ -45,7 +45,7 @@ public class LoginController {
 				session.setAttribute("password", password_db);
 				session.setAttribute("email", email);
 				session.setAttribute("dscp", dscp_db);
-				return "LoginSuccess";
+				return "redirect:/index";
 			} else {
 				return "LoginFail";
 			}
@@ -56,9 +56,35 @@ public class LoginController {
 	}
 
 	@RequestMapping(method = RequestMethod.GET)
-    public void login(HttpSession session) {}
-
+    public String login(HttpSession session) {
+		try {
+		if(session.getAttribute("username")!=null) {
+//			session.setAttribute("msg", "你好  "+session.getAttribute("username")+" !");
+//			session.setAttribute("logout", "<a href='http://localhost:8080/LiveRoomWeb/logout'>登出</a>");
+			return "userInfo";
+		}else {
+//			session.setAttribute("msg", "尚未登录");
+//			session.setAttribute("logout", " ");
+			return "login";
+		}
+		}catch(Exception e) {
+//			session.setAttribute("logout", " ");
+			return "login";
+		}
+//	}
+		
+	}
 	
+
 }
 	
-		
+@Controller
+@RequestMapping("/logout")
+class LogoutController {
+
+	@RequestMapping()
+	public String logout() {
+		return "logout";
+	}
+	
+}		

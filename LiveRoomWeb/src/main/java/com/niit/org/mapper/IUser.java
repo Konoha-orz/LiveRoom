@@ -19,4 +19,5 @@ public interface IUser {
    public void registerUser(User user);
    public List<User> getUser(String username);
    public void updateUser(User user);
+   public List<User> getUserById(int id);
 }
