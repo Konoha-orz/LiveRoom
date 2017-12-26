@@ -4,12 +4,11 @@
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/JSP/LoginFail.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/LoginSuccess.jsp=UTF-8
-encoding//WebContent/WEB-INF/JSP/error.jsp=UTF-8
-encoding//WebContent/WEB-INF/JSP/footer.jsp=UTF-8
-encoding//WebContent/WEB-INF/JSP/header.jsp=UTF-8
+encoding//WebContent/WEB-INF/JSP/NavigateHeader.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/login.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/logout.jsp=UTF-8
 encoding//WebContent/WEB-INF/JSP/registerSuccess.jsp=UTF-8
+encoding//src/main/java/com/niit/org/controller/CategoryController.java=UTF-8
 encoding//src/main/java/com/niit/org/controller/IndexController.java=UTF-8
 encoding//src/main/java/com/niit/org/controller/LiveController.java=UTF-8
 encoding//src/main/java/com/niit/org/controller/LoginController.java=UTF-8

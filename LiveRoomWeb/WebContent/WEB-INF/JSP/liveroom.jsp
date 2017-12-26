@@ -1,12 +1,14 @@
+<%@page import="java.util.List"%>
+<%@page import="com.fasterxml.jackson.annotation.JsonInclude.Include"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@page import="com.niit.org.bean.Category"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
 
     pageEncoding="utf-8"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<%String context=request.getContextPath();%>/
+<%String context=request.getContextPath();%>
 <html>
 
 <head>
@@ -24,48 +26,115 @@
 <title>LiveRoom</title>    
 
 </head>
+<%
+	
+    List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
+%>
+<body style="overflow: hidden;">
 
-<body>
+
 
 <div class="container">
-	<div class="row clearfix">
+<jsp:include page="NavigateHeader.jsp"/>
 		<!-- 左侧导航栏开始 -->
-		<div class="nav left-nav b1 ">
-			<div class="nav-header">
-				<a href="#"><img src="<%=context %>/images/6.jpg" /></a>
-			</div>
-			<div class="nav-search">
-				<div class="nav-search-wrapper">
-				<input type="text" class="search-input" placeholder="输入关键字"/>
-				<i class="icon icon-search glyphicon glyphicon-search"></i>
+		<!-- side tools bar start -->
+		<div id="side-tools-bar" class="pd-sc-sidebar">
+
+			<div
+				class="sidebar-container-next sidebar-add-events sidebar-no-login"
+				style="display: block;">
+
+				<div class="sidebar-expand">
+					<!-- sidebar-head start -->
+					<div class="sidebar-head">
+						<br /> <br /> <br /> <br />
+						<div class="sidebar-search">
+							<div class="panda-search ">
+								<form name="room-search" action="/LiveRoomWeb/roomlist/search"
+									method="post" target="_top" class="search-form">
+									<input type="text" name="searchKey" value="搜房間號/主播" 
+										autocomplete="off" class="search-key search-default">
+									<div class="search-submit-btn" data-toggle="panda-monitor"
+										data-paew="pc_web-all-sidebar_search">
+										<input type="submit" class="search-submit">
+									</div>
+								</form>
+							</div>
+						</div>
+						<!-- sidebar-events start -->
+
+					</div>
+					<!-- sidebar-head end -->
+					<div
+						class="sidebar-content ps-container ps-theme-default ps-active-y"
+						data-ps-id="bc11d1ce-bde9-7b95-c9b1-c389a23ec2a8"
+						style="bottom: 86px;">
+						<!-- sidebar-entrance start -->
+						<div class="sidebar-entrance">
+							<a target="_top" class="sidebar-entrance-item curcate"
+								data-cate="alllives" data-toggle="panda-monitor"
+								data-paew="pc_web-all-sidebar_alllives"
+								href="/LiveRoomWeb/roomlist/all"> <span class="icon alllives"></span>
+								<span class="sidebar-entrance-name">全部直播</span>
+							</a>
+
+						</div>
+						<!-- sidebar-entrance end -->
+
+						<!-- sidebar-cates start -->
+						<div class="sidebar-cates">
+						
+						    <%  for(Category category:categoryList){
+						    	String categoryUrl="/LiveRoomWeb/roomlist/category/"+category.getCategoryname();
+						    	%>
+							<div class="sidebar-cate-item-1stlevel cate-jingji"
+								data-cate="jingji">
+								<div class="title" data-cate="jingji">
+									<a target="_top" class="link"
+										href="<%=categoryUrl%>" data-cate="jingji"
+										data-toggle="panda-monitor"
+										data-paew="pc_web-all-sidebar_cate1_jingji"><%=category.getCategoryname()%> </a> <span
+										class="expand"> <i class="sidebar-icon"> </i> <span
+										class="sidebar-expand"> 展开 </span>
+									</span>
+								</div>
+
+
+							</div>
+                            <%} %>
+						</div>
+						<!-- sidebar-cates end -->
+
+						<div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+							<div class="ps-scrollbar-x" tabindex="0"
+								style="left: 0px; width: 0px;"></div>
+						</div>
+						<div class="ps-scrollbar-y-rail"
+							style="top: 0px; height: 672px; right: 0px;">
+							<div class="ps-scrollbar-y" tabindex="0"
+								style="top: 0px; height: 586px;"></div>
+						</div>
+					</div>
+
 				</div>
+				<div class="sidebar-collapse">
+					<div class="sidebar-collapse-head">
+						<a href="https://www.panda.tv/" target="_top"
+							class="sidebar-icon-home"> </a>
+					</div>
+
+
+				</div>
+
 			</div>
-			<div class="categories">
-				<ul>
-					<li>
-						<a href="#" class="category-item">
-							<span class="title">绝地求生</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="category-item">
-							<span class="title">英雄联盟</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="category-item">
-							<span class="title">王者荣耀</span>
-						</a>
-					</li>
-					<li>
-						<a href="#" class="category-item">
-							<span class="title">饥荒</span>
-						</a>
-					</li>
-				</ul>
-			</div>
+
+
+
 		</div>
+		<!-- side tools bar end -->
 		<!-- 左侧导航栏结束 -->
+	<div class="row clearfix">
+
 		<!-- 中间的视频播放区开始 -->
 		<div class="main b2" id="liveroom">
 			<div class="room-info">
@@ -319,8 +388,12 @@ var liveroom = new Vue({
                  contentType: "application/json"
              }).done(function (data) {
                  if (data.code === 1 && data.room_info !== null) {
+                	 // 1号房间
                      liveroom.roomInfo = data.room_info;
-                     liveroom.rtmpSource = data.room_info.rtmpurl+"/"+data.room_info.seriescode;
+                     if(liveroom.roomInfo.id!=1){
+                	   liveroom.rtmpSource =data.room_info.rtmpurl+"/"+data.room_info.seriescode;
+                     }else
+                    	 liveroom.rtmpSource =data.room_info.rtmpurl;
                      liveroom.videoInit();
                  }
              }).fail(function (err) {

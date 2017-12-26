@@ -43,13 +43,8 @@ Edit by @Teemo
 
 <meta property="fb:app_id" content="1401488693436528"/>
 
-<meta property="og:url" content="https://github.com"/>
-<meta property="og:site_name" content="GitHub"/>
-<meta property="og:title" content="Build software better, together"/>
-<meta property="og:description"
-	content="GitHub is where people build software. More than 25 million people use GitHub to discover, fork, and contribute to over 69 million projects."/>
-<meta property="og:image"
-	content="https://assets-cdn.github.com/images/modules/open_graph/github-logo.png"/>
+
+	
 <meta property="og:image:type" content="image/png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="1200"/>

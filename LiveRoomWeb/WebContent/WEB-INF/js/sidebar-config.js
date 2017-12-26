@@ -1,0 +1,4 @@
+var SIDEBAR_CONFIG = {
+  "SIDEBAR_EVENTS":[{"title":"\u4f4d\u7f6e1","name":"KeSPA\u676f","link":"http:\/\/www.panda.tv\/627367","tag":"\u8d5b\u4e8b","color":"red","colornew":"red"},{"title":"\u4f4d\u7f6e2","name":"KPL\u804c\u4e1a\u8054\u8d5b","link":"http:\/\/www.panda.tv\/kpl","tag":"\u8d5b\u4e8b","color":"red","colornew":"red"},{"title":"\u4f4d\u7f6e3","name":"\u52a0\u6ce8\u5427\uff01\u5927\u724c","link":"https:\/\/allin.pgc.panda.tv\/?channel=web_pgc-tjw-ch_hdbq2","tag":"\u7cbe\u54c1","color":"red","colornew":"red"}],
+  "SIDEBAR_REC_CATE":[{"title":"\u5206\u7c7b\u63a8\u8350\u4f4d1","ename":"pubg","cname":"\u7edd\u5730\u6c42\u751f","tag":"HOT"},{"title":"\u5206\u7c7b\u63a8\u8350\u4f4d2","ename":"yzdr","cname":"\u718a\u732b\u661f\u79c0","tag":"HOT"},{"title":"\u5206\u7c7b\u63a8\u8350\u4f4d3","ename":"acg","cname":"\u4e8c\u6b21\u5143","tag":"NEW"}]
+}
