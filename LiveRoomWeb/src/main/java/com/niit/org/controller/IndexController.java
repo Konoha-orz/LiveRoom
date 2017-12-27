@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.org.bean.Account;
+import com.niit.org.bean.Category;
 import com.niit.org.bean.LiveRoom;
 import com.niit.org.bean.Role;
 import com.niit.org.dto.LiveRoomDTO;
 import com.niit.org.mapper.IAccountService;
 import com.niit.org.mapper.ILiveRoomService;
 import com.niit.org.mapper.IRoleService;
-
+import com.niit.org.service.CategoryService;
 import com.niit.org.service.LiveRoomService;
 import com.niit.org.util.JschUtil;
 import com.niit.org.util.SearchKeyJudgeUtil;
@@ -36,6 +37,8 @@ public class IndexController {
 	@Resource
 	private IAccountService iac;
 	
+	@Resource
+	CategoryService categoryService;
 	
 	
 	@Resource
@@ -54,6 +57,8 @@ public class IndexController {
 		roomMap.put("foodList", foodList);
 		roomMap.put("hotList", hotList);
 		session.setAttribute("roomMap", roomMap);
+		List<Category> categoryList=categoryService.getCategoryList();
+    	session.setAttribute("categoryList", categoryList);
 		
 		
 		return "index";

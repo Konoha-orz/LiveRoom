@@ -24,7 +24,7 @@ public interface ILiveRoomService {
 	
 	public List<LiveRoomDTO> getHotList();
 	
-	
-
+	//获取已关注的直播间列表
+	public List<LiveRoomDTO> getCollectListByUserId(@Param(value="userId")String userId);
 	
 }

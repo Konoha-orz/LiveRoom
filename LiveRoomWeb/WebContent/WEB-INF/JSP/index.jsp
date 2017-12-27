@@ -44,7 +44,7 @@
 	<!-- header start -->
 	<jsp:include page="NavigateHeader.jsp"/>
 	<!-- header end -->
-	<div class="index-wrapper">
+		<div class="index-wrapper" style="position:relative;z-index:0;">
 		<div class="index-slider-video-container"
 			style="background: url(images/002.jpg) center center no-repeat rgb(28, 33, 29);">
 			<div id="chatroom" class="index-slider-video-content clearfix "
