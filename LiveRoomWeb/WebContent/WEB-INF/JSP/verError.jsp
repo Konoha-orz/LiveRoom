@@ -80,7 +80,7 @@ Edit by @Teemo
 						<div  style="text-align:center">
 						<h2 for="Success Message">验证码错误</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/forgotPassword">重试</a></div>
+						<a href="/LiveRoomWeb/forgotPassword">重试</a></div>
 					</div>
 					</div>
 		
