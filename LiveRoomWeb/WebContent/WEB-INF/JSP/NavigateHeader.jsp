@@ -92,7 +92,7 @@
 			<div class="header-tool-user-info">
 				<a class="tool-user-info-login header-login-btn" href="userInfo"><%=username%></a>
 				<b>|</b> <a class="tool-user-info-regist header-register-btn"
-					href="logout">注销</a>
+					href="<%=context%>/logout">注销</a>
 			</div>
 			<%
 				}

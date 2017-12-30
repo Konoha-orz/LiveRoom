@@ -3,19 +3,37 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.niit.org.mapper.CollectionMapper">
-	<insert id="insertCollect" >
-	    insert into collection(userid,liveroomid) values(#{userId},#{roomId})
+	<insert id="insertCollect">
+		insert into collection(userid,liveroomid) values(#{userId},#{roomId})
 	</insert>
-	
-	<delete id="deleteCollect" >
-	   delete from collection where userid=#{userId} and liveroomid=#{roomId}
+
+	<delete id="deleteCollect">
+		delete from collection where userid=#{userId} and liveroomid=#{roomId}
 	</delete>
-	
+
 	<select id="queryStatus" resultType="String">
-	  SELECT count(id) FROM collection where userid=#{userId} and liveroomid=#{roomId}
+		SELECT count(id) FROM collection where userid=#{userId} and
+		liveroomid=#{roomId}
 	</select>
-	
-	<select id="getMyList">
-	
+
+	<select id="getMyList" resultType="com.niit.org.dto.LiveRoomDTO" parameterType="Integer">
+		select
+		l.id as id ,
+		l.title as
+		title,
+		l.dscp as dscp ,
+		l.userid as userid ,
+		l.categoryname as
+		categoryname,
+		l.rtmpurl as rtmpurl,
+		l.status as status,
+		l.seriescode as
+		seriescode ,
+		u.username as username
+		from liveroom l left join user u on
+		l.userid=u.id
+		where
+		l.id in (select liveroomid from collection where userid=#{id})
+		order by l.status DESC
 	</select>
 </mapper>

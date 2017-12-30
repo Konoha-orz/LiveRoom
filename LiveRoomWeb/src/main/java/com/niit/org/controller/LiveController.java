@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import com.niit.org.bean.Account;
 import com.niit.org.bean.LiveRoom;
 import com.niit.org.bean.RespondBody;
+import com.niit.org.bean.User;
 import com.niit.org.dto.LiveRoomDTO;
 import com.niit.org.dto.SubscribeDTO;
 import com.niit.org.mapper.ILiveRoomService;
@@ -19,6 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import java.awt.geom.Ellipse2D;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -84,9 +86,16 @@ public class LiveController {
 	}
 	
 	@RequestMapping(value = "/mycollect/{id}")
-	public String MyCollect(@PathVariable("id") Integer userId, HttpServletRequest request, ModelMap modelMap,HttpSession session) {
+	public String MyCollect(@PathVariable("id") Integer id, HttpServletRequest request, ModelMap modelMap,HttpSession session) {
+		User user=(User) session.getAttribute("user");
+		if(user.getId()!=id) {
+			return "verError";
+		}else {
+			List<LiveRoomDTO> colletList=collectionService.getMyCollect(id);
+			session.setAttribute("collectList", colletList);
+			return "myCollectRoom";	
+		}
 		
-		return "myCollect";
 	}
 
 	

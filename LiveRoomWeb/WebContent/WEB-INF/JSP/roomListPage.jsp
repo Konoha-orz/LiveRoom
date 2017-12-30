@@ -152,7 +152,7 @@
 							<div class="video-cover">
 								<img class="video-img video-img-lazy"
 									data-original="https://i.h2.pdim.gs/90/e1cecbf68656f84ad830e1314a439dd8/w338/h190.webp"
-									alt="<%=room.getDscp()%>" src="css/h190.webp"
+									alt="<%=room.getDscp()%>" src="<%=context%>/images/h190.jpg"
 									style="display: block;" >
 								<div class="video-overlay"></div>
 								<div class="video-play"></div>
