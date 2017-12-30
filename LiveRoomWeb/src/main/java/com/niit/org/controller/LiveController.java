@@ -20,8 +20,6 @@ import java.util.Map;
 @Controller
 public class LiveController {
 
-
-
 	@Resource
 	private ILiveRoomService ilrs;
 	
