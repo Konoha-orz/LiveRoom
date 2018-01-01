@@ -61,19 +61,43 @@ public class LiveController {
 
 		if (subscribeDTO.getIsCollect() == null) {
 			String status = collectionService.queryStatus(subscribeDTO);
-			respondBody.setData(status);
+			Map data =new HashMap<>();
+			data.put("RoomId", subscribeDTO.getRoomId());
+			data.put("UserId", subscribeDTO.getUserId());
+			data.put("subscribeStatus", status);
+			respondBody.setStatus("1");
+			respondBody.setData(data);
 			return respondBody;
 		} else if (subscribeDTO.getIsCollect().equals("0")) {
 			int result = collectionService.deleteCollection(subscribeDTO);
-			respondBody.setStatus(String.valueOf(result));
+			if(result==0) {
+			respondBody.setStatus("0");
+			respondBody.setError("未订阅该直播间，取消订阅操作失败");
 			return respondBody;
+			}else {
+			String status = collectionService.queryStatus(subscribeDTO);
+			Map data =new HashMap<>();
+			data.put("RoomId", subscribeDTO.getRoomId());
+			data.put("UserId", subscribeDTO.getUserId());
+			data.put("subscribeStatus", status);
+			respondBody.setStatus(String.valueOf(result));
+			respondBody.setData(data);
+			return respondBody;
+			}
 		} else if (subscribeDTO.getIsCollect().equals("1")) {
 			if (Integer.valueOf(collectionService.queryStatus(subscribeDTO)) > 0) {
+				respondBody.setStatus("0");			
 				respondBody.setError("已订阅，参数错误");
 				return respondBody;
 			} else {
 				int result = collectionService.insertCollection(subscribeDTO);
+				String status = collectionService.queryStatus(subscribeDTO);
+				Map data =new HashMap<>();
+				data.put("RoomId", subscribeDTO.getRoomId());
+				data.put("UserId", subscribeDTO.getUserId());
+				data.put("subscribeStatus", status);
 				respondBody.setStatus(String.valueOf(result));
+				respondBody.setData(data);
 				return respondBody;
 			}
 
