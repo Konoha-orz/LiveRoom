@@ -24,24 +24,99 @@
 		order by l.status DESC
 	</select>
 	<select id="searchByKey" resultType="com.niit.org.dto.LiveRoomDTO"
+
 		parameterType="String">
+
 		select
+
+		l.id as id ,
+
+		l.title as title,
+
+		l.dscp as dscp ,
+
+		l.userid as userid ,
+
+		l.categoryname as categoryname,
+
+		l.rtmpurl as
+		rtmpurl,
+
+		l.status as
+
+		status,
+
+		l.seriescode as seriescode ,
+
+		u.username as
+		username
+
+		from liveroom
+
+		l left join user u on l.userid=u.id
+
+		where
+
+		u.username like
+
+		CONCAT('%',#{key},'%')
+
+		or l.title like
+		CONCAT('%',#{key},'%')
+
+		or
+
+		l.categoryname like CONCAT('%',#{key},'%')
+
+		order by l.status DESC
+
+	</select>
+	<select id="getAll" resultType="com.niit.org.bean.LiveRoom">
+		select * from liveroom
+	</select>
+	<select id="getLiveroomByUserid" resultType="com.niit.org.bean.LiveRoom">
+		select * from
+		liveroom where userid=#{userid}
+	</select>
+	<select id="createLiveroom" resultType="com.niit.org.bean.LiveRoom">
+		insert into
+		Liveroom(title,dscp,userid,categoryname,rtmpurl,status,seriescode)
+		values(#{title},#{dscp},#{userid},#{categoryname},#{rtmpurl},#{status},#{seriescode})
+	</select>
+	<select id="updateLiveroom" resultType="com.niit.org.bean.LiveRoom">
+		update liveroom set
+		title=#{title},dscp=#{dscp},categoryname=#{categoryname},rtmpurl=#{rtmpurl},seriescode=#{seriescode}
+		where userid=#{userid}
+	</select>
+	<select id="openLiveroom" resultType="com.niit.org.bean.LiveRoom">
+		update liveroom set
+		status=1 where userid=#{userid}
+	</select>
+	<select id="closeLiveroom" resultType="com.niit.org.bean.LiveRoom">
+		update liveroom set
+		status=0 where userid=#{userid}
+	</select>
+	<select id="queryLiveRoomById" resultType="com.niit.org.dto.LiveRoomDTO"> select
 		l.id as id ,
 		l.title as title,
 		l.dscp as dscp ,
 		l.userid as userid ,
-		l.categoryname as categoryname,
+		l.categoryname as
+		categoryname,
 		l.rtmpurl as rtmpurl,
 		l.status as
 		status,
-		l.seriescode as seriescode ,
+		l.seriescode as
+		seriescode ,
 		u.username as username
 		from liveroom
-		l left join user u on l.userid=u.id
+		l left join user u on
+		l.userid=u.id
 		where
 		u.username like
 		CONCAT('%',#{key},'%')
-		or l.title like CONCAT('%',#{key},'%')
+		or l.title like
+		CONCAT('%',#{key},'%')
 		or
 		l.categoryname like CONCAT('%',#{key},'%')
 		order by l.status DESC
@@ -49,15 +124,19 @@
 	<select id="queryRoomById" resultType="com.niit.org.dto.LiveRoomDTO">
 		select
 		l.id as id ,
-		l.title as title,
+		l.title
+		as title,
 		l.dscp as dscp ,
 		l.userid as userid ,
-		l.categoryname as categoryname,
+		l.categoryname as
+		categoryname,
 		l.rtmpurl as rtmpurl,
 		l.status as status,
-		l.seriescode as seriescode ,
+		l.seriescode as
+		seriescode ,
 		u.username as username
-		from liveroom l left join user u on l.userid=u.id
+		from liveroom l left join user u on
+		l.userid=u.id
 		where
 		l.id = #{roomId}
 		order by l.status DESC
@@ -70,14 +149,17 @@
 		l.dscp as dscp ,
 		l.userid as userid ,
 		l.categoryname as categoryname,
-		l.rtmpurl as rtmpurl,
+		l.rtmpurl as
+		rtmpurl,
 		l.status as
 		status,
 		l.seriescode as seriescode ,
-		u.username as username
+		u.username as
+		username
 		from liveroom
 		l left join user u on l.userid=u.id
-		where l.categoryname =#{type}
+		where
+		l.categoryname =#{type}
 		order
 		by l.status DESC
 	</select>
@@ -88,40 +170,48 @@
 		l.dscp as dscp ,
 		l.userid as userid
 		,
-		l.categoryname as categoryname,
+		l.categoryname as
+		categoryname,
 		l.rtmpurl as rtmpurl,
 		l.status as
 		status,
-		l.seriescode as seriescode ,
+		l.seriescode as
+		seriescode ,
 		u.username as username
 		from liveroom
-		l left join user u on l.userid=u.id
+		l left join user u on
+		l.userid=u.id
 		where l.categoryname =#{type}
 		order
 		by l.status DESC
-		limit 0,#{num}
+		limit
+		0,#{num}
 	</select>
 	<select id="getHotList" resultType="com.niit.org.dto.LiveRoomDTO">
 		select
 		l.id as id ,
-		l.title as title,
+		l.title as
+		title,
 		l.dscp as dscp ,
 		l.userid as userid
 		,
-		l.categoryname as categoryname,
+		l.categoryname as
+		categoryname,
 		l.rtmpurl as rtmpurl,
 		l.status as
 		status,
-		l.seriescode as seriescode ,
+		l.seriescode as
+		seriescode ,
 		u.username as username
 		from liveroom
-		l left join user u on l.userid=u.id
+		l left join user u on
+		l.userid=u.id
 		where
 		l.status = 1
 		order by l.id asc
 		limit 0,5
 	</select>
-	<insert id="createLiveroom">
+	<insert id="createLiveRoom">
 		insert into
 		liveroom(title,dscp,userid,categoryname,rtmpurl,status)
 		values(#{title},#{dscp},#{userid},#{categoryname},#{rtmpurl},#{status})
@@ -145,5 +235,4 @@
 		l.id = #{roomId}
 		order by l.status DESC
 	</select>
-
 </mapper>

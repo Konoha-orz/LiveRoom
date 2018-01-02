@@ -19,14 +19,7 @@ Edit by @Teemo
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-	<link rel="shortcut icon" href="images/favicon.ico" />　　
+<jsp:include page="StaticResource.jsp"/>
 
 <meta name="viewport" content="width=device-width"/>
 <title>用户注册</title>
@@ -94,7 +87,7 @@ Edit by @Teemo
 							
 							<label for="cpassword">确认密码 </label> 
 							<input class="form-control form-control input-block"
-							id="cpassword" name="cpassword" tabindex="2" type="password" onblur="checkConfirmPassword()"/> 
+							id="cpassword" name="cpassword" tabindex="3" type="password" onblur="checkConfirmPassword()"/> 
 							
 							<label for="error" id="error" style="color:red"></label>
 							
@@ -102,11 +95,11 @@ Edit by @Teemo
 							
 							<label for="dscp">个人简介 </label> 
 							<input class="form-control form-control input-block"
-							id="dscp" name="dscp" tabindex="2" type="text" /> 
+							id="dscp" name="dscp" tabindex="4" type="text" /> 
 							
 							<label for="email">电子邮箱 </label> 
 							<input class="form-control form-control input-block"
-							id="email" name="email" tabindex="2" type="text" /> 
+							id="email" name="email" tabindex="5" type="text" /> 
 							
 							<a href="#" onclick="submit()">发送邮件</a><br>
 							<label for="sendMsg" id="sendMsg" style="color:red"></label>
@@ -117,7 +110,7 @@ Edit by @Teemo
 							<label for="ver"> 输入验证码:</label> <input
 							autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="verificationCode" name="verificationCode"
-							tabindex="1" type="text" /> 
+							tabindex="6" type="text" /> 
 							<a href="#" onclick="checkVer()">验证验证码</a>
 							<label for="checkver" id="checkver" style="color:red"></label>
 							<!-- </form> -->

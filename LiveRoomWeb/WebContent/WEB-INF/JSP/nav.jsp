@@ -6,7 +6,7 @@
 
 <head>
 
-<link rel="stylesheet" type="text/css" href="css/nav.css">
+<jsp:include page="StaticResource.jsp"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>nav</title>
 
@@ -15,16 +15,17 @@
 	<div class="nav">
 
 		<div class="nav_photo">
-			<img src="images/photo.jpg" width="100px" height="100px"
-				float="center" />
+			<img src="<%=request.getContextPath() %>/images/photo.jpg" width="100px" height="100px"/>
 		</div>
 
 		<div class="nav_name">
-			<p><%=session.getAttribute("msg").toString()%></p>
-			<p><%=session.getAttribute("logout").toString()%></p>
+			<p>
+			<%=session.getAttribute("msg").toString()%> 
+			<%=session.getAttribute("logout").toString()%>
+			</p>
 		</div>
 		<ul>
-			<li><a href="http://localhost:8080/LiveRoomWeb/userInfo" target="_parent">个人信息</a></li>
+			<li><a href="http://localhost:8080/LiveRoomWeb/user/login" target="_parent">个人信息</a></li>
 			<li><a href="http://localhost:8080/LiveRoomWeb/updateUserInfo" target="_parent">修改信息</a></li>
 			<li><a href="http://localhost:8080/LiveRoomWeb/mySub" target="_parent">我的订阅</a></li>
 			<li><a href="http://localhost:8080/LiveRoomWeb/createLiveroom" target="_parent">我的直播间</a></li>

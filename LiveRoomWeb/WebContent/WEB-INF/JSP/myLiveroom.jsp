@@ -7,46 +7,96 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<link rel="stylesheet" type="text/css" href="css/nav.css" />
-<link rel="stylesheet" type="text/css" href="css/teemocss.css" />
-<link rel="shortcut icon" href="images/favicon.ico" />
+<jsp:include page="StaticResource.jsp"/>
 <meta name="viewport" content="width=device-width">
 
 
 <title>我的直播间</title>
+<script src="<%=request.getContextPath()%>/js/jquery-3.2.1.min.js"></script>
 </head>
 
-<body>
+<body onload="change()">
+<div class="big_div">
 
 	<div class="div_nav">
-
-		<iframe src="nav" frameborder="0" scrolling="no" height="800px"></iframe>
+		<jsp:include page="nav.jsp" />
 	</div>
 
 	<div class="div_main">
-	<div style="padding-top:20px" class="smart-green">
-		<h1>我的直播间</h1>
-		<form action="createLiveroom" name="createLiveroom" method="post">
-		<label for="title">直播间标题</label><input type="text" id="title" name="title" autofocus="autofocus" value="${title }"/><br />
-		<label for="dscp">直播间描述</label><input type="text" id="dscp" name="dscp"  value="${dscp}"/><br />
-		<label for="categoryname">直播分类</label>
-		<select name="categoryname" id="sel">
-			<option value="-1">请选择</option>
-			<c:forEach items="${categoryList}" var="cl">
-				<option value="${cl.categoryname}">${cl.categoryname}</option>
-			</c:forEach>
-		</select><br />
-		<!-- <label for="rtmpuel">推流地址</label><input type="text" id="rtmpurl" name="rtmpurl" /><br /> -->
-		<input class="button" type="submit" value="开始直播" />
-		</form>
+		<div style="padding-top: 20px" class="smart-green">
+			<h1>我的直播间</h1>
+			<form action="myLiveroom" name="myLiveroom" method="post">
+				<label for="title">直播间标题</label><input type="text" id="title"
+					name="title" autofocus="autofocus" value="${liveRoom.title }" /><br /> <label
+					for="dscp">直播间描述</label><input type="text" id="dscp" name="dscp"
+					value="${liveRoom.dscp}" /><br /> <label for="categoryname">直播分类</label> <select
+					name="categoryname" id="sel">
+					<c:forEach items="${categoryList}" var="cl">
+						<option value="${cl.categoryname}">${cl.categoryname}</option>
+					</c:forEach>
+				</select><br /> <label for="rtmpurl">推流地址</label><input type="text"
+					id="rtmpurl" name="rtmpurl" value="${liveRoom.rtmpurl}" /><br /> <label
+					for="seriescode">推流名称</label><input type="text" id="seriescode"
+					name="seriescode" value="${liveRoom.seriescode}" /><br /> <input
+					class="button" type="submit" value="保存修改" />
+			</form>
+
+
+			<label for="status" style="font-size: 18px;">直播间状态</label><label
+				id="status" style="font-size: 18px; color: blue;"> </label> <input
+				class="button" type="submit" id="switch" value=""
+				onclick="changestatus()" />
+
+
 		</div>
+
+
+
 	</div>
-	
+</div>
 	<script type="text/javascript">
 		function change(){
-			document.getElementById("sel").
+			var s=document.getElementById('sel');
+			var categoryname= "<%=session.getAttribute("categoryname") %>";
+			for(var i=0;i<s.options.length;i++){
+				if(s.options[i].value == categoryname){
+					s.options[i].selected= true;
+					isExit = true;
+					break;
+				}
+			}
+			var status = "<%=session.getAttribute("status")%>";
+			if(status == "0"){
+				 document.getElementById('status').innerHTML="直播间已关闭";
+				 document.getElementById('switch').value="开启直播";
+			}else{
+				document.getElementById('status').innerHTML="正在直播";
+				document.getElementById('switch').value="关闭直播";
+			}
+		}
+		 function changestatus(){
+				$.ajax({
+					type:"post",
+					url:"<%=request.getContextPath() %>/myLiveroom/changestatus",
+				success : function(r) {
+					if (r == "open") {
+						document.getElementById('status').innerHTML = "正在直播";
+						document.getElementById('switch').value = "关闭直播";
+					}
+					if (r == "close") {
+						document.getElementById('status').innerHTML = "直播间已关闭";
+						document.getElementById('switch').value = "开启直播";
+					}
+
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					console.log(XMLHttpRequest.status);
+					console.log(XMLHttpRequest.readyState);
+					console.log(textStatus);
+				}
+			});
 		}
 	</script>
+	
 </body>
 </html>

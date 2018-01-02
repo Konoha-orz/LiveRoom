@@ -14,13 +14,7 @@ Edit by @Teemo
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-	<link rel="shortcut icon" href="images/favicon.ico" />　　
+<jsp:include page="StaticResource.jsp"/>
 
 <meta name="viewport" content="width=device-width">
 
@@ -78,7 +72,7 @@ Edit by @Teemo
 						<div  style="text-align:center">
 						<h2 for="Success Message">更新成功</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/userInfo">查看个人信息</a></div>
+						<a href="http://localhost:8080/LiveRoomWeb/user/userInfo">查看个人信息</a></div>
 					</div>
 					</div>
 				

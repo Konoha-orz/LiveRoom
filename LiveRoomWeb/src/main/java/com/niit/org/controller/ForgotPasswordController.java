@@ -43,7 +43,7 @@ public class ForgotPasswordController {
 		String ver_enter = request.getParameter("verificationCode");
 		if (ver_enter.equals(random)) {
 			session.setAttribute("username", username);
-			return "resetPassword";
+			return "forgotPassowrd/resetPassword";
 		} else {
 			return "verError";
 		}
@@ -109,4 +109,17 @@ public class ForgotPasswordController {
 			return "fail";
 		}
 	}
+	
+	@RequestMapping(method = RequestMethod.POST,value="/resetPassword")
+	public String resetPassword(HttpServletRequest request,HttpSession session) {
+		String username=String.valueOf(session.getAttribute("username"));
+		String password=request.getParameter("password");
+		User user=(User)iuser.getUser(username).get(0);
+		user.setPassword(password);
+		iuser.updateUser(user);
+		return "login";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,value="/resetPassword")
+	public void init() {}
 }

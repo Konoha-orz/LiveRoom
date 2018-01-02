@@ -12,13 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.niit.org.bean.Subscription;
 import com.niit.org.dto.LiveRoomDTO;
-import com.niit.org.mapper.ILiveroom;
+import com.niit.org.mapper.ILiveRoomService;
+
 import com.niit.org.mapper.ISubscription;
 import com.niit.org.mapper.IUser;
 
 
 @Controller
-@RequestMapping("mySub")
+@RequestMapping("/mySub")
 public class MySubController {
 	
 	@Resource
@@ -28,7 +29,7 @@ public class MySubController {
 	private ISubscription isub;
 	
 	@Resource
-	private ILiveroom iliveroom;
+	private ILiveRoomService iliveroom;
 
 	@RequestMapping()
 	public String mySub(HttpSession session,ModelMap map) {

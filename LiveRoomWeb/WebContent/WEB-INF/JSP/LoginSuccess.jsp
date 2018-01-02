@@ -21,15 +21,11 @@ Edit by @Teemo
 <link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
 	type="text/css" />
 <meta name="viewport" content="width=device-width">
-
+<jsp:include page="StaticResource.jsp"/>
+<meta http-equiv="Refresh" content="3;url=http://localhost:8080/LiveRoomWeb/userInfo">
+<title>登陆成功</title>
 <title>Login Success</title>
-
-
-
 <link rel="assets" href="https://assets-cdn.github.com/">
-
-
-
 <meta name="html-safe-nonce"
 	content="be9cd812220c018ee865f7015ea2dd6e44670fa7">
 
@@ -122,9 +118,6 @@ Edit by @Teemo
 						</div>
 					</div>
 				</div>
-
-
-
 			</div>
 
 		</div>

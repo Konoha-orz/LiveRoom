@@ -15,15 +15,7 @@ Edit by @Teemo
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-	<link rel="shortcut icon" href="images/favicon.ico" />　　
-<link rel="stylesheet" type="text/css" href="css/nav.css">
-<link rel="stylesheet" type="text/css" href="css/teemocss.css" />
+<jsp:include page="StaticResource.jsp"/>
 <meta name="viewport" content="width=device-width">
 
 <title>更新用户个人信息</title>
@@ -31,8 +23,9 @@ Edit by @Teemo
 </head>
 
 <body>
+<div class="big_div">
  <div class="div_nav">
-	<iframe src="nav" frameborder="0" scrolling="no" height="800px"></iframe>
+	<jsp:include page="nav.jsp" />
 </div> 
 
 <div class="div_main">
@@ -59,12 +52,14 @@ Edit by @Teemo
 							
 							<label for="dscp">个人简介 </label> 
 							<input id="dscp" name="dscp" tabindex="2" type="text" value="${dscp }"/> 
-							
+							<div style="text-align:center">
 							<input class="button" tabindex="3" type="submit" value="保存" />
+							</div>
 					
 				</form>
 			</div>
 
+</div>
 </div>
 </body>
 </html>
