@@ -18,7 +18,7 @@ import com.niit.org.mapper.IUser;
 
 
 @Controller
-@RequestMapping("mySub")
+@RequestMapping("/mySub")
 public class MySubController {
 	
 	@Resource

@@ -7,15 +7,7 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-	<link rel="stylesheet" type="text/css" href="css/nav.css">
-<link rel="shortcut icon" href="images/favicon.ico" />　　
-
+<jsp:include page="StaticResource.jsp"/>
 <meta name="viewport" content="width=device-width">
 
 
@@ -72,10 +64,10 @@
 
 					<div class="auth-form-body mt-3">
 
-						<label for="username"> 用户名 </label> <input
+						<label for="username" style="text-align:left"> 用户名 </label> <input
 							autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="username" name="username"
-							tabindex="1" type="text" /> <label for="password">
+							tabindex="1" type="text" /> <label for="password" style="text-align:left">
 							密码 <a href="http://localhost:8080/LiveRoomWeb/forgotPassword" class="label-link">忘记密码?</a>
 						</label> <input class="form-control form-control input-block"
 							id="password" name="password" tabindex="2" type="password" /> 

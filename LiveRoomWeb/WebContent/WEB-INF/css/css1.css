@@ -2215,7 +2215,7 @@ pre {
 .btn {
 	color: #24292e;
 	background-color: #eff3f6;
-	background-image: linear-gradient(-180deg, #fafbfc 0%, #eff3f6 90%)
+	
 }
 
 .btn:focus, .btn.focus {

@@ -13,7 +13,16 @@
 		select * from liveroom where userid=#{userid} 
 	</select>
 	<select id="createLiveroom" resultType="com.niit.org.bean.Liveroom">
-		insert into Liveroom(title,dscp,userid,categoryname,rtmpurl,status) values(#{title},#{dscp},#{userid},#{categoryname},#{rtmpurl},#{status})
+		insert into Liveroom(title,dscp,userid,categoryname,rtmpurl,status,seriescode) values(#{title},#{dscp},#{userid},#{categoryname},#{rtmpurl},#{status},#{seriescode})
+	</select>
+	<select id="updateLiveroom" resultType="com.niit.org.bean.Liveroom">
+		update liveroom set title=#{title},dscp=#{dscp},categoryname=#{categoryname},rtmpurl=#{rtmpurl},seriescode=#{seriescode} where userid=#{userid}
+	</select>
+	<select id="openLiveroom" resultType="com.niit.org.bean.Liveroom">
+		update liveroom set status=1 where userid=#{userid}
+	</select>
+	<select id="closeLiveroom" resultType="com.niit.org.bean.Liveroom">
+		update liveroom set status=0 where userid=#{userid}
 	</select>
 	<select id="queryLiveRoomById" resultType="com.niit.org.dto.LiveRoomDTO">
 		select

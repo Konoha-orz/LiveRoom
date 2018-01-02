@@ -8,22 +8,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" type="text/css" href="css/nav.css" />
-<link rel="stylesheet" type="text/css" href="css/teemocss.css" />
-<link rel="shortcut icon" href="images/favicon.ico" />
-<meta name="viewport" content="width=device-width">
-
+<jsp:include page="StaticResource.jsp"/>
 
 <title>直播间信息</title>
 </head>
 
 <body>
-
-	<div class="div_nav">
-
-		<iframe src="nav" frameborder="0" scrolling="no" height="800px"></iframe>
+<div class="big_div">
+<div class="div_nav">
+		<jsp:include page="nav.jsp" />
 	</div>
-
 	<div class="div_main">
 	<div style="padding-top:20px" class="smart-green">
 		<h1>直播间信息</h1>
@@ -37,10 +31,11 @@
 				<option value="${cl.categoryname}">${cl.categoryname}</option>
 			</c:forEach>
 		</select><br />
-		<label for="rtmpuel">推流地址</label><input type="text" id="rtmpurl" name="rtmpurl" /><br />
+		<!-- <label for="rtmpuel">推流地址</label><input type="text" id="rtmpurl" name="rtmpurl" /><br /> -->
 		<input class="button" type="submit" value="开始直播" />
 		</form>
 		</div>
+	</div>
 	</div>
 </body>
 </html>

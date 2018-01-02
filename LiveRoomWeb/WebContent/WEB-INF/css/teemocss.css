@@ -1,11 +1,9 @@
 @charset "UTF-8";
 
 .smart-green {
-max-width: 500px;
-margin-top:100px;
 background: #F8F8F8;
 padding: 30px 30px 20px 30px;
-font: 12px Arial, Helvetica, sans-serif;
+font: 14px Arial, Helvetica, sans-serif;
 color: #666;
 border-radius: 5px;
 -webkit-border-radius: 5px;
@@ -32,7 +30,7 @@ color: #FFF;
 }
 .smart-green label {
 display: block;
-margin: 15px 0px 5px;
+margin: 20px 0px 10px;
 }
 .smart-green .info{
 	display: block;
@@ -49,7 +47,7 @@ color: #5E5E5E;
 color: #555;
 height: 30px;
 line-height:15px;
-width: 100%;
+width: 80%;
 padding: 0px 0px 0px 10px;
 margin-top: 2px;
 border: 1px solid #E5E5E5;
@@ -71,7 +69,7 @@ appearance:none;
 -moz-appearance: none;
 text-indent: 0.01px;
 text-overflow: '';
-width:100%;
+width:80%;
 height:30px;
 }
 .smart-green .button {
@@ -81,10 +79,18 @@ border-radius: 5px;
 -moz-border-border-radius: 5px;
 border: none;
 padding: 10px 25px 10px 25px;
-margin-top:20px;
+margin:20px;
 color: #FFF;
 text-shadow: 1px 1px 1px #949494;
 }
 .smart-green .button:hover {
 background-color:#80A24A;
+}
+.big_div{
+	margin:50px auto; 
+	width:950px;
+	overflow:auto;
+}
+body{
+	text-align:center;
 }

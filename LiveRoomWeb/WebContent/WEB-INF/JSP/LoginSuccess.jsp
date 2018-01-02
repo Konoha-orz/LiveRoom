@@ -15,13 +15,7 @@ Edit by @Teemo
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-	<link rel="shortcut icon" href="images/favicon.ico" />　　
+<jsp:include page="StaticResource.jsp"/>
 <meta http-equiv="Refresh" content="3;url=http://localhost:8080/LiveRoomWeb/userInfo">
 <title>登陆成功</title>
 

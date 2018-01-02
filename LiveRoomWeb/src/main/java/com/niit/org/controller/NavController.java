@@ -13,8 +13,8 @@ public class NavController {
 	public String nav(HttpSession session) {
 		try {
 			if (session.getAttribute("username") != null) {
-				session.setAttribute("msg", "ÄãºÃ  " + session.getAttribute("username") + " !");
-				session.setAttribute("logout", "<a href='http://localhost:8080/LiveRoomWeb/logout' target='_parent'>µÇ³ö</a>");
+				session.setAttribute("msg", session.getAttribute("username") + " | ");
+				session.setAttribute("logout", "<a href='http://localhost:8080/LiveRoomWeb/user/logout' target='_parent'>×¢Ïú</a>");
 			} else {
 				session.setAttribute("msg", "ÉÐÎ´µÇÂ¼");
 				session.setAttribute("logout", " ");
@@ -26,8 +26,8 @@ public class NavController {
 		return "nav";
 	}
 }
-@Controller
 
+@Controller
 @RequestMapping("/userInfo")
 class UserInfoController {
 	

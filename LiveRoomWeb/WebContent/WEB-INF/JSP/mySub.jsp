@@ -8,28 +8,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/nav.css" />
-<link rel="shortcut icon" href="images/favicon.ico" />
+<jsp:include page="StaticResource.jsp"/>
 <meta name="viewport" content="width=device-width">
 
 
 <title>我的订阅</title>
 </head>
+<body>
+<div class="big_div">
 
-<body
-	class="logged-out env-production page-responsive min-width-0 session-authentication">
-
-	<div class="div_nav">
-
-		<iframe src="nav" frameborder="0" scrolling="no" height="800px"></iframe>
+<div class="div_nav">
+		<jsp:include page="nav.jsp" />
 	</div>
-
 	<div class="div_main">
 	<div style="padding-top:20px">
 						<h1 style="padding-left:250px">我的订阅</h1>
@@ -44,6 +34,7 @@
 			</c:forEach>
 		</table>
 		</div>
+	</div>
 	</div>
 </body>
 </html>
