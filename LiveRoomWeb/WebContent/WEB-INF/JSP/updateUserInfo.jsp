@@ -31,30 +31,28 @@ Edit by @Teemo
 <div class="div_main">
 	
 
-			<div class="smart-green" id="login">
+			<div class="userFrame_main" id="login">
 
 				<form accept-charset="UTF-8" action="updateUserInfo" method="post">
 				
 						<h1>更新用户个人信息</h1>
 
-
-						<label for="username"> 用户名 </label> 
-						<input autofocus="autofocus" id="username" name="username" tabindex="1" type="text" value="${username }"/> 
-							
-							<label for="password">密码 </label> 
-							<input id="password" name="password" tabindex="2" type="password" value="${password }" /> 
-							
-							<label for="cpassword">确认密码 </label> 
-							<input id="cpassword" name="cpassword" tabindex="2" type="password" value="${password }" /> 
-							
+						<div>
+							<label for="username"> 用户名 </label>
+							<input autofocus="autofocus" id="username" name="username" tabindex="1" type="text" value="${username }"/>
+						</div>
+						<div>
 							<label for="email">电子邮箱地址 </label> 
 							<input id="email" name="email" tabindex="2" type="text" value="${email }"/> 
-							
+						</div>
+						<div>
 							<label for="dscp">个人简介 </label> 
-							<input id="dscp" name="dscp" tabindex="2" type="text" value="${dscp }"/> 
-							<div style="text-align:center">
+							<textarea id="dscp" name="dscp" >${dscp}</textarea><br>
+						</div>
+							
+						<div style="text-align:center;width:30%;margin:10px auto;">
 							<input class="button" tabindex="3" type="submit" value="保存" />
-							</div>
+						</div>
 					
 				</form>
 			</div>

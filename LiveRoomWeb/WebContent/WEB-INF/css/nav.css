@@ -6,10 +6,11 @@
 }
 
 .nav{
-	background:#76a52c;
+	background: #4a90e2;
 	height:100%;
 	width:100%;
 	padding:0px;
+	border-right:1px solid black;
 }
 
 ul {
@@ -19,22 +20,25 @@ ul {
 }
 
 li{
-	height:10%;
-}
-
-li a {
-    display: block;
-    color: #fff;
-    padding: 8px 16px;
-    text-decoration: none;
+	border:1px solid black;
+	border-width:1px 0px 0px 0px;
     text-align:center;
     height:50px;
 	line-height: 50px;
 }
 
+li a {
+    display: block;
+    color:#fff;
+    text-decoration: none;
+	font-size:15px;
+}
+
 li a:hover {
-    background-color: #555;
-    color: white;
+    text-decoration: none;
+    opacity:.6;
+    color: #000;
+    font-size:18px;
     height:50px;
 }
 
@@ -45,19 +49,20 @@ li a:hover {
 }
 .nav_name{
 	text-align:center;
-	color:white;
+	color:#000;
 	font-size:20px;
 }
 
 
 .div_nav{
-	width:25%;
-	float:left;
-	height:578px;
-	border-radius:5px;
+    width: 250px;
+    border-radius: 5px;
+    position: fixed;
+    height: 100%;
 }
 .div_main{
-	float:left;
-	width:75%;
+    height: 100%;
+    min-height: 800px;
+	margin-left:250px;
 }
 

@@ -19,16 +19,17 @@
 		</div>
 
 		<div class="nav_name">
-			<p>
+			<p style="color:#fff;">
 			<%=session.getAttribute("msg").toString()%> 
 			<%=session.getAttribute("logout").toString()%>
 			</p>
 		</div>
 		<ul>
-			<li><a href="http://localhost:8080/LiveRoomWeb/user/login" target="_parent">个人信息</a></li>
-			<li><a href="http://localhost:8080/LiveRoomWeb/updateUserInfo" target="_parent">修改信息</a></li>
-			<li><a href="http://localhost:8080/LiveRoomWeb/mySub" target="_parent">我的订阅</a></li>
-			<li><a href="http://localhost:8080/LiveRoomWeb/createLiveroom" target="_parent">我的直播间</a></li>
+			<li style="border-width:1px 0px 0px 0px"><a href="/LiveRoomWeb/user/userInfo" target="_parent">个人信息</a></li>
+			<li><a href="/LiveRoomWeb/updateUserInfo" target="_parent">修改信息</a></li>
+			<li><a href="/LiveRoomWeb/resetPassword/userUpdate" target="_parent">修改密码</a></li>
+			<li><a href="/LiveRoomWeb/mySub" target="_parent">我的订阅</a></li>
+			<li style="border-width:1px 0px 1px 0px"><a href="/LiveRoomWeb/createLiveroom" target="_parent">我的直播间</a></li>
 
 		</ul>
 

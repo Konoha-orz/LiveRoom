@@ -16,7 +16,7 @@ import com.niit.org.mapper.IUser;
  *
  *2017-10-31
  *
- *用于处理resetPassword请求，经过验证通过的用户可以重置密码。
+ *鐢ㄤ簬澶勭悊resetPassword璇锋眰锛岀粡杩囬獙璇侀�氳繃鐨勭敤鎴峰彲浠ラ噸缃瘑鐮併��
  * 
  */
 
@@ -43,5 +43,23 @@ public class ResetPasswordController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void init() {}
+	
+	@RequestMapping(method= RequestMethod.POST, value="/updatePassword")
+	public String updatePassword(HttpServletRequest request, HttpSession session) {
+		String username = String.valueOf(session.getAttribute("username"));
+		String password=request.getParameter("password");
+		User user=(User)iuser.getUser(username).get(0);
+		user.setPassword(password);
+		iuser.updateUser(user);
+		session.removeAttribute("password");
+		session.setAttribute("password", password);
+		return "updatePassword";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,value="/userUpdate")
+	public String initUpdatePsd() {
+		return "updatePassword";
+	}
+	
 }
 

@@ -16,4 +16,5 @@ encoding//src/main/java/com/niit/org/controller/CreateLiveroomController.java=UT
 encoding//src/main/java/com/niit/org/controller/ForgotPasswordController.java=UTF-8
 encoding//src/main/java/com/niit/org/controller/IndexController.java=UTF-8
 encoding//src/main/java/com/niit/org/controller/RegisterController.java=UTF-8
+encoding//src/main/java/com/niit/org/controller/ResetPasswordController.java=UTF-8
 separateDerivedEncodings=true

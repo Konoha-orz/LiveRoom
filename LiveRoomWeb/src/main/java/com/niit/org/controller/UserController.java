@@ -58,12 +58,16 @@ public class UserController {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET,value="/logout")
-	public String logout() {
-		return "logout";
+	public String logout(HttpSession session) {
+		session.removeAttribute("username");
+		session.removeAttribute("password");
+		session.removeAttribute("email");
+		session.removeAttribute("dscp");
+		return "login";
 	}
 	
 	@RequestMapping(value="/userInfo")
 	public String userInfo() {
-		return "redirect:/user/userInfo";
+		return "userInfo";
 	}
 }
