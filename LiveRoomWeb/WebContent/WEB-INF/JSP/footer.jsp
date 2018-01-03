@@ -15,7 +15,7 @@
 				href="/LiveRoomWeb/roomlist/all">全部</a> | <a target="_blank"
 				href=" ">分类</a>
 		</p>
-		<p>本网站为学校NIIT学生实训项目| Konoha&Tom&Teemo | 联系方式QQ：517136675</p>
+		<p>本网站为学校NIIT学生实训项目| Konoha&Tom&Teemo </p>
 
 	</div>
 	</footer>

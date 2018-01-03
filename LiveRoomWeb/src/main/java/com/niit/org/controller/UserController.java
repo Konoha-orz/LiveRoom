@@ -43,10 +43,10 @@ public class UserController {
 		try {
 		if(session.getAttribute("username")!=null) {
 			session.setAttribute("msg",session.getAttribute("username")+" | ");
-			session.setAttribute("logout", "<a href='http://localhost:8080/LiveRoomWeb/user/logout'>æ³¨é”€</a>");
+			session.setAttribute("logout", "<a href='/LiveRoomWeb/user/logout'>×¢Ïú</a>");
 			return "userInfo";
 		}else {
-			session.setAttribute("msg", "å°šæœªç™»å½•");
+			session.setAttribute("msg", "ÉÐÎ´µÇÂ¼");
 			session.setAttribute("logout", " ");
 			return "login";
 		}

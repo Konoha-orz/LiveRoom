@@ -96,31 +96,6 @@
 		update liveroom set
 		status=0 where userid=#{userid}
 	</select>
-	<select id="queryLiveRoomById" resultType="com.niit.org.dto.LiveRoomDTO"> select
-		l.id as id ,
-		l.title as title,
-		l.dscp as dscp ,
-		l.userid as userid ,
-		l.categoryname as
-		categoryname,
-		l.rtmpurl as rtmpurl,
-		l.status as
-		status,
-		l.seriescode as
-		seriescode ,
-		u.username as username
-		from liveroom
-		l left join user u on
-		l.userid=u.id
-		where
-		u.username like
-		CONCAT('%',#{key},'%')
-		or l.title like
-		CONCAT('%',#{key},'%')
-		or
-		l.categoryname like CONCAT('%',#{key},'%')
-		order by l.status DESC
-	</select>
 	<select id="queryRoomById" resultType="com.niit.org.dto.LiveRoomDTO">
 		select
 		l.id as id ,
@@ -139,7 +114,7 @@
 		l.userid=u.id
 		where
 		l.id = #{roomId}
-		order by l.status DESC
+		
 	</select>
 	<select id="getListByType" resultType="com.niit.org.dto.LiveRoomDTO"
 		parameterType="String">

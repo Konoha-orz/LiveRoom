@@ -161,11 +161,11 @@ a,a:hover{
 	margin-left:80px;
 	position:relative;
 	top: -50%;
- 			margin-top: 50px;
+			margin-top: 50px;
 }
 .room-detail .collect {
 	position:absolute;
-	bottom:10px;
+	top:50%;
 	right:30px;
 }
 #tabContent {

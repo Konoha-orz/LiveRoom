@@ -16,7 +16,7 @@
     <mvc:resources mapping="/plugin/**" location="/WEB-INF/plugin/"/> 
 	<mvc:resources mapping="/fonts/**" location="/WEB-INF/fonts/" />
     <mvc:resources mapping="/JSP/**" location="/WEB-INF/JSP/"/> 
-
+   <mvc:resources mapping="/thumb/**" location="/WEB-INF/thumb/"/>
 
 	<!-- 注解的驱动与配置 -->
     <mvc:annotation-driven />

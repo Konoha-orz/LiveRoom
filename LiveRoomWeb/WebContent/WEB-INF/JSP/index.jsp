@@ -82,8 +82,8 @@
 						<div class="pd-thumb">
 							<div class="pictures">
 								<img class="thumb-img thumb-img-lazy"
-									data-original="https://i.h2.pdim.gs/90/1017d70c00a43b477d19eb925b9d3f50/w338/h190.jpg"
-									src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+									
+									src="thumb/<%=room.getSeriescode()%>.jpg" onerror="this.src='thumb/error.jpg'">
 							</div>
 							<div class="thumb-layer"></div>
 							<div class="play-btn"></div>

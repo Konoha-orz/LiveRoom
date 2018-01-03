@@ -25,13 +25,11 @@
 			</p>
 		</div>
 		<ul>
-			<li><a href="http://localhost:8080/LiveRoomWeb/user/login" target="_parent">个人信息</a></li>
-			<li><a href="http://localhost:8080/LiveRoomWeb/updateUserInfo" target="_parent">修改信息</a></li>
-			<li><a href="http://localhost:8080/LiveRoomWeb/mySub" target="_parent">我的订阅</a></li>
-			<li><a href="http://localhost:8080/LiveRoomWeb/createLiveroom" target="_parent">我的直播间</a></li>
-
+			<li><a href="/LiveRoomWeb/user/login" target="_parent">个人信息</a></li>
+			<li><a href="/LiveRoomWeb/updateUserInfo" target="_parent">修改信息</a></li>
+			<li><a href="/LiveRoomWeb/mySub" target="_parent">我的订阅</a></li>
+			<li><a href="/LiveRoomWeb/createLiveroom" target="_parent">我的直播间</a></li>
 		</ul>
-
 	</div>
 </body>
 </html>

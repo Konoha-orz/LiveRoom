@@ -1,5 +1,7 @@
 package com.niit.org.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Enumeration;
 
 import javax.annotation.Resource;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
+import com.niit.org.util.MD5Util;
 
 /*
  *Edit by @Teemo
@@ -31,9 +34,9 @@ public class LoginController {
 	private IUser iuser;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public String login(HttpServletRequest request, HttpSession session) {
+	public String login(HttpServletRequest request, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String username_enter = request.getParameter("username");
-		String password_enter = request.getParameter("password");
+		String password_enter = MD5Util.md5Encode(request.getParameter("password"));
 		try {
 			String password_db = iuser.getUser(username_enter).get(0).getPassword();
 			String dscp_db=iuser.getUser(username_enter).get(0).getDscp();
