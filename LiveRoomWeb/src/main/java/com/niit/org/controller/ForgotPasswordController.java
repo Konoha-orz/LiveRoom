@@ -43,7 +43,7 @@ public class ForgotPasswordController {
 		String ver_enter = request.getParameter("verificationCode");
 		if (ver_enter.equals(random)) {
 			session.setAttribute("username", username);
-			return "forgotPassowrd/resetPassword";
+			return "resetPassword";
 		} else {
 			return "verError";
 		}

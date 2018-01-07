@@ -33,13 +33,21 @@ Edit by @Teemo
 
 				<form accept-charset="UTF-8" action="login" method="post">
 							
-						<div class="smart-green">
+						<div class="userFrame_main">
 						<h1>用户个人信息</h1>
 						<h2 for="greeting">你好: <%=session.getAttribute("username").toString() %> </h2><br/>
-		  				<label class="info" for="username"> 用户名:<%=session.getAttribute("username").toString() %> </label> <br/>
-						<label class="info" for="password"> 密码:<%=session.getAttribute("password").toString() %> </label> <br/>
-						<label class="info" for="email"> 邮箱地址:<%=session.getAttribute("email").toString() %> </label> <br/>
-						<label class="info" for="dscp"> 个人简介:<%=session.getAttribute("dscp").toString() %> </label> <br/>
+		  				<div>
+							<label for="username"> 用户名 </label>
+							<input autofocus="autofocus" id="username"  disabled="true" name="username" tabindex="1" type="text" value="${username }"/>
+						</div>
+						<div>
+							<label for="email">电子邮箱地址 </label> 
+							<input id="email" name="email" tabindex="2" disabled="true" type="text" value="${email }"/> 
+						</div>
+						<div>
+							<label for="dscp">个人简介 </label> 
+							<textarea id="dscp" name="dscp" disabled="true">${dscp}</textarea><br>
+						</div>
 				-	</div>
 				</form>
 

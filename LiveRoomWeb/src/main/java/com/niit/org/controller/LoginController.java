@@ -36,11 +36,14 @@ public class LoginController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String login(HttpServletRequest request, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String username_enter = request.getParameter("username");
-		String password_enter = MD5Util.md5Encode(request.getParameter("password"));
+		String password_enter = request.getParameter("password");
+//		String codedPassword=MD5Util.md5Encode(password_enter);
 		try {
 			String password_db = iuser.getUser(username_enter).get(0).getPassword();
 			String dscp_db=iuser.getUser(username_enter).get(0).getDscp();
 			String email=iuser.getUser(username_enter).get(0).getEmail();
+			int userId=iuser.getUser(username_enter).get(0).getId();
+//			if (codedPassword.equals(password_db)) {
 			if (password_enter.equals(password_db)) {
 				User user=iuser.getUser(username_enter).get(0);
 				session.setAttribute("user", user);
@@ -48,6 +51,7 @@ public class LoginController {
 				session.setAttribute("password", password_db);
 				session.setAttribute("email", email);
 				session.setAttribute("dscp", dscp_db);
+				session.setAttribute("userId", String.valueOf(userId));
 				return "redirect:/index";
 			} else {
 				return "LoginFail";

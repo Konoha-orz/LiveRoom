@@ -29,17 +29,22 @@
 %>
 
 <title>直播间列表</title>
+
 <jsp:include page="StaticResources.jsp" />
 </head>
 
 <body>
 
     <jsp:include page="NavigateHeader.jsp"/>
+
+	
+   
 	<div class="pd-sc-container">
 		
 		
 		<div id="main-container" class="pd-sc-content"
 			style="visibility: visible;">
+
 
 
             <%if(!collectList.isEmpty()){ %>

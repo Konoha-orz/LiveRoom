@@ -140,8 +140,7 @@
 									<div class="pd-thumb">
 										<div class="pictures">
 											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/eff447d4002af1a02369fbbd6e7d93ae/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+												src="thumb/<%=room.getSeriescode()%>.jpg" onerror="this.src='thumb/error.jpg'">
 										</div>
 										<div class="thumb-layer"></div>
 										<div class="play-btn"></div>
@@ -191,8 +190,7 @@
 									<div class="pd-thumb">
 										<div class="pictures">
 											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/71b5a8727233b2a692fb413aed381c98/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+												src="thumb/<%=room.getSeriescode()%>.jpg" onerror="this.src='thumb/error.jpg'">
 										</div>
 										<div class="thumb-layer"></div>
 										<div class="play-btn"></div>
@@ -240,8 +238,7 @@
 									<div class="pd-thumb">
 										<div class="pictures">
 											<img class="thumb-img thumb-img-lazy"
-												data-original="https://i.h2.pdim.gs/90/f2bd7bcd93e2c93ee49d61c60b2a31bd/w338/h190.jpg"
-												src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+												src="thumb/<%=room.getSeriescode()%>.jpg" onerror="this.src='thumb/error.jpg'">
 										</div>
 										<div class="thumb-layer"></div>
 										<div class="play-btn"></div>
