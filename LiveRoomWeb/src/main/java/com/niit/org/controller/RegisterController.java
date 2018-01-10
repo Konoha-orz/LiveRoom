@@ -56,7 +56,7 @@ public class RegisterController {
 		String dscp=request.getParameter("dscp");
 		User user= new User();
 		user.setUsername(username);
-		user.setPassword(MD5Util.md5Encode(password));
+		user.setPassword(MD5Util.Encode((password)));
 //		user.setPassword(password);
 		user.setDscp(dscp);
 		user.setEmail(email);
