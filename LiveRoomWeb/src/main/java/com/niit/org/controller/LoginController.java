@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
-import com.niit.org.util.MD5Util;
+// import com.niit.org.util.MD5Util;
 
 /*
  *Edit by @Teemo

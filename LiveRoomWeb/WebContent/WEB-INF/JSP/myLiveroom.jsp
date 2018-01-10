@@ -16,6 +16,7 @@
 </head>
 
 <body onload="change()">
+<jsp:include page="NavigateHeader.jsp"/>
 <div class="big_div">
 
 	<div class="div_nav">

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
-import com.niit.org.util.MD5Util;
+// import com.niit.org.util.MD5Util;
 import com.niit.org.util.MailUtil;
 
 /*
@@ -56,8 +56,13 @@ public class RegisterController {
 		String dscp=request.getParameter("dscp");
 		User user= new User();
 		user.setUsername(username);
+<<<<<<< Updated upstream
 		user.setPassword(MD5Util.Encode((password)));
 //		user.setPassword(password);
+=======
+//		user.setPassword(MD5Util.md5Encode(password));
+		user.setPassword(password);
+>>>>>>> Stashed changes
 		user.setDscp(dscp);
 		user.setEmail(email);
 		iuser.registerUser(user);

@@ -20,16 +20,14 @@ Edit by @Teemo
 <title>个人信息</title>
 </head>
 
-<body
-	class="logged-out env-production page-responsive min-width-0 session-authentication">
-
+<body class="logged-out env-production page-responsive min-width-0 session-authentication">
+<jsp:include page="NavigateHeader.jsp"/>
 <div class="big_div">
  <div class="div_nav">
 	<jsp:include page="nav.jsp" />
 </div>  
 
 <div class="div_main">
-
 
 				<form accept-charset="UTF-8" action="login" method="post">
 							

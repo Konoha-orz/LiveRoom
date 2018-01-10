@@ -23,6 +23,7 @@ Edit by @Teemo
 </head>
 
 <body>
+<jsp:include page="NavigateHeader.jsp"/>
 <div class="big_div">
  <div class="div_nav">
 	<jsp:include page="nav.jsp" />

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
-import com.niit.org.util.MD5Util;
+// import com.niit.org.util.MD5Util;
 
 @Controller
 
@@ -29,6 +29,10 @@ public class ResetPasswordController {
 		String password=MD5Util.Encode(request.getParameter("password"));
 		User user=(User)iuser.getUser(username).get(0);
 		user.setPassword(password);
+<<<<<<< Updated upstream
+=======
+		//user.setPassword(MD5Util.md5Encode(password));
+>>>>>>> Stashed changes
 		iuser.updateUser(user);
 		return "login";
 	}
