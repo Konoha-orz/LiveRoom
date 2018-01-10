@@ -19,39 +19,24 @@
 <!--<![endif]-->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta name="viewport" content="width=device-width">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="renderer" content="webkit">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="<%=context %>/js/vue.js"></script>
 <script src="<%=context %>/js/toast.js"></script>
 <link rel="stylesheet"  href="<%=context %>/css/toast.css"/>
+
+<jsp:include page="StaticResource.jsp"/>
+<title>更新用户个人信息</title>
 <%
 	List<LiveRoomDTO> collectList = (List<LiveRoomDTO>) session.getAttribute("collectList");
     
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<!--
-Edit by @Teemo
-
-2017-10-25
-
-修改用户信息界面并完成界面设计
--->
-
-<html>
-<head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<jsp:include page="StaticResource.jsp"/>
-<meta name="viewport" content="width=device-width">
-
-<title>更新用户个人信息</title>
-
 </head>
 
 <body>
+<jsp:include page="NavigateHeader.jsp"/>
 <div class="big_div">
  <div class="div_nav">
 	<jsp:include page="nav.jsp" />
