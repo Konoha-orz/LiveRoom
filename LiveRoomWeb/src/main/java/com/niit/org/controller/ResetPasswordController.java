@@ -26,9 +26,9 @@ public class ResetPasswordController {
 	@RequestMapping(method = RequestMethod.POST)
 	public String resetPassword(HttpServletRequest request,HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String username=String.valueOf(session.getAttribute("username"));
-		String password=request.getParameter("password");
+		String password=MD5Util.Encode(request.getParameter("password"));
 		User user=(User)iuser.getUser(username).get(0);
-		user.setPassword(MD5Util.md5Encode(password));
+		user.setPassword(password);
 		iuser.updateUser(user);
 		return "login";
 	}
