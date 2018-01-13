@@ -35,9 +35,9 @@
 					<c:forEach items="${categoryList}" var="cl">
 						<option value="${cl.categoryname}">${cl.categoryname}</option>
 					</c:forEach>
-				</select><br /> <label for="rtmpurl">推流地址</label><input type="text"
+				</select><br /> <label for="rtmpurl">推流地址</label><input readonly  unselectable="on"type="text"
 					id="rtmpurl" name="rtmpurl" value="${liveRoom.rtmpurl}" /><br /> <label
-					for="seriescode">推流名称</label><input type="text" id="seriescode"
+					for="seriescode">推流名称</label><input readonly  unselectable="on" type="text" id="seriescode"
 					name="seriescode" value="${liveRoom.seriescode}" /><br /> <input
 					class="button" type="submit" value="保存修改" />
 			</form>

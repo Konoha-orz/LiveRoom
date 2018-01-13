@@ -81,7 +81,7 @@ Edit by @Teemo
 						<div  style="text-align:center">
 						<h2 for="Success Message">登出成功</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/user/login">登陆</a></div>
+						<a href="/LiveRoomWeb/user/login">登陆</a></div>
 					</div>
 					</div>
 

@@ -69,7 +69,7 @@
 				</form>
 
 				<p class="create-account-callout mt-3">
-					没有账号?<br> <a href="http://localhost:8080/LiveRoomWeb/register"
+					没有账号?<br> <a href="/LiveRoomWeb/register"
 						data-ga-click="Sign in, switch to sign up">注册账号</a>.
 				</p>
 			</div>

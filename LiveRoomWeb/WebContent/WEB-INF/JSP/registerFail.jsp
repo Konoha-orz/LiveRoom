@@ -74,7 +74,7 @@ Edit by @Teemo
 						<div  style="text-align:center">
 						<h2 for="Success Message">注册失败</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/register">重试</a></div>
+						<a href="/LiveRoomWeb/register">重试</a></div>
 					</div>
 					</div>
 

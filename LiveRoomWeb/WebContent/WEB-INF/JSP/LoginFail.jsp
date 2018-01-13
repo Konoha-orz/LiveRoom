@@ -71,7 +71,7 @@ Edit by @Teemo
 						<div  style="text-align:center">
 						<h2 for="Success Message">登录失败</h2></div><br/>
 						<div  style="text-align:center">
-						<a href="http://localhost:8080/LiveRoomWeb/user/login">重试</a></div>
+						<a href="/LiveRoomWeb/user/login">重试</a></div>
 					</div>
 					</div>
 

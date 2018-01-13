@@ -84,16 +84,23 @@ public class MailUtil {
 		messageHelper.setTo(emailTo);
 		//设置主题
 		messageHelper.setSubject(subject);
+		
 		//启动html格式的邮件  
         messageHelper.setText(content, true);
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", "true");
         prop.put("mail.smtp.timeout", "25000");
+        prop.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+        prop.setProperty("mail.smtp.socketFactory.fallback", "false");
+        prop.setProperty("mail.smtp.socketFactory.port", "25");
+
+      final String smtpPort = "25";
+        prop.setProperty("mail.smtp.port", smtpPort);
         //添加验证
         this.setEmailUsername("liveroom_admin@yeah.net");
         this.setEmailPassword("liveroom_123123");
         MyAuthenticator auth = new MyAuthenticator(emailUsername,emailPassword);
-        Session session = Session.getDefaultInstance(prop,auth);
+        Session session = Session.getInstance(prop,auth);
         senderImpl.setSession(session);
         //发送邮件
         senderImpl.send(mailMessage);

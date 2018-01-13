@@ -97,16 +97,18 @@ Edit by @Teemo
 							<input class="form-control form-control input-block"
 							id="dscp" name="dscp" tabindex="4" type="text" /> 
 							
-							<label for="email">电子邮箱 </label> 
+							
+							<!--  <label for="email">电子邮箱 </label> 
 							<input class="form-control form-control input-block"
 							id="email" name="email" tabindex="5" type="text" /> 
 							
+							  
 							<a href="#" onclick="submit()">发送邮件</a><br>
 							<label for="sendMsg" id="sendMsg" style="color:red"></label>
 							<br>
 							</form>
 							
-							<!-- <form accept-charset="UTF-8" id="form2" action="checkEmail" method="post"> -->
+							 <form accept-charset="UTF-8" id="form2" action="checkEmail" method="post"> 
 							<label for="ver"> 输入验证码:</label> <input
 							autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="verificationCode" name="verificationCode"
@@ -114,7 +116,7 @@ Edit by @Teemo
 							<a href="#" onclick="checkVer()">验证验证码</a>
 							<label for="checkver" id="checkver" style="color:red"></label>
 							<!-- </form> -->
-							
+							 
 							<input
 							class="btn btn-primary btn-block" data-disable-with="Signing in…"
 							name="commit" tabindex="3" type="submit" value="注册" />
@@ -159,44 +161,6 @@ function checkConfirmPassword(){
 	});
 } 
  
- function submit(){
-		$.ajax({
-			type:"post",
-			url:"<%=request.getContextPath() %>/register/sendEmail",
-			data:{"username":$("#username").val(),
-				  "email":$("#email").val()},
-		    success:function(r){
-		    	if(r=="success"){
-		    		$("#sendMsg").html("邮件已发送");
-		    	}else{
-		    		$("#sendMsg").html("邮箱地址错误");
-		    	}
-		    },
-		    error:function(XMLHttpRequest, textStatus, errorThrown){
-				console.log(XMLHttpRequest.status);
-				console.log(XMLHttpRequest.readyState);
-				console.log(textStatus);
-		    }
-		});
-	}
- function checkVer(){
-		$.ajax({
-			type:"post",
-			url:"<%=request.getContextPath() %>/register/checkVer",
-			data:{"ver":$("#verificationCode").val()},
-			success:function(r){
-				if(r == "success"){
-					$("#checkver").html("验证码正确！");  
-				}else{
-					$("#checkver").html("验证码错误！");  
-				}
-			},
-			error: function(XMLHttpRequest, textStatus, errorThrown){
-				console.log(XMLHttpRequest.status);
-				console.log(XMLHttpRequest.readyState);
-				console.log(textStatus);
-			}
-		}); 
-	}
+ 
 </script>
 </html>

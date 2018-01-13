@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
+import com.niit.org.util.MD5Util;
 // import com.niit.org.util.MD5Util;
 
 /*
@@ -37,18 +38,18 @@ public class LoginController {
 	public String login(HttpServletRequest request, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String username_enter = request.getParameter("username");
 		String password_enter = request.getParameter("password");
-//		String codedPassword=MD5Util.md5Encode(password_enter);
+		String codedPassword=MD5Util.Encode(password_enter);
 		try {
 			String password_db = iuser.getUser(username_enter).get(0).getPassword();
 			String dscp_db=iuser.getUser(username_enter).get(0).getDscp();
 			String email=iuser.getUser(username_enter).get(0).getEmail();
 			int userId=iuser.getUser(username_enter).get(0).getId();
 //			if (codedPassword.equals(password_db)) {
-			if (password_enter.equals(password_db)) {
+			if (codedPassword.equals(password_db)) {
 				User user=iuser.getUser(username_enter).get(0);
 				session.setAttribute("user", user);
 				session.setAttribute("username", username_enter);
-				session.setAttribute("password", password_db);
+//				session.setAttribute("password", password_db);
 				session.setAttribute("email", email);
 				session.setAttribute("dscp", dscp_db);
 				session.setAttribute("userId", String.valueOf(userId));
