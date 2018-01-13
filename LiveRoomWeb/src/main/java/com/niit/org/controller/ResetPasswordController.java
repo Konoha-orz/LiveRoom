@@ -1,5 +1,8 @@
 package com.niit.org.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,18 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.niit.org.bean.User;
 import com.niit.org.mapper.IUser;
-
-/*
- *Edit by @Teemo
- *
- *2017-10-31
- *
- *用于处理resetPassword请求，经过验证通过的用户可以重置密码。
- * 
- */
-
-
-
+import com.niit.org.util.MD5Util;
 
 @Controller
 
@@ -32,9 +24,9 @@ public class ResetPasswordController {
 	private IUser iuser;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public String resetPassword(HttpServletRequest request,HttpSession session) {
+	public String resetPassword(HttpServletRequest request,HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String username=String.valueOf(session.getAttribute("username"));
-		String password=request.getParameter("password");
+		String password=MD5Util.Encode(request.getParameter("password"));
 		User user=(User)iuser.getUser(username).get(0);
 		user.setPassword(password);
 		iuser.updateUser(user);
@@ -43,5 +35,23 @@ public class ResetPasswordController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public void init() {}
+	
+	@RequestMapping(method= RequestMethod.POST, value="/updatePassword")
+	public String updatePassword(HttpServletRequest request, HttpSession session) {
+		String username = String.valueOf(session.getAttribute("username"));
+		String password=request.getParameter("password");
+		User user=(User)iuser.getUser(username).get(0);
+		user.setPassword(password);
+		iuser.updateUser(user);
+		session.removeAttribute("password");
+		session.setAttribute("password", password);
+		return "updatePassword";
+	}
+	
+	@RequestMapping(method = RequestMethod.GET,value="/userUpdate")
+	public String initUpdatePsd() {
+		return "updatePassword";
+	}
+	
 }
 

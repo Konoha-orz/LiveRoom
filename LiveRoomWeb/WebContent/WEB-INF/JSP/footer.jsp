@@ -13,9 +13,9 @@
 		<p>
 			<a href="/LiveRoomWeb/index">主页</a> | <a
 				href="/LiveRoomWeb/roomlist/all">全部</a> | <a target="_blank"
-				href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31010802001046">分类</a>
+				href=" ">分类</a>
 		</p>
-		<p>本网站为学校NIIT学生实训项目| Konoha&Tom&Teemo | 联系方式QQ：517136675</p>
+		<p>本网站为学校NIIT学生实训项目| Konoha&Tom&Teemo </p>
 
 	</div>
 	</footer>

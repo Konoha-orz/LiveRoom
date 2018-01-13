@@ -9,7 +9,9 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
+<%
+	String context = request.getContextPath();
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html lang="zh-cmn-Hans">
@@ -49,7 +51,7 @@
 							<div class="panda-search ">
 								<form name="room-search" action="/LiveRoomWeb/roomlist/search"
 									method="post" target="_top" class="search-form">
-									<input type="text" name="searchKey" value="搜房間號/主播" 
+									<input type="text" name="searchKey" placeholder="搜索房间/主播" 
 										autocomplete="off" class="search-key search-default">
 									<div class="search-submit-btn" data-toggle="panda-monitor"
 										data-paew="pc_web-all-sidebar_search">
@@ -149,8 +151,8 @@
 					<a  href="<%=url%>" class="video-list-item-wrap" data-id="821335">
 							<div class="video-cover">
 								<img class="video-img video-img-lazy"
-									data-original="https://i.h2.pdim.gs/90/e1cecbf68656f84ad830e1314a439dd8/w338/h190.webp"
-									alt="<%=room.getDscp()%>" src="css/h190.webp"
+									src="<%=context%>/thumb/<%=room.getSeriescode()%>.jpg" onerror="this.src='<%=context%>/thumb/error.jpg'"
+									alt="<%=room.getDscp()%>" 
 									style="display: block;" >
 								<div class="video-overlay"></div>
 								<div class="video-play"></div>
@@ -181,30 +183,21 @@
             <%} %>
 		</div>
 	</div>
-
-
-
-
-
-
-	<!--4.326.0.19852-->
-	<div style="display: none;">
-		<style>
-.video-list-item {
-	width: 317px !important;
-}
-
-.video-list-item .video-img {
-	height: 178px !important;
-}
-
-.video-highlight .video-hls {
-	width: 782px !important;
-	left: -68px !important;
-}
-</style>
-	</div>
-
-	</div>
 </body>
+<script src="<%=context %>/js/toast.js"></script>
+<link rel="stylesheet"  href="<%=context %>/css/toast.css"/>
+<script>
+var oForm = document.forms['room-search'];
+
+// 表单提交判断
+oForm.addEventListener("submit",function(event){
+	var content = oForm.searchKey.value;
+	event = event || window.event;
+	if(!(content && content.length > 0)) {		
+		toast.init({duration: 2000,text: 'keyword不能为空', type: 'warning'});
+		event.preventDefault();
+	}
+})
+
+</script>
 </html>

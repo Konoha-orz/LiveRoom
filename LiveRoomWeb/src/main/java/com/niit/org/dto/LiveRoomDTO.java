@@ -1,6 +1,8 @@
 package com.niit.org.dto;
 
-public class LiveRoomDTO {
+import java.io.Serializable;
+
+public class LiveRoomDTO implements Serializable {
    private int id;
    private String title;
    private String dscp;
@@ -66,6 +68,5 @@ public int getStatus() {
 public void setStatus(int status) {
 	this.status = status;
 }
-   
-   
 }
+

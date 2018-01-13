@@ -19,10 +19,11 @@
 <script src="<%=context %>/js/video.js"></script>
 <link rel="stylesheet"  href="<%=context %>/css/reset.css"/>
 <link rel="stylesheet"  href="<%=request.getContextPath()%>/css/liveroom1.css"/>
+<script src="<%=context %>/js/vue.js"></script>
+<link rel="stylesheet" href="<%=context%>/css/toast.css" />	
+<script src="<%=context%>/js/toast.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 <script src="<%=context %>/js/bootstrap.js"></script>
-<script src="<%=context %>/js/vue.js"></script>
-<script src="<%=context %>/js/jquery.danmu.min.js"></script>
 <title>LiveRoom</title>    
 
 </head>
@@ -31,7 +32,8 @@
     List<Category> categoryList = (List<Category>) session.getAttribute("categoryList");
 %>
 <body style="overflow: hidden;">
-
+<input type="hidden" name="roomId" value="${room.id}" />
+<input type="hidden" name="userId" value="${user.id}" />
 
 
 <div class="container">
@@ -136,7 +138,7 @@
 	<div class="row clearfix">
 
 		<!-- 中间的视频播放区开始 -->
-		<div class="main b2" id="liveroom">
+		<div class="main" id="liveroom">
 			<div class="room-info">
 				<div class="user-avatar">
 					<a href="#"><img src="<%=context %>/images/6.jpg" /> </a>
@@ -147,14 +149,14 @@
 						<dd><p>房间号：{{roomInfo.id}}   简介：{{roomInfo.dscp | defaultDscp}}</p></dd>
 						<dd></dd>
 					</dl>
-					<button type="button" class="collect btn btn-default">订阅</button>
+					<button type="button" class="collect btn btn-primary" @click="collect">{{btnText}}</button>
 				</div>	
 			</div>
-			<div style="position:relative; background-color: black ; height: 439px; width: 100%;">
+			<div style="position:relative; background-color: black ; height:75%; width: 100%;">
 
-                <div id="danmu" style=""></div>
-
-                <video id="v-player"
+                <div id="danmu" style="height:100%;width:100%;"></div>
+				<div id="video-mask" v-if="!isOnline">主播不在家哦！</div>
+                <video id="v-player" style="height:100%;width:100%;"
 
                        class="video-js col-center-block">
 
@@ -163,12 +165,12 @@
                 </video>
 
             </div>
-			<p v-if="roomInfo.status===1">正在直播中</p>
+			<p v-if="isOnline">正在直播中</p>
 			<p v-else>主播不在线</p>
 		</div>
 		<!-- 中间的视频播放区结束-->
 		<!-- 右侧聊天室 -->
-		<div class="chatroom b1" id="chatroom">
+		<div class="chatroom" id="chatroom">
 			 <ul id="menuTabs" class="nav nav-pills nav-justified">
 
                 <li class="active">
@@ -249,8 +251,10 @@
 
 </div>
 
-<input type="hidden" name="roomId" value="${roomId}" />
 
+
+<script src="<%=context %>/js/jquery.danmu.min.js"></script>
+<!-- 右侧聊天室 -->
 <script>
 
 var chatroom = new Vue({
@@ -269,6 +273,7 @@ var chatroom = new Vue({
     },
     methods: {
     	connectToSocket: function () {
+    		console.log($("#danmu"))
             this.socketClient = new WebSocket(this.webSocketUrl);
             this.socketClient.onopen = function (frame) {
                 chatroom.messages.push({
@@ -277,7 +282,6 @@ var chatroom = new Vue({
                 })
 
                 $("danmu").danmu({
-                	height: 360,  //弹幕区高度
                 	width: 640,   //弹幕区宽度
                 	zindex :100,   //弹幕区域z-index属性
                 	speed:7000,      //滚动弹幕的默认速度，这是数值值得是弹幕滚过每672像素所需要的时间（毫秒）
@@ -294,6 +298,7 @@ var chatroom = new Vue({
                 	maxCountInScreen: 100,   //屏幕上的最大的显示弹幕数目,弹幕数量过多时,优先加载最新的。
                 	maxCountPerSec: 100      //每分秒钟最多的弹幕数目,弹幕数量过多时,优先加载最新的。
                 	});
+                
                 chatroom.beginTime = Date.now()
                 $('#danmu').danmu('danmuStart');
             };
@@ -356,12 +361,20 @@ var chatroom = new Vue({
     }
 
 });
+</script>
+<!-- 中部视频播放区 -->
+
+<script>
+var roomId = document.querySelector("input[name=roomId]").value || 0;
+var userId = document.querySelector("input[name=userId]").value || 0;
 var liveroom = new Vue({
 	el: "#liveroom",
 	data: {
         rtmpSource: null,
         videoPlayer: null,
-        roomId:0,
+        roomId:roomId,
+        userId:userId,
+        isCollect: false,
         roomInfo: {
         	id: "",
         	title:"",
@@ -372,6 +385,15 @@ var liveroom = new Vue({
         	status:""
         }
 	},
+	computed:{
+		btnText(){
+			return this.isCollect ? '取消订阅' : '订阅'; 
+		},
+		isOnline(){
+			var status = this.roomInfo.status ? 1 : 0;
+			return status;
+		}
+	},
 	filters: {  
 	    defaultDscp: function (value) {
 	      var defaultValue = "暂无简介"
@@ -379,11 +401,39 @@ var liveroom = new Vue({
 	    }  
 	}, 
 	methods:{
+		collect: function(){
+			var isCollect = this.isCollect;
+			var status = isCollect ? "0" : "1";
+			var obj = {roomId: this.roomInfo.id,userId: this.userId,isCollect: status};
+			
+			$.ajax({
+				type: 'post',
+				url: '/LiveRoomWeb/collecting',
+				data: JSON.stringify(obj),
+                contentType: "application/json",
+                dataType: "json",
+			}).done(function (res) {
+				// status 和 data 决定 成功以及 订阅装态
+				var status = res.status;
+				var subscribeStatus = res.data.subscribeStatus;
+				console.log(res.data)
+                if (status == 1 && subscribeStatus == 0) {
+               	 	liveroom.isCollect = false;
+                } else if (status == 1 && subscribeStatus == 1 ) {
+                	liveroom.isCollect = true;
+                } else {
+            		toast.init({type:'error',text:'操作失败请重试'});
+                }
+            }).fail(function (err) {
+           	 console.log(err)
+            });
+		},
 		getRoomInfo:function(){
-			var obj = {roomId:chatroom.roomId}
+			var obj = {roomId: this.roomId};
+
 			 $.ajax({
                  type: 'get',
-                 url: '/LiveRoomWeb/isOnline',
+                 url: '/LiveRoomWeb/getRoomInfo',
                  data: obj,
                  contentType: "application/json"
              }).done(function (data) {
@@ -400,10 +450,30 @@ var liveroom = new Vue({
             	 console.log(err)
              });
 		},
+		getCollection: function(){
+			var obj = {roomId: this.roomId,userId: this.userId};
+			
+			$.ajax({
+				type: 'post',
+				url: '/LiveRoomWeb/collecting',
+				data: JSON.stringify(obj),
+                contentType: "application/json",
+                dataType: "json"
+			}).done(function (res) {
+				var status = res.status;
+				var subscribeStatus = res.data.subscribeStatus;
+				
+                if (status && status == 1) {
+                	liveroom.isCollect = subscribeStatus == 1 ? true : false;
+                }
+            }).fail(function (err) {
+           	 console.log(err)
+            });
+		},
 		videoInit: function(){
         	this.videoPlayer = videojs('v-player', {
                 //初始化数据
-                height: '439px',
+                height: "100%",
                 width: '640px',
                 "techOrder": ["html5", "flash"],
                 controls: true,
@@ -427,9 +497,9 @@ var liveroom = new Vue({
 	},
 	mounted() {
 		this.getRoomInfo();
+		this.getCollection();
 	}
 })
-
 </script>
 
 

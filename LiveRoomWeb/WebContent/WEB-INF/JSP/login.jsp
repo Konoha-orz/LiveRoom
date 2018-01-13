@@ -1,38 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UtF-8">
-
-
-
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css1.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css2.css"
-	type="text/css" />
-<link rel="stylesheet" href="<%=request.getContextPath()%>/css/css3.css"
-	type="text/css" />
-<link rel="shortcut icon" href="images/favicon.ico" />
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<jsp:include page="StaticResource.jsp" />
 <meta name="viewport" content="width=device-width">
-
-<title>User Login</title>
-<STYLE TYPE="text/css">
-<!--
-.aa{background-image: URL(images/bb2.png);
-
-background-repeat: no-repeat;
-background-attachment: fixed;}
-
-</STYLE>
-
-</head>
-
-<body 
+<html>
+<body
 	class="logged-out env-production page-responsive min-width-0 session-authentication">
-     
+
+
 
 	<div class="position-relative js-header-wrapper ">
 
@@ -68,7 +45,7 @@ background-attachment: fixed;}
 							value="jjTCIuxLb1pgXsdqb+gEfNZEGiuvLpC8i9Fr1fwZR941RvHGGiz8v9hLErL4zUpav5ky19mdHVbvZ6vcWwBwJA==">
 					</div>
 					<div class="auth-form-header p-0">
-						<h1>User Login</h1>
+						<h1>用户登陆</h1>
 					</div>
 
 
@@ -77,24 +54,23 @@ background-attachment: fixed;}
 
 					<div class="auth-form-body mt-3">
 
-						<label for="username"> Username </label> <input
+						<label for="username" style="text-align: left"> 用户名 </label> <input
 							autocapitalize="off" autocorrect="off" autofocus="autofocus"
 							class="form-control input-block" id="username" name="username"
-							tabindex="1" type="text" /> <label for="password">
-							Password <a
+							tabindex="1" type="text" /> <label for="password"
+							style="text-align: left"> 密码 <a
 							href="http://localhost:8080/LiveRoomWeb/forgotPassword"
-							class="label-link">Forgot password?</a>
+							class="label-link">忘记密码?</a>
 						</label> <input class="form-control form-control input-block"
 							id="password" name="password" tabindex="2" type="password" /> <input
 							class="btn btn-primary btn-block" data-disable-with="Signing in…"
-							name="commit" tabindex="3" type="submit" value="Login" />
+							name="commit" tabindex="3" type="submit" value="登陆" />
 					</div>
 				</form>
 
 				<p class="create-account-callout mt-3">
-					Do not have an account?<br> <a
-						href="http://localhost:8080/LiveRoomWeb/register"
-						data-ga-click="Sign in, switch to sign up">Create an account</a>.
+					没有账号?<br> <a href="/LiveRoomWeb/register"
+						data-ga-click="Sign in, switch to sign up">注册账号</a>.
 				</p>
 			</div>
 
@@ -104,9 +80,6 @@ background-attachment: fixed;}
 
 
 
-</body>
+
 </body>
 </html>
-
-
-

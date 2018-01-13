@@ -26,8 +26,7 @@ public class InsertController {
 		Role role =new Role();
 		role.setDescription(des);
 		role.setRole_name(rolename);
-		int result =irs.insertRole(role);
-		
+		int result =irs.insertRole(role);		
 		return "insertSucess";
 	}
 
